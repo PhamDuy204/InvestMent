@@ -1,0 +1,30 @@
+{
+  "probability": 0.0221578850871996,
+  "observed_sharpe": 0.07425784464904028,
+  "benchmark_sharpe": 0.13015350153035796,
+  "skew": 4.661631830527739,
+  "kurtosis": 54.00833195947207,
+  "observations": 942,
+  "n_trials": 779,
+  "prior_trial_count": 657,
+  "new_counted_rows": 122,
+  "total_research_trial_count": 779,
+  "breakdown": {
+    "v4_groq_hypotheses": 3,
+    "v4_inner_overlay_trials": 30,
+    "v4_outer_selected_evaluations": 3,
+    "v4_frozen_stress": 3,
+    "v4_leverage_and_shocks": 48,
+    "v5_groq_hypotheses": 3,
+    "v5_burst_model_families": 3,
+    "v5_burst_threshold_trials": 5,
+    "v5_burst_direction_model_and_confidence": 6,
+    "v5_intraday_models_and_thresholds": 10,
+    "v5_meta_calibrator_folds": 3,
+    "v5_burst_risk_overlay_hypothesis": 1,
+    "v5_execution_policy_study": 1,
+    "v5_allocation_policy_evaluations": 3
+  },
+  "status": "APPROXIMATE_DSR_NOT_FULL_COMMON_MATRIX",
+  "note": "Confirmations are retained as evidence but are not used to select parameters; trial count conservatively includes robustness/evaluation rows."
+}
