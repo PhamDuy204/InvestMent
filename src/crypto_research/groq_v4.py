@@ -108,6 +108,19 @@ def sanitize_research_context(value: Any) -> Any:
     return value
 
 
+def resolve_available_routes(
+    client: Any,
+    routes: Mapping[str, tuple[str, ...]] = MODEL_ROUTES,
+) -> dict[str, tuple[str, ...]]:
+    """Keep configured models that the authenticated Groq project can actually access."""
+    available = {item.id for item in client.models.list().data}
+    resolved = {role: tuple(model for model in models if model in available) for role, models in routes.items()}
+    missing = [role for role, models in resolved.items() if not models]
+    if missing:
+        raise RuntimeError(f"no available Groq model for roles: {missing}")
+    return resolved
+
+
 def validate_hypothesis(payload: Mapping[str, Any]) -> dict[str, str]:
     missing = [field for field in _HYPOTHESIS_FIELDS if field not in payload]
     if missing:
@@ -125,8 +138,8 @@ def validate_hypothesis(payload: Mapping[str, Any]) -> dict[str, str]:
 def build_chat_request(*, role: str, model: str, context: Mapping[str, Any]) -> dict[str, Any]:
     if role not in ROLE_SCHEMAS:
         raise ValueError(f"unknown V4 role: {role}")
-    if model not in MODEL_ROUTES[role]:
-        raise ValueError(f"model {model!r} is not configured for role {role!r}")
+    if not (model.startswith("qwen/") or model.startswith("openai/gpt-oss-")):
+        raise ValueError(f"unsupported V4 Groq model: {model}")
 
     clean = sanitize_research_context(context)
     request: dict[str, Any] = {
