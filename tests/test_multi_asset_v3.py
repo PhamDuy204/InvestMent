@@ -2,7 +2,13 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from crypto_research.multi_asset_v3 import PortfolioCaps, cost_aware_target, rebalance_cost, rolling_lower_bound, turnover
+from crypto_research.multi_asset_v3 import (
+    PortfolioCaps,
+    cost_aware_target,
+    rebalance_cost,
+    rolling_lower_bound,
+    turnover,
+)
 from crypto_research.run_v3 import select_inner_trial, v3_cost_configs
 
 

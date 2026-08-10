@@ -1,0 +1,36 @@
+{
+  "research_version": "V4",
+  "objective": "Find small, falsifiable changes that improve robustness without re-mining the locked historical confirmation set.",
+  "failure_codes": [
+    "MULTIPLE_TESTING_DSR_WEAK",
+    "CONFIRMATION_COST_SENSITIVE",
+    "CONFIRMATION_DELAY_SENSITIVE",
+    "FUNDING_DRAG",
+    "TURNOVER_TOO_HIGH",
+    "REGIME_INSTABILITY"
+  ],
+  "locked_constraints": [
+    "Do not tune on the locked 2021-2023 historical confirmation results.",
+    "Do not use future returns, OOS labels, or test labels as proposal inputs.",
+    "Do not lower execution-cost assumptions to manufacture profitability.",
+    "Do not propose live order placement or exchange credentials.",
+    "Every LLM-generated hypothesis counts as a multiple-testing trial even if later rejected.",
+    "Prefer one-variable changes that reuse existing V3 helpers before adding new dependencies."
+  ],
+  "available_data_families": [
+    "hourly OHLCV",
+    "funding rates",
+    "causal trailing liquidity",
+    "existing price-only Ridge features",
+    "existing aggTrades pilot features"
+  ],
+  "preferred_experiment_families": [
+    "turnover_control",
+    "funding_control",
+    "causal_regime_filter",
+    "risk_sizing",
+    "holding_horizon",
+    "feature_ablation"
+  ],
+  "promotion_principle": "A V4 candidate must be selected without seeing the locked confirmation labels, then survive frozen cost and delay stress before any paper-trading consideration."
+}
