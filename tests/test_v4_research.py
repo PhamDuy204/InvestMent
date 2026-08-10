@@ -41,8 +41,8 @@ def test_runner_chains_scout_audit_synthesis_and_writes_registry(tmp_path):
     client = FakeClient(
         [
             {"hypotheses": [h]},
-            {"accepted": [h], "rejected": []},
-            {"ranked_hypotheses": [h]},
+            {"decisions": [{"name": h["name"], "decision": "accept", "reason": "causal"}]},
+            {"ranked_names": [h["name"]]},
         ]
     )
     result = run_v4_research(
@@ -69,8 +69,8 @@ def test_scout_falls_back_to_gpt_oss_when_qwen_payload_is_invalid(tmp_path):
         [
             {"not_hypotheses": []},
             {"hypotheses": [h]},
-            {"accepted": [h], "rejected": []},
-            {"ranked_hypotheses": [h]},
+            {"decisions": [{"name": h["name"], "decision": "accept", "reason": "causal"}]},
+            {"ranked_names": [h["name"]]},
         ]
     )
     result = run_v4_research(client, {"failure_codes": []}, artifact_dir=tmp_path)
@@ -86,11 +86,25 @@ def test_rejected_scout_hypothesis_still_counts_as_trial(tmp_path):
     client = FakeClient(
         [
             {"hypotheses": [h]},
-            {"accepted": [], "rejected": [{"name": "rejected", "reason": "not causal"}]},
-            {"ranked_hypotheses": []},
+            {"decisions": [{"name": "rejected", "decision": "reject", "reason": "not causal"}]},
+            {"ranked_names": []},
         ]
     )
     run_v4_research(client, {"failure_codes": []}, artifact_dir=tmp_path)
     registry = json.loads((tmp_path / "v4_trial_registry.json").read_text())
     assert registry["llm_hypothesis_trials"] == 1
     assert registry["rows"][0]["status"] == "PROPOSED_AND_REJECTED"
+
+
+def test_auditor_omission_defaults_to_rejection(tmp_path):
+    h = hypothesis("omitted")
+    client = FakeClient(
+        [
+            {"hypotheses": [h]},
+            {"decisions": []},
+            {"ranked_names": []},
+        ]
+    )
+    result = run_v4_research(client, {"failure_codes": []}, artifact_dir=tmp_path)
+    assert result["audited_hypotheses"]["accepted"] == []
+    assert result["audited_hypotheses"]["rejected"][0]["reason"] == "auditor omitted a decision"
