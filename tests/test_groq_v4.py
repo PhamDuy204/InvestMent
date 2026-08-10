@@ -1,8 +1,11 @@
+from types import SimpleNamespace
+
 import pytest
 
 from crypto_research.groq_v4 import (
     MODEL_ROUTES,
     build_chat_request,
+    resolve_available_routes,
     sanitize_research_context,
     validate_hypothesis,
 )
@@ -33,6 +36,23 @@ def test_gpt_oss_request_uses_strict_json_schema():
     assert request["response_format"]["type"] == "json_schema"
     assert request["response_format"]["json_schema"]["strict"] is True
     assert request["reasoning_effort"] == "high"
+
+
+def test_runtime_model_check_filters_unavailable_routes():
+    client = SimpleNamespace(
+        models=SimpleNamespace(
+            list=lambda: SimpleNamespace(
+                data=[
+                    SimpleNamespace(id="qwen/qwen3.6-27b"),
+                    SimpleNamespace(id="openai/gpt-oss-20b"),
+                ]
+            )
+        )
+    )
+    routes = resolve_available_routes(client)
+    assert routes["hypothesis_scout"] == ("qwen/qwen3.6-27b",)
+    assert routes["methodology_auditor"] == ("qwen/qwen3.6-27b",)
+    assert routes["research_synthesizer"] == ("openai/gpt-oss-20b",)
 
 
 def test_context_sanitizer_removes_secrets_and_oos_labels():
