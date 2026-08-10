@@ -35,6 +35,17 @@ _HYPOTHESIS_SCHEMA = {
     },
 }
 
+_DECISION_SCHEMA = {
+    "type": "object",
+    "additionalProperties": False,
+    "required": ["name", "decision", "reason"],
+    "properties": {
+        "name": {"type": "string"},
+        "decision": {"type": "string", "enum": ["accept", "reject"]},
+        "reason": {"type": "string"},
+    },
+}
+
 ROLE_SCHEMAS = {
     "hypothesis_scout": {
         "type": "object",
@@ -44,39 +55,28 @@ ROLE_SCHEMAS = {
             "hypotheses": {
                 "type": "array",
                 "items": _HYPOTHESIS_SCHEMA,
-                "maxItems": 8,
             }
         },
     },
     "methodology_auditor": {
         "type": "object",
         "additionalProperties": False,
-        "required": ["accepted", "rejected"],
+        "required": ["decisions"],
         "properties": {
-            "accepted": {"type": "array", "items": _HYPOTHESIS_SCHEMA},
-            "rejected": {
+            "decisions": {
                 "type": "array",
-                "items": {
-                    "type": "object",
-                    "additionalProperties": False,
-                    "required": ["name", "reason"],
-                    "properties": {
-                        "name": {"type": "string"},
-                        "reason": {"type": "string"},
-                    },
-                },
-            },
+                "items": _DECISION_SCHEMA,
+            }
         },
     },
     "research_synthesizer": {
         "type": "object",
         "additionalProperties": False,
-        "required": ["ranked_hypotheses"],
+        "required": ["ranked_names"],
         "properties": {
-            "ranked_hypotheses": {
+            "ranked_names": {
                 "type": "array",
-                "items": _HYPOTHESIS_SCHEMA,
-                "maxItems": 5,
+                "items": {"type": "string"},
             }
         },
     },
@@ -114,7 +114,10 @@ def resolve_available_routes(
 ) -> dict[str, tuple[str, ...]]:
     """Keep configured models that the authenticated Groq project can actually access."""
     available = {item.id for item in client.models.list().data}
-    resolved = {role: tuple(model for model in models if model in available) for role, models in routes.items()}
+    resolved = {
+        role: tuple(model for model in models if model in available)
+        for role, models in routes.items()
+    }
     missing = [role for role, models in resolved.items() if not models]
     if missing:
         raise RuntimeError(f"no available Groq model for roles: {missing}")
@@ -138,23 +141,27 @@ def validate_hypothesis(payload: Mapping[str, Any]) -> dict[str, str]:
 def build_chat_request(*, role: str, model: str, context: Mapping[str, Any]) -> dict[str, Any]:
     if role not in ROLE_SCHEMAS:
         raise ValueError(f"unknown V4 role: {role}")
-    if not (model.startswith("qwen/") or model.startswith("openai/gpt-oss-")):
+    if not model.startswith(("qwen/", "openai/gpt-oss-")):
         raise ValueError(f"unsupported V4 Groq model: {model}")
 
     clean = sanitize_research_context(context)
+    schema_text = json.dumps(ROLE_SCHEMAS[role], separators=(",", ":"))
     request: dict[str, Any] = {
         "model": model,
         "messages": [
             {
                 "role": "system",
                 "content": (
-                    "You are a quantitative research agent. Propose research-only experiments. "
+                    "You are a quantitative research agent. Work only on research experiments. "
                     "Never place orders, never request credentials, never use future/OOS labels, "
-                    "and prefer the smallest falsifiable change. Return JSON only."
+                    "and prefer the smallest falsifiable change. "
+                    "Return exactly one JSON object and no prose. "
+                    f"For role {role}, match this JSON Schema exactly: {schema_text}"
                 ),
             },
             {"role": "user", "content": json.dumps(clean, sort_keys=True, default=str)},
         ],
+        "reasoning_format": "hidden",
     }
 
     if model.startswith("qwen/"):
