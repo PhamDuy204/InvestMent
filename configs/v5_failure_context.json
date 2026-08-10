@@ -1,0 +1,94 @@
+{
+  "research_version": "V5",
+  "objective": "Explain persistent wrong-side and exit-timing errors after V4 turnover improvement, and propose minimal causal experiments. Do not tune on the locked 2021-2023 confirmation or the Aug 1-9 2026 micro-forward evidence.",
+  "failure_codes": [
+    "WRONG_SIDE_DOMINANT",
+    "UNNECESSARY_REBALANCE",
+    "LATE_EXIT",
+    "ULTRASHORT_EDGE_BELOW_COST",
+    "BURST_TIMING_WITHOUT_DIRECTION",
+    "SHORT_FLOW_NON_DIRECTIONAL",
+    "MICRO_FORWARD_NEGATIVE",
+    "LOCKED_CONFIRMATION_WEAK"
+  ],
+  "aggregate_evidence": {
+    "v4_discovery": {
+      "net_return": 0.532017,
+      "sharpe": 2.0063,
+      "profit_factor": 1.3925,
+      "max_drawdown": 0.13083,
+      "turnover": 153.744,
+      "v3_turnover": 169.956,
+      "cost_20bps_net_return": 0.41799,
+      "delay_1h_net_return": 0.48555
+    },
+    "decision_diagnostics": {
+      "rows": 14308,
+      "wrong_side": 5031,
+      "unnecessary_rebalance": 2529,
+      "late_exit": 1818,
+      "false_enter": 39,
+      "premature_exit": 20,
+      "note": "High-volatility and 08 UTC states had high error rates but also high positive mean contribution; do not propose blanket hour or volatility exclusions."
+    },
+    "one_minute_research": {
+      "rows": 4985280,
+      "six_assets": ["BTC", "ETH", "SOL", "XRP", "DOGE", "ADA"],
+      "burst_test_roc_auc": 0.74265,
+      "burst_test_average_precision": 0.01676,
+      "burst_directional_return_correlation": 0.000053,
+      "frozen_burst_event_net_return_per_event": -0.0009625,
+      "frozen_burst_event_profit_factor": 0.6447,
+      "direction_classifier_test_auc": 0.5961,
+      "direction_event_profit_factor": 0.2158,
+      "short_flow_forecast_correlation": 0.1383,
+      "short_flow_directional_return_effect": "near zero and not aligned with a naive short rule",
+      "fifteen_minute_after_cost": "negative",
+      "sixty_minute_after_cost": "negative"
+    },
+    "micro_forward_aug_2026": {
+      "days": 9,
+      "status": "untouched evidence already opened; must not become a tuning set",
+      "net_return_10bps": -0.011903,
+      "profit_factor_10bps": 0.7185,
+      "cost_20bps_net_return": -0.01449,
+      "delay_1h_net_return": -0.01444
+    },
+    "locked_historical_confirmation": {
+      "status": "must remain unchanged and must not be used for tuning",
+      "net_return_10bps": 0.0317,
+      "profit_factor": 1.022,
+      "sharpe": 0.205,
+      "cost_20bps_net_return": -0.1889,
+      "delay_1h_net_return": -0.0242
+    }
+  },
+  "implemented_research_primitives": [
+    "V4 no-trade hysteresis",
+    "decision-level ENTER HOLD EXIT FLIP diagnostics",
+    "causal 1m burst features and labels",
+    "15m and 60m return baselines",
+    "future taker-sell-share forecasting",
+    "conservative Market Limit Post-only Trigger and Trailing order simulator",
+    "current-equity compounding allocator with reserve and correlation-one risk cap",
+    "1x through 20x liquidation-aware account replay"
+  ],
+  "locked_constraints": [
+    "Do not use future returns, oracle actions, error labels, locked-confirmation labels, or Aug micro-forward outcomes as model inputs or parameter-selection data.",
+    "Do not propose a blanket exclusion of hours or high-volatility states merely because their diagnostic error rate is high.",
+    "Do not use burst probability as directional alpha or as a reason to increase leverage unless independent directional evidence exists.",
+    "Do not treat taker-sell share as true short open interest.",
+    "Do not fabricate order-book depth, spread, maker fills, or queue priority.",
+    "Prefer shrinkage, exit/risk-state, regime interaction, horizon agreement, and minimal feature interaction experiments over larger models.",
+    "No live orders, paper deployment, credentials, or exchange trading actions."
+  ],
+  "preferred_experiment_families": [
+    "direction_calibration",
+    "exit_timing",
+    "regime_interaction",
+    "horizon_agreement",
+    "volatility_risk_overlay",
+    "feature_ablation",
+    "execution_robustness"
+  ]
+}
