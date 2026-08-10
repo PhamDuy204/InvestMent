@@ -1,0 +1,14 @@
+{
+  "research_version": "V5",
+  "retained_research_candidate": "V4 H12 price-only Ridge + cost-aware inherited-position optimizer + inner-selected no-trade hysteresis",
+  "status": "NEEDS_MORE_RESEARCH",
+  "paper_trading_enabled": false,
+  "live_trading_enabled": false,
+  "discovery_metrics": {"net_return": 0.532017, "sharpe": 2.0063, "profit_factor": 1.3925, "max_drawdown": 0.13083, "turnover": 153.744, "cost_20bps_net_return": 0.41799, "delay_1h_net_return": 0.48555},
+  "locked_confirmation": {"net_return_10bps": 0.0317, "profit_factor": 1.022, "sharpe": 0.205, "cost_20bps_net_return": -0.1889, "delay_1h_net_return": -0.0242},
+  "untouched_micro_forward_aug_2026": {"net_return_10bps": -0.011903, "profit_factor": 0.7185, "cost_20bps_net_return": -0.014489, "delay_1h_net_return": -0.014442},
+  "v5_promoted_modules": [],
+  "v5_rejected_modules": ["static funding threshold 0.0002", "15m directional Ridge sleeve", "60m directional Ridge sleeve", "jackpot directional return model", "jackpot direction classifier", "jackpot risk-only emergency exit", "continuous correctness meta-calibrator", "default passive/post-only execution policy"],
+  "leverage_recommendation": "Do not increase leverage while alpha remains unconfirmed. 10x/20x liquidated; 5x drawdown is excessive. 1x is the research baseline and 2x remains stress/research-only.",
+  "reason_not_ready": "Independent historical confirmation is weak, untouched Aug-2026 micro-forward is negative, and approximate DSR after 779 counted research/evaluation rows is about 2.22%."
+}
