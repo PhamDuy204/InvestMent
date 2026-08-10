@@ -7,6 +7,7 @@ from typing import Any
 from crypto_research.groq_v4 import (
     MODEL_ROUTES,
     build_chat_request,
+    resolve_available_routes,
     sanitize_research_context,
     validate_hypothesis,
 )
@@ -49,9 +50,14 @@ def _validate_role_payload(role: str, payload: dict[str, Any]) -> dict[str, Any]
     raise ValueError(f"unknown V4 role: {role}")
 
 
-def _call_role(client: Any, role: str, context: dict[str, Any]) -> tuple[dict[str, Any], str]:
+def _call_role(
+    client: Any,
+    role: str,
+    context: dict[str, Any],
+    routes: dict[str, tuple[str, ...]],
+) -> tuple[dict[str, Any], str]:
     errors = []
-    for model in MODEL_ROUTES[role]:
+    for model in routes[role]:
         try:
             response = client.chat.completions.create(
                 **build_chat_request(role=role, model=model, context=context)
@@ -107,28 +113,33 @@ def run_v4_research(
     context: dict[str, Any],
     *,
     artifact_dir: str | Path,
+    model_routes: dict[str, tuple[str, ...]] | None = None,
 ) -> dict[str, Any]:
     """Run research-only Groq roles and persist a multiple-testing registry."""
     root = Path(artifact_dir)
     root.mkdir(parents=True, exist_ok=True)
     clean = sanitize_research_context(context)
+    routes = model_routes
+    if routes is None:
+        routes = resolve_available_routes(client) if hasattr(client, "models") else dict(MODEL_ROUTES)
 
-    scout, scout_model = _call_role(client, "hypothesis_scout", clean)
+    scout, scout_model = _call_role(client, "hypothesis_scout", clean, routes)
     proposed = _dedupe_hypotheses(scout["hypotheses"])
 
     audit_context = {"research_context": clean, "hypotheses": proposed}
-    audit, audit_model = _call_role(client, "methodology_auditor", audit_context)
+    audit, audit_model = _call_role(client, "methodology_auditor", audit_context, routes)
 
-    accepted_names = {item["name"] for item in proposed}
-    if any(item["name"] not in accepted_names for item in audit["accepted"]):
+    proposed_names = {item["name"] for item in proposed}
+    if any(item["name"] not in proposed_names for item in audit["accepted"]):
         raise ValueError("auditor introduced a hypothesis that the scout did not propose")
 
     synthesis_context = {
         "research_context": clean,
         "accepted_hypotheses": audit["accepted"],
     }
-    synthesis, synthesis_model = _call_role(client, "research_synthesizer", synthesis_context)
-    if any(item["name"] not in {row["name"] for row in audit["accepted"]} for item in synthesis["ranked_hypotheses"]):
+    synthesis, synthesis_model = _call_role(client, "research_synthesizer", synthesis_context, routes)
+    accepted_names = {row["name"] for row in audit["accepted"]}
+    if any(item["name"] not in accepted_names for item in synthesis["ranked_hypotheses"]):
         raise ValueError("synthesizer introduced a hypothesis not accepted by the auditor")
 
     registry = _trial_registry(proposed, audit["accepted"], audit["rejected"])
