@@ -28,24 +28,28 @@ def _validate_role_payload(role: str, payload: dict[str, Any]) -> dict[str, Any]
         return {"hypotheses": [validate_hypothesis(item) for item in payload["hypotheses"]]}
 
     if role == "methodology_auditor":
-        if set(payload) != {"accepted", "rejected"}:
+        if set(payload) != {"decisions"} or not isinstance(payload["decisions"], list):
             raise ValueError("invalid methodology_auditor payload")
-        accepted = [validate_hypothesis(item) for item in payload["accepted"]]
-        rejected = []
-        for item in payload["rejected"]:
-            if set(item) != {"name", "reason"}:
-                raise ValueError("invalid rejected-hypothesis payload")
-            rejected.append({"name": str(item["name"]), "reason": str(item["reason"])})
-        return {"accepted": accepted, "rejected": rejected}
+        decisions = []
+        for item in payload["decisions"]:
+            if set(item) != {"name", "decision", "reason"}:
+                raise ValueError("invalid methodology decision payload")
+            decision = str(item["decision"]).strip()
+            if decision not in {"accept", "reject"}:
+                raise ValueError("methodology decision must be accept or reject")
+            decisions.append(
+                {
+                    "name": str(item["name"]).strip(),
+                    "decision": decision,
+                    "reason": str(item["reason"]).strip(),
+                }
+            )
+        return {"decisions": decisions}
 
     if role == "research_synthesizer":
-        if set(payload) != {"ranked_hypotheses"}:
+        if set(payload) != {"ranked_names"} or not isinstance(payload["ranked_names"], list):
             raise ValueError("invalid research_synthesizer payload")
-        return {
-            "ranked_hypotheses": [
-                validate_hypothesis(item) for item in payload["ranked_hypotheses"]
-            ]
-        }
+        return {"ranked_names": [str(name).strip() for name in payload["ranked_names"]]}
 
     raise ValueError(f"unknown V4 role: {role}")
 
@@ -108,6 +112,30 @@ def _trial_registry(
     return {"llm_hypothesis_trials": len(rows), "rows": rows}
 
 
+def _apply_audit(
+    proposed: list[dict[str, str]],
+    decisions: list[dict[str, str]],
+) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
+    by_name = {item["name"]: item for item in proposed}
+    seen = set()
+    accepted = []
+    rejected = []
+    for item in decisions:
+        name = item["name"]
+        if name not in by_name:
+            raise ValueError("auditor introduced a hypothesis that the scout did not propose")
+        if name in seen:
+            raise ValueError("auditor returned duplicate decisions")
+        seen.add(name)
+        if item["decision"] == "accept":
+            accepted.append(by_name[name])
+        else:
+            rejected.append({"name": name, "reason": item["reason"]})
+    for name in by_name.keys() - seen:
+        rejected.append({"name": name, "reason": "auditor omitted a decision"})
+    return accepted, rejected
+
+
 def run_v4_research(
     client: Any,
     context: dict[str, Any],
@@ -127,22 +155,23 @@ def run_v4_research(
     proposed = _dedupe_hypotheses(scout["hypotheses"])
 
     audit_context = {"research_context": clean, "hypotheses": proposed}
-    audit, audit_model = _call_role(client, "methodology_auditor", audit_context, routes)
-
-    proposed_names = {item["name"] for item in proposed}
-    if any(item["name"] not in proposed_names for item in audit["accepted"]):
-        raise ValueError("auditor introduced a hypothesis that the scout did not propose")
+    audit_raw, audit_model = _call_role(client, "methodology_auditor", audit_context, routes)
+    accepted, rejected = _apply_audit(proposed, audit_raw["decisions"])
 
     synthesis_context = {
         "research_context": clean,
-        "accepted_hypotheses": audit["accepted"],
+        "accepted_hypotheses": accepted,
     }
     synthesis, synthesis_model = _call_role(client, "research_synthesizer", synthesis_context, routes)
-    accepted_names = {row["name"] for row in audit["accepted"]}
-    if any(item["name"] not in accepted_names for item in synthesis["ranked_hypotheses"]):
+    accepted_by_name = {row["name"]: row for row in accepted}
+    ranked_names = synthesis["ranked_names"]
+    if len(ranked_names) != len(set(ranked_names)):
+        raise ValueError("synthesizer returned duplicate hypothesis names")
+    if any(name not in accepted_by_name for name in ranked_names):
         raise ValueError("synthesizer introduced a hypothesis not accepted by the auditor")
+    ranked_hypotheses = [accepted_by_name[name] for name in ranked_names]
 
-    registry = _trial_registry(proposed, audit["accepted"], audit["rejected"])
+    registry = _trial_registry(proposed, accepted, rejected)
     log = {
         "status": "COMPLETED",
         "models": {
@@ -152,8 +181,8 @@ def run_v4_research(
         },
         "failure_codes": clean.get("failure_codes", []),
         "proposed_hypotheses": proposed,
-        "audited_hypotheses": audit,
-        "ranked_hypotheses": synthesis["ranked_hypotheses"],
+        "audited_hypotheses": {"accepted": accepted, "rejected": rejected},
+        "ranked_hypotheses": ranked_hypotheses,
     }
     (root / "v4_trial_registry.json").write_text(json.dumps(registry, indent=2, sort_keys=True))
     (root / "v4_research_log.json").write_text(json.dumps(log, indent=2, sort_keys=True))
