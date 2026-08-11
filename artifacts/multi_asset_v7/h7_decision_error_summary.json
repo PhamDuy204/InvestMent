@@ -1,0 +1,15 @@
+{
+  "baseline": {
+    "WRONG_SIDE": 1530,
+    "wrong_side_economic_damage": 1.2185413246413455
+  },
+  "candidate": {
+    "WRONG_SIDE": 2080,
+    "wrong_side_economic_damage": 0.960488357784753
+  },
+  "delta": {
+    "WRONG_SIDE": 550,
+    "wrong_side_economic_damage_bps": -2580.529668565924
+  },
+  "note": "H7 is a sizing-only controller; wrong-side economic damage is the primary error target while raw WRONG_SIDE count is reported diagnostically."
+}
