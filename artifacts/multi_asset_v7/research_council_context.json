@@ -1,0 +1,115 @@
+{
+  "research_only": true,
+  "trial_count": 865,
+  "research_triggers": [
+    "first_line_no_promotions",
+    "foldwise_baseline_negative",
+    "wrong_side_remains_dominant"
+  ],
+  "target_error": "WRONG_SIDE",
+  "corrected_validation": "70/30 chronological inside each of three outer folds with fold-local fitted gates",
+  "baseline_evaluation": {
+    "net_return": -0.03528644702102568,
+    "profit_factor": 0.9092003438570667,
+    "sharpe": -0.6998735460929627,
+    "max_drawdown": 0.06901020622840758
+  },
+  "first_line_failures": [
+    {
+      "hypothesis": "H1_qh_conflict_veto",
+      "status": "DATA_LIMITATION",
+      "reason": "no causally prior quarter-hour coverage in any fold selection window"
+    },
+    {
+      "hypothesis": "H2_high_dispersion_gate",
+      "status": "FALSIFIED",
+      "wrong_side_delta": 137,
+      "incremental_net_bps": -94.6443235064376,
+      "fold_positive_count": 0,
+      "fold_count": 3,
+      "cost20_net": -0.06768117733280743,
+      "delay1h_net": -0.05025147776429639
+    },
+    {
+      "hypothesis": "H3_weak_edge_veto",
+      "status": "FALSIFIED",
+      "wrong_side_delta": 126,
+      "incremental_net_bps": -3.8103303164638,
+      "fold_positive_count": 0,
+      "fold_count": 3,
+      "cost20_net": -0.05956680396474312,
+      "delay1h_net": -0.03967710242741729
+    }
+  ],
+  "blocked_mechanisms": [
+    "low absolute H12 score has non-positive after-cost incremental expectancy",
+    "completed quarter-hour order-flow conflict identifies unreliable H12 exposure increases",
+    "upper-tail cross-sectional dispersion makes H12 momentum direction less reliable",
+    "raw high taker sell share directly implies SHORT",
+    "unconditional flow conflict scaling around the same V6 rule",
+    "passive execution as a default improvement"
+  ],
+  "blocked_fingerprints": [
+    "42fe1f477c78f9da5ce6d236b4dbffb28ca76e289bd6fdda118744488dd2ec96",
+    "a6e958a90109ce92b6883a2c0397de57d3bf4bed204343e5a92dfd1c666ab65d",
+    "d8431bbf733011c594613496bd5cb86fc81d8541c3685b4bbdb6aa8a3d4afbf7"
+  ],
+  "causal_data_available_now": [
+    "21-symbol Binance USD-M 1h OHLCV and taker-buy volume from Apr-2025 through Jul-2026",
+    "21-symbol funding history over the same discovery interval",
+    "H12 effective score, target weights and corrected error labels",
+    "causal liquidity universe and fold labels",
+    "six-symbol quarter-hour aggTrade pilot only for Jul-1 through Jul-7 2026"
+  ],
+  "literature": [
+    {
+      "source_id": "jfm-2026-order-flow",
+      "quality": "peer_reviewed",
+      "citation": "Anastasopoulos et al., Order flow and cryptocurrency returns, Journal of Financial Markets 79 (2026), DOI 10.1016/j.finmar.2026.101047",
+      "claim": "lagged order flow contains transitory price-pressure and persistent components; predictive ability strengthens after controlling for lagged returns, and nonlinear interactions can add economic value"
+    },
+    {
+      "source_id": "ssrn-2026-onchain-factors",
+      "quality": "primary",
+      "citation": "Byun et al., On-Chain Factors and Cryptocurrency Asset Pricing, SSRN 6670521 (2026)",
+      "claim": "scale-adjusted network activity and token distribution can contain pricing information beyond conventional size/momentum/volume/volatility factors"
+    },
+    {
+      "source_id": "ssrn-2026-macro-integration",
+      "quality": "primary",
+      "citation": "Palazzi et al., From Network Fundamentals to Macro-Financial Integration, SSRN 6725492 (2026)",
+      "claim": "Bitcoin predictor usefulness is regime-dependent and has shifted toward macro-financial variables as integration with traditional markets increased"
+    },
+    {
+      "source_id": "ssrn-2026-dispersion",
+      "quality": "primary",
+      "citation": "Zhang and Makgolo, Cross-Sectional Dispersion and the State Dependence of Cryptocurrency Momentum, SSRN 6648082 (2026)",
+      "claim": "dispersion can precede momentum breakdown, but V7 simple exposure scaling has already falsified this implementation"
+    }
+  ],
+  "research_constraints": {
+    "one_new_mechanism_per_challenge": true,
+    "prefer_existing_public_data": true,
+    "no_nearby_threshold_grid_rescue": true,
+    "no_direct_long_short_from_llm": true,
+    "direction_remains_h12_unless_independent_evidence_later_supports_change": true,
+    "prioritize_simple_mechanism_before_nonlinear_model": true,
+    "maximum_approved_hypotheses_to_inspect_now": 1
+  },
+  "required_hypothesis_schema": {
+    "hypothesis_id": "string",
+    "target_error": "WRONG_SIDE",
+    "observation": "string",
+    "causal_inputs": ["string"],
+    "expected_mechanism": "string",
+    "single_change": "string",
+    "expected_effect": "string",
+    "cost_risk": "string",
+    "invalidation_condition": "string",
+    "required_test": "string",
+    "factor_family": "microstructure|derivatives|cross_asset_macro|on_chain|news_event|attention_sentiment|cross_sectional|execution_risk|scenario_swarm",
+    "source_ids": ["string"],
+    "materially_new_evidence": true
+  },
+  "agent_instructions": "Return at most three hypotheses, rank only one for immediate single-challenge testing, prefer a mechanism testable with current 1h public data, explicitly distinguish any proposal from blocked raw-flow or threshold-retuning mechanisms, and preserve contradictory evidence."
+}
