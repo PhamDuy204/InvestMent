@@ -1,0 +1,55 @@
+{
+  "factors": [
+    {
+      "admitted": false,
+      "association_value": 0.0011522179829404947,
+      "causal_available": true,
+      "coverage_fraction": 1.0,
+      "evaluation_fold_count": 3,
+      "factor_family": "microstructure",
+      "feature_name": "lagged_taker_buy_quote_volume_controlled_for_lagged_return",
+      "incremental_net_bps": -43.18609387894967,
+      "incremental_sharpe_delta": -0.06555605299402312,
+      "rejection_reasons": [
+        "stability_below_gate",
+        "incremental_net_not_positive",
+        "incremental_sharpe_negative"
+      ],
+      "reverse_causality_checked": true,
+      "source_ids": [
+        "jfm-2026-order-flow",
+        "binance-public-usdm-1h"
+      ],
+      "source_quality": "peer_reviewed",
+      "stability_score": 0.3333333333333333,
+      "status": "EVALUATED",
+      "target_error": "WRONG_SIDE",
+      "turnover_delta": -9.803541156269915
+    },
+    {
+      "admitted": false,
+      "association_value": -1.5362549665532857,
+      "causal_available": true,
+      "coverage_fraction": 0.9979032708974,
+      "evaluation_fold_count": 3,
+      "factor_family": "derivatives",
+      "feature_name": "absolute_binance_premium_index_for_rv12_forecast",
+      "incremental_net_bps": 335.4808763098749,
+      "incremental_sharpe_delta": 0.6864038047837904,
+      "rejection_reasons": [
+        "stability_below_gate"
+      ],
+      "reverse_causality_checked": true,
+      "source_ids": [
+        "ssrn-2026-perpetual-basis",
+        "binance-public-premium-index-klines"
+      ],
+      "source_quality": "primary",
+      "stability_score": 0.0,
+      "status": "EVALUATED",
+      "target_error": "WRONG_SIDE_ECONOMIC_DAMAGE",
+      "turnover_delta": -3.7847477916565044
+    }
+  ],
+  "status": "EVALUATED"
+}
