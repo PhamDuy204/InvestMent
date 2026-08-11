@@ -1,0 +1,17 @@
+{
+  "status": "COMPLETED_NO_APPROVED_TEST",
+  "council_iteration": 4,
+  "github_actions_run_id": 31481714781,
+  "artifact_id": 9097494932,
+  "artifact_sha256": "638d4488a318b9e892f5f0c17c2b3cdb85470a4e97d103f3f0671ce1bc4de8db",
+  "scientist_hypothesis_ids": ["H_new_taker_imbalance"],
+  "auditor_approved_hypothesis_ids": ["H_new_taker_imbalance"],
+  "judge_ranked_hypothesis_ids": [],
+  "approved_hypothesis_ids": [],
+  "judge_reason": "NO_TEST: available order-flow proxy lacked a sufficiently validated causal link to the reliability target because the supporting mechanism was conditional on unavailable L2 liquidity state.",
+  "performance_trial_count_before": 868,
+  "performance_trial_count_after": 868,
+  "ml_challenger": "NO_ML_TEST_ZERO_ADMITTED_FACTORS",
+  "scenario_sidecar": "NO_SCENARIO_TEST_EVENT_PREREQUISITES_NOT_MET",
+  "governance_note": "The post-processing bug that previously allowed auditor-approved hypotheses to survive an empty Research Judge ranking was fixed; final approval is now the intersection of auditor approval and judge ranking."
+}
