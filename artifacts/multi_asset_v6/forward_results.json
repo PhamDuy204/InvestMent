@@ -1,0 +1,22 @@
+{
+  "status": "MICRO_FORWARD_POST_FREEZE_NOT_CONFIRMATION",
+  "period": "2026-08-10",
+  "candidate_hash_sha256": "be84d12f86df294fc7eaf30affe5cf6d89df99cb1092e7856f2dbfd016b3ec92",
+  "freeze_timestamp_utc": "2026-08-11T01:36:31.977489+00:00",
+  "candidate_unchanged_after_forward": true,
+  "selection_trial_count_frozen": 857,
+  "forward_evaluation_count": 3,
+  "rows_scorable": 360,
+  "symbols": 30,
+  "funding_events": 119,
+  "base_10bps": {"net_return": -0.02144100224412937, "annualized_return": -0.9999998655624309, "volatility": 0.0, "sharpe": 0.0, "sortino": -27.018512172212592, "max_drawdown": 0.0, "calmar": 0.0, "profit_factor": 0.0, "win_rate": 0.0, "expectancy": -0.021441002244129422, "trade_count": 60, "long_trades": 6, "short_trades": 24, "turnover": 1.9348450953017808, "funding_return": -1.066001224540561e-05, "transaction_cost": 0.0009674225476508904, "worst_period": -0.021441002244129422, "var_95": -0.021441002244129422, "cvar_95": -0.021441002244129422},
+  "cost_20bps": {"net_return": -0.02240890299309617, "annualized_return": -0.9999999347194856, "volatility": 0.0, "sharpe": 0.0, "sortino": -27.018512172212592, "max_drawdown": 0.0, "calmar": 0.0, "profit_factor": 0.0, "win_rate": 0.0, "expectancy": -0.022408902993096218, "trade_count": 60, "long_trades": 6, "short_trades": 24, "turnover": 1.9353232966176837, "funding_return": -1.066001224540561e-05, "transaction_cost": 0.0019353232966176836, "worst_period": -0.022408902993096218, "var_95": -0.022408902993096218, "cvar_95": -0.022408902993096218},
+  "delay_1h": {"net_return": -0.018907954190493514, "annualized_return": -0.9999991125969353, "volatility": 0.0, "sharpe": 0.0, "sortino": -27.018512172212592, "max_drawdown": 0.0, "calmar": 0.0, "profit_factor": 0.0, "win_rate": 0.0, "expectancy": -0.018907954190493525, "trade_count": 60, "long_trades": 6, "short_trades": 24, "turnover": 1.929517151935078, "funding_return": -1.073597196880848e-05, "transaction_cost": 0.0009647585759675391, "worst_period": -0.018907954190493525, "var_95": -0.018907954190493525, "cvar_95": -0.018907954190493525},
+  "frozen_optimizer": {"risk_aversion": 30.0, "movement_penalty": 0.01, "covariance_lookback": 168, "gross_cap": 1.0, "net_cap": 0.05, "single_cap": 0.25},
+  "frozen_overlay": {"min_abs_weight_change": 0.01, "adverse_funding_threshold": null},
+  "context_policy": "Aug1-9 used only as past feature/universe context after freeze; never parameter selection",
+  "locked_evidence": {
+    "2021_2023": {"net_10bps": 0.0317, "profit_factor": 1.022, "sharpe": 0.205, "net_20bps": -0.1889, "delay_1h": -0.0242},
+    "2026_08_01_to_09": {"net_10bps": -0.0119, "profit_factor": 0.719, "net_20bps": -0.0145, "delay_1h": -0.0144, "status": "OBSERVED_CONTAMINATED_NOT_RETUNED"}
+  }
+}
