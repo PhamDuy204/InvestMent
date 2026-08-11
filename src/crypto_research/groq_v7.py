@@ -64,30 +64,137 @@ def select_v7_role_models(ids: set[str]) -> dict[str, str]:
     qwen = _first_available(ids, ("qwen/qwen3.6-27b", "qwen/qwen3-32b"), contains="qwen") or fallback
     auditor = _first_available(ids, ("openai/gpt-oss-120b", "openai/gpt-oss-20b")) or qwen
     judge = _first_available(ids, ("openai/gpt-oss-20b", "openai/gpt-oss-120b")) or auditor
-    json_fallback = _first_available(ids, ("openai/gpt-oss-20b", "openai/gpt-oss-120b")) or judge
     return {
         "evidence_scout": qwen,
         "error_scientist": qwen,
         "methodology_auditor": auditor,
         "research_judge": judge,
-        "json_fallback": json_fallback,
     }
+
+
+def _hypothesis_schema() -> dict[str, Any]:
+    return {
+        "type": "object",
+        "properties": {
+            "hypothesis_id": {"type": "string"},
+            "target_error": {"type": "string"},
+            "observation": {"type": "string"},
+            "causal_inputs": {"type": "array", "items": {"type": "string"}},
+            "expected_mechanism": {"type": "string"},
+            "single_change": {"type": "string"},
+            "expected_effect": {"type": "string"},
+            "cost_risk": {"type": "string"},
+            "invalidation_condition": {"type": "string"},
+            "required_test": {"type": "string"},
+            "factor_family": {"type": "string"},
+            "source_ids": {"type": "array", "items": {"type": "string"}},
+            "materially_new_evidence": {"type": "boolean"},
+        },
+        "required": [
+            "hypothesis_id",
+            "target_error",
+            "observation",
+            "causal_inputs",
+            "expected_mechanism",
+            "single_change",
+            "expected_effect",
+            "cost_risk",
+            "invalidation_condition",
+            "required_test",
+            "factor_family",
+            "source_ids",
+            "materially_new_evidence",
+        ],
+        "additionalProperties": False,
+    }
+
+
+def _role_schema(role: str) -> dict[str, Any]:
+    evidence_card = {
+        "type": "object",
+        "properties": {
+            "claim": {"type": "string"},
+            "source_ids": {"type": "array", "items": {"type": "string"}},
+            "support": {"type": "string"},
+            "contradictory_evidence": {"type": "string"},
+        },
+        "required": ["claim", "source_ids", "support", "contradictory_evidence"],
+        "additionalProperties": False,
+    }
+    review = {
+        "type": "object",
+        "properties": {
+            "hypothesis_id": {"type": "string"},
+            "decision": {"type": "string", "enum": ["test", "reject"]},
+            "reason": {"type": "string"},
+        },
+        "required": ["hypothesis_id", "decision", "reason"],
+        "additionalProperties": False,
+    }
+    schemas = {
+        "evidence_scout": {
+            "type": "object",
+            "properties": {
+                "evidence_cards": {"type": "array", "items": evidence_card},
+                "evidence_gaps": {"type": "array", "items": {"type": "string"}},
+            },
+            "required": ["evidence_cards", "evidence_gaps"],
+            "additionalProperties": False,
+        },
+        "error_scientist": {
+            "type": "object",
+            "properties": {
+                "hypotheses": {"type": "array", "items": _hypothesis_schema()},
+                "notes": {"type": "array", "items": {"type": "string"}},
+            },
+            "required": ["hypotheses", "notes"],
+            "additionalProperties": False,
+        },
+        "methodology_auditor": {
+            "type": "object",
+            "properties": {
+                "reviews": {"type": "array", "items": review},
+                "dissent": {"type": "array", "items": {"type": "string"}},
+            },
+            "required": ["reviews", "dissent"],
+            "additionalProperties": False,
+        },
+        "research_judge": {
+            "type": "object",
+            "properties": {
+                "ranked_hypothesis_ids": {"type": "array", "items": {"type": "string"}},
+                "reasoning_summary": {"type": "string"},
+            },
+            "required": ["ranked_hypothesis_ids", "reasoning_summary"],
+            "additionalProperties": False,
+        },
+    }
+    return schemas[role]
+
+
+def _is_strict_model(model: str) -> bool:
+    return model in {"openai/gpt-oss-20b", "openai/gpt-oss-120b"}
 
 
 def _is_json_validation_error(exc: Exception) -> bool:
     status = getattr(exc, "status_code", None)
     text = str(exc).lower()
-    return bool(
-        status == 400
-        and (
-            "json" in text
-            or "validate" in text
-            or "invalid_request_error" in text
-        )
-    )
+    return bool(status == 400 and ("json" in text or "validate" in text or "invalid_request_error" in text))
 
 
 def _chat_json_once(client: Any, *, model: str, role: str, context: Any) -> dict[str, Any]:
+    response_format: dict[str, Any]
+    if _is_strict_model(model):
+        response_format = {
+            "type": "json_schema",
+            "json_schema": {
+                "name": f"v7_{role}",
+                "strict": True,
+                "schema": _role_schema(role),
+            },
+        }
+    else:
+        response_format = {"type": "json_object"}
     response = client.chat.completions.create(
         model=model,
         temperature=0,
@@ -105,7 +212,7 @@ def _chat_json_once(client: Any, *, model: str, role: str, context: Any) -> dict
                 "content": json.dumps({"role": role, "context": context}, sort_keys=True, default=str),
             },
         ],
-        response_format={"type": "json_object"},
+        response_format=response_format,
     )
     return json.loads(response.choices[0].message.content or "{}")
 
@@ -121,18 +228,9 @@ def _chat_json(
     try:
         return _chat_json_once(client, model=model, role=role, context=context)
     except Exception as exc:
-        if (
-            fallback_model is None
-            or fallback_model == model
-            or not _is_json_validation_error(exc)
-        ):
+        if fallback_model is None or fallback_model == model or not _is_json_validation_error(exc):
             raise
-        result = _chat_json_once(
-            client,
-            model=fallback_model,
-            role=role,
-            context=context,
-        )
+        result = _chat_json_once(client, model=fallback_model, role=role, context=context)
         result.setdefault("_runtime_fallback", {"from": model, "to": fallback_model, "reason": "json_validation_400"})
         return result
 
@@ -164,7 +262,7 @@ def run_v7_research_council(
     ids = list_model_ids(client)
     models = select_v7_role_models(ids)
     clean = sanitize_v7_context(context)
-    json_fallback = models["json_fallback"]
+    json_fallback = _first_available(ids, ("openai/gpt-oss-20b", "openai/gpt-oss-120b")) or models["research_judge"]
 
     evidence = _chat_json(
         client,
@@ -186,12 +284,7 @@ def run_v7_research_council(
     for raw in scientist.get("hypotheses", []):
         try:
             hypothesis = _hypothesis_from_payload(dict(raw))
-            validated.append(
-                validate_hypothesis(
-                    hypothesis,
-                    blocked_fingerprints=blocked_fingerprints,
-                )
-            )
+            validated.append(validate_hypothesis(hypothesis, blocked_fingerprints=blocked_fingerprints))
         except (KeyError, TypeError, ValueError) as exc:
             rejected.append(
                 {
