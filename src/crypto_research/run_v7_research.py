@@ -276,6 +276,12 @@ def maybe_run_v7_escalation(
     client: Any,
     backtest_runner: BacktestRunner,
     council_runner: CouncilRunner = run_v7_research_council,
+    ml_train: pd.DataFrame | None = None,
+    ml_evaluation: pd.DataFrame | None = None,
+    admitted_features: set[str] | None = None,
+    ml_backtest_runner: BacktestRunner | None = None,
+    scenario_event_study: dict[str, Any] | None = None,
+    scenario_backtest_runner: BacktestRunner | None = None,
 ) -> dict[str, Any]:
     root = Path(artifact_root)
     freeze_path = root / "forward_freeze.json"
@@ -283,10 +289,51 @@ def maybe_run_v7_escalation(
         return {"status": "V7_FROZEN_NO_RETUNING"}
     if not bool(core_result.get("escalation_required", False)):
         return {"status": "SIMPLE_FIRST_NO_ESCALATION"}
-    return run_research_event_loop(
+
+    result = run_research_event_loop(
         context,
         client=client,
         backtest_runner=backtest_runner,
         artifact_root=root,
         council_runner=council_runner,
     )
+    result["ml_result"] = {"status": "ML_NOT_RUN_NO_UNRESOLVED_GAP"}
+    result["scenario_result"] = {"status": "SCENARIO_NOT_RUN_NO_UNRESOLVED_GAP"}
+    if result.get("status") != "COMPLETED":
+        return result
+
+    registry_path = root / "experiment_registry.csv"
+    if bool(context.get("unresolved_after_factor", False)):
+        if (
+            ml_train is not None
+            and ml_evaluation is not None
+            and admitted_features is not None
+            and ml_backtest_runner is not None
+        ):
+            registry = V7TrialRegistry(registry_path)
+            result["ml_result"] = run_nonlinear_challenger(
+                ml_train,
+                ml_evaluation,
+                admitted_features=admitted_features,
+                registry=registry,
+                strategy_backtest_runner=ml_backtest_runner,
+            )
+            registry.to_csv()
+        else:
+            result["ml_result"] = {"status": "ML_NOT_RUN_MISSING_ELIGIBLE_INPUTS"}
+
+    if bool(context.get("unresolved_after_ml", False)):
+        if scenario_event_study is not None and scenario_backtest_runner is not None:
+            registry = V7TrialRegistry(registry_path)
+            result["scenario_result"] = run_scenario_challenge(
+                scenario_event_study,
+                registry=registry,
+                backtest_runner=scenario_backtest_runner,
+            )
+            registry.to_csv()
+        else:
+            result["scenario_result"] = {"status": "SCENARIO_NOT_RUN_MISSING_ELIGIBLE_INPUTS"}
+
+    final_registry = V7TrialRegistry(registry_path)
+    result["trial_count_after"] = final_registry.total_count
+    return result
