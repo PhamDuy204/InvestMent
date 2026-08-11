@@ -1,8 +1,8 @@
 name: V7 methodology one-shot sync
 
 on:
-  push:
-    branches: [v7-factor-observatory]
+  pull_request:
+    branches: [v6-integrated-controller]
     paths:
       - artifacts/multi_asset_v7/run_methodology_sync.flag
 
@@ -11,6 +11,7 @@ permissions:
 
 jobs:
   sync:
+    if: github.event.pull_request.head.ref == 'v7-factor-observatory'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
