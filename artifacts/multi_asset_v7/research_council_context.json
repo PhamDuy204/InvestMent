@@ -1,131 +1,106 @@
 {
   "research_only": true,
   "trial_count": 866,
-  "council_iteration": 2,
+  "council_iteration": 3,
   "research_triggers": [
-    "first_line_no_promotions",
-    "foldwise_baseline_negative",
-    "H4_reduced_wrong_side_but_failed_economically",
-    "H4_flow_coefficient_changed_sign_across_outer_folds"
+    "no_first_line_promotions",
+    "H4_order_flow_reduced_WRONG_SIDE_but_failed_economic_and_stability_gates",
+    "council_iteration_2_returned_NO_TEST_for_state_conditioned_flow",
+    "simple_adverse_funding_overlay_was_already_tested_in_V4_and_never_selected",
+    "short_horizon_H4_and_H8_price_direction_strategies_failed_after_costs"
   ],
   "target_error": "WRONG_SIDE",
-  "corrected_validation": "70/30 chronological inside each of three outer folds with fold-local fitted gates and fold-state reset/unwind",
+  "corrected_validation": "70/30 chronological inside each of three outer folds; every learned quantity fit only on that fold selection; portfolio state reset/unwound by fold",
   "baseline_evaluation": {
     "net_return": -0.03528644702102568,
     "profit_factor": 0.9092003438570667,
     "sharpe": -0.6998735460929627,
     "max_drawdown": 0.06901020622840758
   },
-  "failed_or_limited_hypotheses": [
-    {
-      "hypothesis": "H1_qh_conflict_veto",
-      "status": "DATA_LIMITATION",
-      "reason": "no causally prior quarter-hour coverage in any fold selection window"
-    },
-    {
-      "hypothesis": "H2_high_dispersion_gate",
-      "status": "FALSIFIED",
-      "wrong_side_delta": 137,
-      "incremental_net_bps": -94.6443235064376,
-      "fold_positive_count": 0,
-      "fold_count": 3,
-      "cost20_net": -0.06768117733280743,
-      "delay1h_net": -0.05025147776429639
-    },
-    {
-      "hypothesis": "H3_weak_edge_veto",
-      "status": "FALSIFIED",
-      "wrong_side_delta": 126,
-      "incremental_net_bps": -3.8103303164638,
-      "fold_positive_count": 0,
-      "fold_count": 3,
-      "cost20_net": -0.05956680396474312,
-      "delay1h_net": -0.03967710242741729
-    },
+  "key_internal_evidence": [
     {
       "hypothesis": "H4_lagged_taker_buy",
       "status": "PARTIAL_SIGNAL_POLICY_FALSIFIED",
-      "mechanism": "residualized lagged taker-buy quote volume after controlling lagged return",
       "wrong_side_delta": -253,
       "incremental_net_bps": -43.18609387894967,
-      "candidate_net": -0.03960505640892065,
-      "candidate_sharpe": -0.7654295990869858,
-      "candidate_max_drawdown": 0.08314764188627322,
-      "cost20_net": -0.05895852446836314,
-      "delay1h_net": -0.049578533955863535,
-      "fold_positive_count": 1,
-      "fold_count": 3,
-      "coefficient_significance": "abs(t)>=1.96 in folds 1 and 2",
-      "fold_coefficients": [
-        {"fold": 0, "slope": 0.00026743008926096877, "t": 1.6716740747720817},
-        {"fold": 1, "slope": 0.0004432932202702618, "t": 2.310785202556586},
-        {"fold": 2, "slope": -0.00027856491061179655, "t": -1.9959159942702462}
-      ],
-      "stability_score": 0.3333333333333333,
-      "factor_admitted": false,
-      "interpretation": "flow contains information and reduces direction errors, but unconditional mapping is unstable by regime and loses economic value"
+      "significant_folds": 2,
+      "stable_significant_folds": 1,
+      "interpretation": "flow contains information but unconditional mapping is regime-unstable"
+    },
+    {
+      "historical_experiment": "V4 adverse funding threshold 0.0002",
+      "status": "ALREADY_TESTED_NOT_SELECTED",
+      "evidence": "30 overlay trials across folds included funding threshold on/off; each selected overlay used fundingoff"
+    },
+    {
+      "historical_experiment": "price_only_H4",
+      "status": "FAILED_AFTER_COST",
+      "net_return": -0.8531734989753986,
+      "sharpe": -3.5011794130724065
+    },
+    {
+      "historical_experiment": "price_only_H8",
+      "status": "FAILED_AFTER_COST",
+      "net_return": -0.3978648236915523,
+      "sharpe": -0.7664431087965754
     }
   ],
   "blocked_mechanisms": [
-    "low absolute H12 score has non-positive after-cost incremental expectancy",
-    "completed quarter-hour order-flow conflict identifies unreliable H12 exposure increases",
-    "upper-tail cross-sectional dispersion alone makes H12 momentum direction less reliable",
-    "raw high taker sell share directly implies SHORT",
-    "unconditional flow conflict scaling around the same V6 rule",
+    "weak absolute H12 score veto",
+    "quarter-hour conflict veto without broad causal coverage",
+    "high dispersion exposure scaling",
+    "raw high taker sell share implies SHORT",
     "unconditional residualized taker-buy sign-conflict veto",
-    "nearby threshold or veto-strength rescue of H4",
-    "passive execution as a default improvement"
-  ],
-  "blocked_fingerprints": [
-    "42fe1f477c78f9da5ce6d236b4dbffb28ca76e289bd6fdda118744488dd2ec96",
-    "a6e958a90109ce92b6883a2c0397de57d3bf4bed204343e5a92dfd1c666ab65d",
-    "d8431bbf733011c594613496bd5cb86fc81d8541c3685b4bbdb6aa8a3d4afbf7",
-    "3520331e8f028a8a5e3f49c3592d077ea0fe1a40dc74e72b7ccdea861b1e3bc2"
+    "state-conditioned H4 flow without empirical state evidence",
+    "simple adverse funding threshold or nearby funding threshold grid",
+    "H4 or H8 standalone directional trading",
+    "passive execution as default"
   ],
   "causal_data_available_now": [
-    "21-symbol Binance USD-M 1h OHLCV/taker-buy/quote-volume panel from Apr-2025 through Jul-2026 with 14308/14308 decision-row coverage",
-    "lag_return_1h, lag_taker_buy_quote_volume, lag_quote_volume, return_4h, taker_imbalance_4h, volume_4h computed only from completed bars before the decision",
-    "21-symbol funding history over the discovery interval",
-    "H12 effective score, target weights, corrected error labels and three outer folds",
-    "causal liquidity/activity/volatility/trend state columns already present in V6/V4 diagnostics",
-    "six-symbol quarter-hour aggTrade pilot only for Jul-1 through Jul-7 2026"
+    "21-symbol Binance USD-M 1h OHLCV/taker-buy/quote-volume history Apr-2025 through Jul-2026 with complete decision-row coverage",
+    "21-symbol funding history",
+    "H12 scores, portfolio target weights, corrected error labels, fold labels and causal state diagnostics",
+    "Binance public market-data infrastructure supports mark/index/premium-index kline data and can be backfilled if a derivatives-basis hypothesis is approved",
+    "no live trading credentials or order endpoints are permitted"
   ],
   "literature": [
     {
-      "source_id": "arxiv-2607.09230-state-first-order-flow",
+      "source_id": "ssrn-2026-perpetual-basis",
       "quality": "primary",
-      "citation": "Jeon, When Does Order Flow Matter? State-Dependent L2 Liquidity-State Transitions in Crypto Futures, arXiv:2607.09230 (2026)",
-      "claim": "pre-event liquidity state is first-order; order flow adds incremental value only when layered on top of liquidity state and is not robustly cross-symbol"
+      "citation": "Lim, The Information Content of Perpetual Basis, SSRN 6697060 (2026)",
+      "claim": "absolute perpetual-spot basis predicts forward realized volatility in pooled cross-coin tests; effect is weak for BTC and stronger for several altcoins; OOS improvement beats lagged-vol benchmark but not HAR-RV"
     },
     {
       "source_id": "jfm-2026-order-flow",
       "quality": "peer_reviewed",
-      "citation": "Anastasopoulos et al., Order flow and cryptocurrency returns, Journal of Financial Markets 79 (2026), DOI 10.1016/j.finmar.2026.101047",
-      "claim": "lagged order flow contains transitory price-pressure and persistent components; controlling lagged returns matters and nonlinear interactions can add economic value"
+      "citation": "Anastasopoulos et al., Order flow and cryptocurrency returns, Journal of Financial Markets 79 (2026)",
+      "claim": "order-flow predictability is incremental after controlling recent returns but H4 implementation was economically unstable in this project"
     },
     {
-      "source_id": "ssrn-2026-macro-integration",
+      "source_id": "arxiv-2607.09230-state-first-order-flow",
       "quality": "primary",
-      "citation": "Palazzi et al., From Network Fundamentals to Macro-Financial Integration, SSRN 6725492 (2026)",
-      "claim": "predictor usefulness is regime-dependent; funding/open-interest remain useful across regimes while macro variables gain value after financial integration and during stress"
+      "citation": "Jeon, When Does Order Flow Matter? State-Dependent L2 Liquidity-State Transitions in Crypto Futures (2026)",
+      "claim": "state-first architecture; order flow is useful only conditionally and not uniformly cross-symbol"
     },
     {
-      "source_id": "frl-2026-regime-tail-risk",
-      "quality": "peer_reviewed",
-      "citation": "Kim, Carrying regime uncertainty forward in cryptocurrency tail-risk forecasting, Finance Research Letters 106 (2026)",
-      "claim": "delayed volatility-threshold regimes can react too late; carrying state uncertainty forward can improve contagion-hour tail-risk forecasts"
+      "source_id": "ssrn-2026-funding-predictability",
+      "quality": "primary",
+      "citation": "Boreiko et al., Funding Rate Arbitrage in Perpetual Futures Markets, SSRN 6188660 (2025/2026 revisions)",
+      "claim": "funding is highly predictable and carry is economically important, but simple adverse-funding threshold has already failed internally"
     }
   ],
   "research_constraints": {
     "one_new_mechanism_per_challenge": true,
-    "prefer_existing_public_data": true,
-    "no_nearby_threshold_grid_rescue": true,
+    "maximum_approved_hypotheses_to_inspect_now": 1,
+    "prefer_simple_derivatives_state_or_reliability_mechanism": true,
+    "premium_or_basis_data_may_be_backfilled_only_after_approval": true,
+    "do_not_repeat_simple_funding_gate": true,
+    "do_not_repeat_unconditional_flow": true,
     "no_direct_long_short_from_llm": true,
-    "direction_remains_h12": true,
-    "H4_raw_or_residual_flow_cannot_be_used_unconditionally": true,
-    "state_conditioning_is_allowed_only_if_causal_and_predeclared": true,
-    "nonlinear_ML_is_not_allowed_until_factor_admission_requirements_are_met": true,
-    "maximum_approved_hypotheses_to_inspect_now": 1
+    "direction_remains_H12": true,
+    "no_nearby_threshold_grid_rescue": true,
+    "nonlinear_ML_still_requires_factor_admission": true,
+    "if_evidence_is_not_specific_enough_return_NO_TEST": true
   },
   "required_hypothesis_schema": {
     "hypothesis_id": "string",
@@ -142,5 +117,5 @@
     "source_ids": ["string"],
     "materially_new_evidence": true
   },
-  "agent_instructions": "Return at most three hypotheses and rank only one for immediate testing. The immediate challenge must be materially different from unconditional H4. Prefer a simple causal state-conditioned reliability mechanism testable using existing 1h public data. If evidence is insufficient, recommend NO_TEST rather than inventing a threshold. Preserve the H4 sign reversal and negative economic result as dissent."
+  "agent_instructions": "Return at most three hypotheses and rank at most one for immediate testing. Prefer a simple derivatives/basis reliability or risk-state mechanism if the literature supports an exact causal test. The approved hypothesis must differ materially from the failed funding threshold and H4 flow veto. It must preserve H12 direction and specify a fixed fold-local test without a threshold grid. If basis evidence supports volatility rather than return direction, map it only to reliability/risk and explain why that can reduce WRONG_SIDE economic damage. Otherwise return NO_TEST."
 }
