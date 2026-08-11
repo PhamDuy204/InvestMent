@@ -94,13 +94,13 @@ Branch: `v6-integrated-controller`.
 
 PR: #3, based on `v5-research`.
 
-The GitHub V5 base contained a stale API migration: `v4_overlays.py` and `test_multi_asset_v3.py` still referenced the removed `PortfolioCaps` interface. V6 completed that migration rather than restoring a dead compatibility abstraction. A second regression exposed the approximate exposure-cap projection and was fixed at the shared helper. GitHub CI subsequently passed pytest, Ruff, and compileall on the code head. This report-only commit must retain those green checks on the final PR head before the PR is considered complete.
+The GitHub V5 base contained a stale API migration: `v4_overlays.py` and `test_multi_asset_v3.py` still referenced the removed `PortfolioCaps` interface. V6 completed that migration rather than restoring a dead compatibility abstraction. A second regression exposed the approximate exposure-cap projection and was fixed at the shared helper. GitHub CI passed pytest, Ruff, and compileall on the final report head.
 
 Local PC verification performed during the V6 cycle had previously passed the broader 126-test suite, Ruff, compileall, leakage/freeze checks, secret scan, artifact/hash checks, and trial-count consistency checks. Raw multi-million-row market data are intentionally not committed to GitHub.
 
 ## 18. Remaining evidence gap and next research queue
 
-V6 is code/research complete when the final PR-head CI remains green, but the strategy is not ready for paper trading. The principal unresolved evidence gap is independent generalization, not missing complexity.
+V6 is code/research complete, but the strategy is not ready for paper trading. The principal unresolved evidence gap is independent generalization, not missing complexity.
 
 The highest-priority next hypothesis should be predeclared for a later research cycle rather than retrofitted into the frozen V6 candidate: quarter-hour aggregated order imbalance aligned with the existing H12 forecast as a reliability/state modifier, not as direct standalone direction. Recent research reports that quarter-hour opening imbalance can forecast four-to-twelve-hour crypto-futures returns, which is structurally closer to the retained H12 horizon than the failed 15m/60m sleeves. A separate recent L2 study finds that order flow adds value only conditionally on liquidity state and is not robust across BTC/ETH, so any such test should remain state-first and should not fabricate L2 state when L2 history is unavailable.
 
