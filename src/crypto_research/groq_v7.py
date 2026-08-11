@@ -352,7 +352,7 @@ def run_v7_research_council(
         for item in audit.get("reviews", [])
         if isinstance(item, dict)
     }
-    approved = [
+    auditor_approved = [
         hypothesis
         for hypothesis in validated
         if review_decisions.get(hypothesis.hypothesis_id, "reject") == "test"
@@ -365,13 +365,14 @@ def run_v7_research_council(
         role="research_judge",
         context={
             "research_context": clean,
-            "approved_hypotheses": [asdict(item) for item in approved],
+            "approved_hypotheses": [asdict(item) for item in auditor_approved],
             "audit": audit,
         },
     )
     ranked_ids = [str(item) for item in judge.get("ranked_hypothesis_ids", [])]
     rank = {hypothesis_id: index for index, hypothesis_id in enumerate(ranked_ids)}
-    approved.sort(key=lambda item: rank.get(item.hypothesis_id, len(rank)))
+    approved = [hypothesis for hypothesis in auditor_approved if hypothesis.hypothesis_id in rank]
+    approved.sort(key=lambda item: rank[item.hypothesis_id])
 
     return {
         "status": "COMPLETED",
