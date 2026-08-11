@@ -7,6 +7,7 @@ import pytest
 from crypto_research.reliability_v7 import ReliabilityGateConfig
 from crypto_research.run_v6 import replay_weight_overlay
 from crypto_research.run_v7 import (
+    attribute_candidate_errors,
     replay_v7_reliability,
     run_v7_first_line,
     split_selection_evaluation,
@@ -153,3 +154,36 @@ def test_first_line_sequence_starts_at_858_and_does_not_spend_unused_combination
         assert combination["status"] == "NOT_RUN_FEWER_THAN_TWO_PROMOTED"
         assert len(registry) == 4
     assert result["trial_count_after"] == 857 + len(registry)
+
+
+def test_error_attribution_reports_counts_and_economic_bps():
+    timestamp = pd.Timestamp("2026-01-01T00:00Z")
+    base = pd.DataFrame(
+        {
+            "decision_timestamp": [timestamp, timestamp],
+            "symbol": ["A", "B"],
+            "previous_weight": [0.0, 0.0],
+            "target_weight": [0.2, 0.2],
+            "holding_return_label": [-0.02, 0.02],
+            "funding_sum_label": [0.0, 0.0],
+        }
+    )
+    candidate = pd.DataFrame(
+        {
+            "decision_timestamp": [timestamp, timestamp],
+            "symbol": ["A", "B"],
+            "current_weight": [0.0, 0.0],
+            "proposed_target_weight": [0.0, 0.1],
+        }
+    )
+    result = attribute_candidate_errors(base, candidate, round_trip_cost_bps=10.0)
+    wrong = result["by_error"]["FALSE_ENTER"]
+    assert wrong["baseline_count"] == 1
+    assert wrong["candidate_count"] == 0
+    assert wrong["count_delta"] == -1
+    assert wrong["avoided_loss_bps"] > 0.0
+    correct = result["by_error"]["CORRECT"]
+    assert correct["lost_correct_trade_bps"] > 0.0
+    assert result["net_bps_effect"] == pytest.approx(
+        sum(bucket["net_bps_effect"] for bucket in result["by_error"].values())
+    )
