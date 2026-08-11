@@ -1,0 +1,95 @@
+{
+  "blocked_fingerprints": [
+    "09daea734168290a11864e1dea1fcb21deb695b9d661369a2784152a85b2201d",
+    "3520331e8f028a8a5e3f49c3592d077ea0fe1a40dc74e72b7ccdea861b1e3bc2",
+    "42fe1f477c78f9da5ce6d236b4dbffb28ca76e289bd6fdda118744488dd2ec96",
+    "4980a53fcf835d7e544f477de366bde77f0f6720c559765423d08aa8db8c6d30",
+    "a6e958a90109ce92b6883a2c0397de57d3bf4bed204343e5a92dfd1c666ab65d",
+    "d8431bbf733011c594613496bd5cb86fc81d8541c3685b4bbdb6aa8a3d4afbf7"
+  ],
+  "records": [
+    {
+      "action": "scale_down",
+      "actual_error_delta": 0,
+      "causal_inputs": [
+        "rolling_realized_volatility"
+      ],
+      "damaged_regime": "evaluation after-cost edge",
+      "drawdown_effect": -0.0916,
+      "expected_mechanism": "reduce unstable exposure during high-volatility regimes",
+      "failure_reason": "50% scaling reduced evaluation net return by 1520 bps versus the V6 control while the 75% variant remained 755 bps lower; drawdown improved but the after-cost edge was materially damaged.",
+      "fingerprint": "09daea734168290a11864e1dea1fcb21deb695b9d661369a2784152a85b2201d",
+      "helped_regime": "high-volatility drawdown control",
+      "hypothesis": "V6_fixed_high_vol_scaling_050_075",
+      "net_effect_bps": -1520.0,
+      "next_allowed_question": "Only revisit volatility risk control through a materially different predeclared mapping such as fold-local continuous no-boost sizing; do not grid fixed 0.50/0.75 scales.",
+      "target_error": "risk_instability",
+      "timestamp_utc": "2026-08-11T00:00:00+00:00",
+      "trial_number": 857,
+      "turnover_effect": 0.0
+    },
+    {
+      "action": "veto H12 exposure increase on sign conflict with residualized lagged taker-buy flow",
+      "actual_error_delta": -253,
+      "causal_inputs": [
+        "lag_return_1h",
+        "lag_taker_buy_quote_volume"
+      ],
+      "damaged_regime": "held-out evaluation, 20bps, +1h delay",
+      "drawdown_effect": 0.014137435657865642,
+      "expected_mechanism": "after controlling lagged return, incremental taker-buy activity carries permanent order-flow information and can identify unreliable H12 exposure increases",
+      "failure_reason": "coefficient sign unstable across folds; evaluation net, Sharpe and drawdown worsened; 20bps and +1h delay both negative",
+      "fingerprint": "3520331e8f028a8a5e3f49c3592d077ea0fe1a40dc74e72b7ccdea861b1e3bc2",
+      "helped_regime": "raw wrong-side diagnostic count",
+      "hypothesis": "H4_lagged_taker_buy",
+      "net_effect_bps": -43.18609387894967,
+      "next_allowed_question": "Require a materially different causal mechanism; do not nearby-grid H4 flow thresholds or state conditions without independent evidence.",
+      "target_error": "WRONG_SIDE",
+      "timestamp_utc": "2026-08-11T08:42:45.930649+00:00",
+      "trial_number": 866,
+      "turnover_effect": -9.803541156269915
+    },
+    {
+      "action": "scale H12 target by min(1, selection median future RV12 / augmented lag-RV+basis predicted RV12)",
+      "actual_error_delta": 551,
+      "causal_inputs": [
+        "lag_rv12",
+        "abs_basis"
+      ],
+      "damaged_regime": "basis forecast admission, mandatory 20bps and +1h stress",
+      "drawdown_effect": -0.02037317273527966,
+      "expected_mechanism": "absolute perpetual premium contains incremental volatility information beyond lagged realized volatility, allowing safer no-boost H12 sizing",
+      "failure_reason": "basis forecast passed 0/3 folds; coefficient sign unstable; cost and delay stresses remained negative despite downstream de-risking",
+      "fingerprint": "42fe1f477c78f9da5ce6d236b4dbffb28ca76e289bd6fdda118744488dd2ec96",
+      "helped_regime": "portfolio risk suppression and wrong-side economic damage",
+      "hypothesis": "H_basis_vol_reliability_1",
+      "net_effect_bps": 335.4808763098749,
+      "next_allowed_question": "Ablate basis from the volatility controller before attributing any economic improvement to basis; do not grid basis transforms or thresholds.",
+      "target_error": "WRONG_SIDE_ECONOMIC_DAMAGE",
+      "timestamp_utc": "2026-08-11T09:11:39.709141+00:00",
+      "trial_number": 867,
+      "turnover_effect": -3.7847477916565044
+    },
+    {
+      "action": "scale H12 target by min(1, selection median RV12 / lag-RV-only predicted RV12)",
+      "actual_error_delta": 550,
+      "causal_inputs": [
+        "lag_rv12"
+      ],
+      "damaged_regime": "mandatory promotion stress and any evaluation folds without positive incremental support",
+      "drawdown_effect": -0.02021708110169068,
+      "expected_mechanism": "generic continuous lag-RV-only volatility targeting reduces H12 wrong-side economic damage while retaining after-cost economic edge",
+      "failure_reason": "negative_at_20bps;negative_with_1h_delay",
+      "fingerprint": "4980a53fcf835d7e544f477de366bde77f0f6720c559765423d08aa8db8c6d30",
+      "helped_regime": "held-out risk suppression where wrong-side economic damage is reduced",
+      "hypothesis": "H7_lagged_rv_inverse_vol_ablation",
+      "net_effect_bps": 312.83832548915316,
+      "next_allowed_question": "Require a materially new causal reliability mechanism; do not grid lag-vol thresholds, anchors, or scale floors around H7.",
+      "target_error": "WRONG_SIDE_ECONOMIC_DAMAGE",
+      "timestamp_utc": "2026-08-11T10:07:52.810090+00:00",
+      "trial_number": 868,
+      "turnover_effect": -3.9010333018723105
+    }
+  ],
+  "status": "ACTIVE"
+}
