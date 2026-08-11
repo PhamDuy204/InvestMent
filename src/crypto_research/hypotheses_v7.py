@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
 import re
+from dataclasses import dataclass
 
 from crypto_research.diagnostics_v7 import mechanism_fingerprint, reject_repeated_mechanism
 
