@@ -1,0 +1,13 @@
+{
+  "benchmark_sharpe": 2.4228459750328817,
+  "kurtosis": 54.00847009422439,
+  "n_trials": 857,
+  "observations": 942,
+  "observed_sharpe": 0.07427161241218394,
+  "probability": 0.0,
+  "skew": 4.661616516822429,
+  "status": "APPROXIMATE_DSR_HISTORICAL_TRIAL_SHARPE_DISTRIBUTION_INCOMPLETE",
+  "trial_count": 857,
+  "v5_locked_prior_trials": 779,
+  "v6_aligned_sharpe_sample_count": 13
+}
