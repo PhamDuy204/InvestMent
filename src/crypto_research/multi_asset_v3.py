@@ -105,8 +105,11 @@ def _rolling_covariance(returns_wide, *, timestamp, symbols: list[str], lookback
 
 def cost_aware_cross_sectional_backtest(panel, *, score_col: str, horizon: int, round_trip_cost_bps: float, risk_aversion: float, movement_penalty: float, covariance_lookback: int = 24 * 30, gross_cap: float = 1.0, net_cap: float = 0.05, single_cap: float = 0.25, eligible_col: str = "in_universe", delay_bars: int = 0, covariance_history=None, uncertainty_quantile: float | None = None, uncertainty_window: int = 20, uncertainty_min_history: int = 10, uncertainty_safety_margin: float = 0.0, initial_residuals: dict[str, list[float]] | None = None, min_abs_weight_change: float = 0.0, adverse_funding_threshold: float | None = None):
     import json
+
     import pandas as pd
+
     from crypto_research.multi_asset_v2 import _portfolio_summary
+
     if horizon <= 0 or covariance_lookback < 0 or delay_bars < 0:
         raise ValueError("invalid horizon, covariance lookback, or delay")
     if min_abs_weight_change < 0:
