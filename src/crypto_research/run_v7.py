@@ -55,6 +55,28 @@ def replay_v7_reliability(
     if round_trip_cost_bps < 0:
         raise ValueError("round_trip_cost_bps must be non-negative")
 
+    if (
+        "fold" in decision_log.columns
+        and decision_log["fold"].notna().all()
+        and decision_log["fold"].nunique() > 1
+    ):
+        ordered = decision_log.copy()
+        ordered["decision_timestamp"] = pd.to_datetime(ordered["decision_timestamp"], utc=True)
+        ordered = ordered.sort_values(["decision_timestamp", "symbol"])
+        period_parts: list[pd.DataFrame] = []
+        decision_parts: list[pd.DataFrame] = []
+        for _, part in ordered.groupby("fold", sort=False):
+            periods, decisions, _ = replay_v7_reliability(
+                part,
+                config,
+                round_trip_cost_bps=round_trip_cost_bps,
+            )
+            period_parts.append(periods)
+            decision_parts.append(decisions)
+        combined_periods = pd.concat(period_parts, ignore_index=True)
+        combined_decisions = pd.concat(decision_parts, ignore_index=True)
+        return combined_periods, combined_decisions, stateful_summary(combined_periods)
+
     work = decision_log.copy()
     work["decision_timestamp"] = pd.to_datetime(work["decision_timestamp"], utc=True)
     work = work.sort_values(["decision_timestamp", "symbol"])
@@ -171,6 +193,26 @@ def split_selection_evaluation(
         raise ValueError("selection_fraction must be between zero and one")
     work = decision_log.copy()
     work["decision_timestamp"] = pd.to_datetime(work["decision_timestamp"], utc=True)
+    if (
+        "fold" in work.columns
+        and work["fold"].notna().all()
+        and work["fold"].nunique() > 1
+    ):
+        selection_parts: list[pd.DataFrame] = []
+        evaluation_parts: list[pd.DataFrame] = []
+        for _, part in work.groupby("fold", sort=False):
+            times = pd.Index(sorted(part["decision_timestamp"].dropna().unique()))
+            if len(times) < 4:
+                raise ValueError("each fold requires at least four decision timestamps")
+            split = max(1, min(len(times) - 1, int(len(times) * selection_fraction)))
+            cutoff = times[split - 1]
+            selection_parts.append(part.loc[part["decision_timestamp"] <= cutoff].copy())
+            evaluation_parts.append(part.loc[part["decision_timestamp"] > cutoff].copy())
+        return (
+            pd.concat(selection_parts).sort_values(["decision_timestamp", "symbol"]),
+            pd.concat(evaluation_parts).sort_values(["decision_timestamp", "symbol"]),
+        )
+
     times = pd.Index(sorted(work["decision_timestamp"].dropna().unique()))
     if len(times) < 4:
         raise ValueError("at least four decision timestamps are required")
@@ -339,6 +381,24 @@ def run_v7_first_line(
     selection_fraction: float = 0.70,
     delay_decision_log: pd.DataFrame | None = None,
 ) -> dict[str, Any]:
+    if (
+        "fold" in decision_log.columns
+        and decision_log["fold"].notna().all()
+        and decision_log["fold"].nunique() > 1
+    ):
+        from crypto_research.run_v7_foldwise import run_v7_first_line_foldwise
+
+        return run_v7_first_line_foldwise(
+            decision_log,
+            qh_features,
+            dispersion,
+            artifact_root=artifact_root,
+            prior_trials=prior_trials,
+            round_trip_cost_bps=round_trip_cost_bps,
+            selection_fraction=selection_fraction,
+            delay_decision_log=delay_decision_log,
+        )
+
     root = Path(artifact_root)
     root.mkdir(parents=True, exist_ok=True)
     work = _merge_first_line_features(decision_log, qh_features, dispersion)

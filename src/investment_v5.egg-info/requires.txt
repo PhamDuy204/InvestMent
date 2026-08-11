@@ -1,0 +1,10 @@
+numpy>=1.26
+pandas>=2.1
+scikit-learn>=1.4
+
+[dev]
+pytest>=8
+ruff>=0.5
+
+[llm]
+groq>=1.6

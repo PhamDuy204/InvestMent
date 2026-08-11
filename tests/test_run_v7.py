@@ -134,7 +134,10 @@ def test_v7_replay_uses_candidate_drifted_state_not_baseline_previous_column():
 def test_split_selection_evaluation_is_chronological():
     decisions, _, _ = _first_line_inputs()
     selection, evaluation = split_selection_evaluation(decisions, selection_fraction=0.70)
-    assert selection["decision_timestamp"].max() < evaluation["decision_timestamp"].min()
+    for fold in sorted(selection["fold"].unique()):
+        selection_fold = selection.loc[selection["fold"] == fold]
+        evaluation_fold = evaluation.loc[evaluation["fold"] == fold]
+        assert selection_fold["decision_timestamp"].max() < evaluation_fold["decision_timestamp"].min()
     assert set(selection.index).isdisjoint(set(evaluation.index))
 
 
@@ -144,7 +147,7 @@ def test_first_line_sequence_starts_at_858_and_does_not_spend_unused_combination
     registry = pd.read_csv(tmp_path / "experiment_registry.csv")
     assert registry.iloc[0]["trial_number"] == 858
     assert registry["hypothesis"].tolist()[:4] == [
-        "exact_v6_control",
+        "exact_v6_control_foldwise",
         "H1_qh_conflict_veto",
         "H2_high_dispersion_gate",
         "H3_weak_edge_veto",

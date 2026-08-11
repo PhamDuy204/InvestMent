@@ -118,12 +118,26 @@ def run_v7_first_line_with_artifacts(
     attribution_rows: dict[str, Any] = {}
     failure_records: list[dict[str, object]] = []
     for name, payload in result["results"].items():
-        config = ReliabilityGateConfig(**payload["config"])
-        _, candidate_decisions, candidate_metrics = replay_v7_reliability(
-            evaluation,
-            config,
-            round_trip_cost_bps=round_trip_cost_bps,
-        )
+        config_payload = payload["config"]
+        if "per_fold" in config_payload:
+            candidate_parts: list[pd.DataFrame] = []
+            for fold, part in evaluation.groupby("fold", sort=False):
+                fold_config = ReliabilityGateConfig(**config_payload["per_fold"][str(fold)])
+                _, fold_decisions, _ = replay_v7_reliability(
+                    part,
+                    fold_config,
+                    round_trip_cost_bps=round_trip_cost_bps,
+                )
+                candidate_parts.append(fold_decisions)
+            candidate_decisions = pd.concat(candidate_parts, ignore_index=True)
+            candidate_metrics = payload["evaluation"]
+        else:
+            config = ReliabilityGateConfig(**config_payload)
+            _, candidate_decisions, candidate_metrics = replay_v7_reliability(
+                evaluation,
+                config,
+                round_trip_cost_bps=round_trip_cost_bps,
+            )
         attribution = attribute_candidate_errors(
             baseline_attribution_log,
             candidate_decisions,
