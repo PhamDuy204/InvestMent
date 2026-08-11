@@ -1,6 +1,10 @@
 import pandas as pd
 
-from crypto_research.decision_diagnostics import build_decision_log, classify_decision, classify_error
+from crypto_research.decision_diagnostics import (
+    build_decision_log,
+    classify_decision,
+    classify_error,
+)
 
 
 def test_classify_decision_actions():
