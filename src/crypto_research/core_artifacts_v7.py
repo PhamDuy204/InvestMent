@@ -52,6 +52,36 @@ def _json_write(path: Path, payload: dict[str, Any]) -> None:
     )
 
 
+def _baseline_attribution_log(
+    evaluation: pd.DataFrame,
+    *,
+    round_trip_cost_bps: float,
+) -> pd.DataFrame:
+    _, baseline_decisions, _ = replay_v7_reliability(
+        evaluation,
+        ReliabilityGateConfig(None, None, None, False),
+        round_trip_cost_bps=round_trip_cost_bps,
+    )
+    labels = evaluation[
+        ["decision_timestamp", "symbol", "holding_return_label", "funding_sum_label"]
+    ].copy()
+    labels["decision_timestamp"] = pd.to_datetime(labels["decision_timestamp"], utc=True)
+    baseline = baseline_decisions.rename(
+        columns={
+            "current_weight": "previous_weight",
+            "proposed_target_weight": "target_weight",
+        }
+    )
+    return baseline[
+        ["decision_timestamp", "symbol", "previous_weight", "target_weight"]
+    ].merge(
+        labels,
+        on=["decision_timestamp", "symbol"],
+        how="left",
+        validate="one_to_one",
+    )
+
+
 def run_v7_first_line_with_artifacts(
     decision_log: pd.DataFrame,
     qh_features: pd.DataFrame,
@@ -79,6 +109,10 @@ def run_v7_first_line_with_artifacts(
     work = _merge_first_line_features(decision_log, qh_features, dispersion)
     _, evaluation = split_selection_evaluation(work, selection_fraction=selection_fraction)
     baseline_eval = result["baseline"]["evaluation"]
+    baseline_attribution_log = _baseline_attribution_log(
+        evaluation,
+        round_trip_cost_bps=round_trip_cost_bps,
+    )
     registry = pd.read_csv(root / "experiment_registry.csv")
 
     attribution_rows: dict[str, Any] = {}
@@ -91,7 +125,7 @@ def run_v7_first_line_with_artifacts(
             round_trip_cost_bps=round_trip_cost_bps,
         )
         attribution = attribute_candidate_errors(
-            evaluation,
+            baseline_attribution_log,
             candidate_decisions,
             round_trip_cost_bps=round_trip_cost_bps,
         )
