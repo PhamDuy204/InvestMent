@@ -2,7 +2,7 @@ import json
 
 import pandas as pd
 
-from crypto_research.run_v7 import run_v7_first_line
+from crypto_research.core_artifacts_v7 import run_v7_first_line_with_artifacts
 
 
 def _inputs():
@@ -48,7 +48,7 @@ def _inputs():
 
 def test_first_line_persists_attribution_failure_memory_and_do_not_repeat(tmp_path):
     decisions, qh, dispersion = _inputs()
-    result = run_v7_first_line(decisions, qh, dispersion, artifact_root=tmp_path)
+    result = run_v7_first_line_with_artifacts(decisions, qh, dispersion, artifact_root=tmp_path)
     assert result["promoted"] == []
 
     attribution = json.loads((tmp_path / "error_attribution.json").read_text())
