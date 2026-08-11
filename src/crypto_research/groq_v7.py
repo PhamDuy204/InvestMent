@@ -61,18 +61,33 @@ def select_v7_role_models(ids: set[str]) -> dict[str, str]:
     if not ids:
         raise ValueError("Groq model list is empty")
     fallback = sorted(ids)[0]
-    qwen = _first_available(ids, ("qwen/qwen3.6-27b",), contains="qwen") or fallback
+    qwen = _first_available(ids, ("qwen/qwen3.6-27b", "qwen/qwen3-32b"), contains="qwen") or fallback
     auditor = _first_available(ids, ("openai/gpt-oss-120b", "openai/gpt-oss-20b")) or qwen
     judge = _first_available(ids, ("openai/gpt-oss-20b", "openai/gpt-oss-120b")) or auditor
+    json_fallback = _first_available(ids, ("openai/gpt-oss-20b", "openai/gpt-oss-120b")) or judge
     return {
         "evidence_scout": qwen,
         "error_scientist": qwen,
         "methodology_auditor": auditor,
         "research_judge": judge,
+        "json_fallback": json_fallback,
     }
 
 
-def _chat_json(client: Any, *, model: str, role: str, context: Any) -> dict[str, Any]:
+def _is_json_validation_error(exc: Exception) -> bool:
+    status = getattr(exc, "status_code", None)
+    text = str(exc).lower()
+    return bool(
+        status == 400
+        and (
+            "json" in text
+            or "validate" in text
+            or "invalid_request_error" in text
+        )
+    )
+
+
+def _chat_json_once(client: Any, *, model: str, role: str, context: Any) -> dict[str, Any]:
     response = client.chat.completions.create(
         model=model,
         temperature=0,
@@ -82,7 +97,7 @@ def _chat_json(client: Any, *, model: str, role: str, context: Any) -> dict[str,
                 "content": (
                     "V7 quantitative research/backtest only. Use supplied causal evidence only. "
                     "Do not create executable trading direction, leverage changes, or exchange actions. "
-                    "Preserve contradictory evidence. Return JSON only."
+                    "Preserve contradictory evidence. Return one valid JSON object only, without markdown."
                 ),
             },
             {
@@ -93,6 +108,33 @@ def _chat_json(client: Any, *, model: str, role: str, context: Any) -> dict[str,
         response_format={"type": "json_object"},
     )
     return json.loads(response.choices[0].message.content or "{}")
+
+
+def _chat_json(
+    client: Any,
+    *,
+    model: str,
+    role: str,
+    context: Any,
+    fallback_model: str | None = None,
+) -> dict[str, Any]:
+    try:
+        return _chat_json_once(client, model=model, role=role, context=context)
+    except Exception as exc:
+        if (
+            fallback_model is None
+            or fallback_model == model
+            or not _is_json_validation_error(exc)
+        ):
+            raise
+        result = _chat_json_once(
+            client,
+            model=fallback_model,
+            role=role,
+            context=context,
+        )
+        result.setdefault("_runtime_fallback", {"from": model, "to": fallback_model, "reason": "json_validation_400"})
+        return result
 
 
 def _hypothesis_from_payload(payload: dict[str, Any]) -> ResearchHypothesis:
@@ -122,16 +164,19 @@ def run_v7_research_council(
     ids = list_model_ids(client)
     models = select_v7_role_models(ids)
     clean = sanitize_v7_context(context)
+    json_fallback = models["json_fallback"]
 
     evidence = _chat_json(
         client,
         model=models["evidence_scout"],
+        fallback_model=json_fallback,
         role="evidence_scout",
         context=clean,
     )
     scientist = _chat_json(
         client,
         model=models["error_scientist"],
+        fallback_model=json_fallback,
         role="error_scientist",
         context={"research_context": clean, "evidence": evidence},
     )
@@ -158,6 +203,7 @@ def run_v7_research_council(
     audit = _chat_json(
         client,
         model=models["methodology_auditor"],
+        fallback_model=json_fallback,
         role="methodology_auditor",
         context={
             "research_context": clean,
@@ -180,6 +226,7 @@ def run_v7_research_council(
     judge = _chat_json(
         client,
         model=models["research_judge"],
+        fallback_model=json_fallback,
         role="research_judge",
         context={
             "research_context": clean,
