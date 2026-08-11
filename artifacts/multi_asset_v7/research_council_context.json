@@ -1,20 +1,22 @@
 {
   "research_only": true,
-  "trial_count": 865,
+  "trial_count": 866,
+  "council_iteration": 2,
   "research_triggers": [
     "first_line_no_promotions",
     "foldwise_baseline_negative",
-    "wrong_side_remains_dominant"
+    "H4_reduced_wrong_side_but_failed_economically",
+    "H4_flow_coefficient_changed_sign_across_outer_folds"
   ],
   "target_error": "WRONG_SIDE",
-  "corrected_validation": "70/30 chronological inside each of three outer folds with fold-local fitted gates",
+  "corrected_validation": "70/30 chronological inside each of three outer folds with fold-local fitted gates and fold-state reset/unwind",
   "baseline_evaluation": {
     "net_return": -0.03528644702102568,
     "profit_factor": 0.9092003438570667,
     "sharpe": -0.6998735460929627,
     "max_drawdown": 0.06901020622840758
   },
-  "first_line_failures": [
+  "failed_or_limited_hypotheses": [
     {
       "hypothesis": "H1_qh_conflict_veto",
       "status": "DATA_LIMITATION",
@@ -39,52 +41,79 @@
       "fold_count": 3,
       "cost20_net": -0.05956680396474312,
       "delay1h_net": -0.03967710242741729
+    },
+    {
+      "hypothesis": "H4_lagged_taker_buy",
+      "status": "PARTIAL_SIGNAL_POLICY_FALSIFIED",
+      "mechanism": "residualized lagged taker-buy quote volume after controlling lagged return",
+      "wrong_side_delta": -253,
+      "incremental_net_bps": -43.18609387894967,
+      "candidate_net": -0.03960505640892065,
+      "candidate_sharpe": -0.7654295990869858,
+      "candidate_max_drawdown": 0.08314764188627322,
+      "cost20_net": -0.05895852446836314,
+      "delay1h_net": -0.049578533955863535,
+      "fold_positive_count": 1,
+      "fold_count": 3,
+      "coefficient_significance": "abs(t)>=1.96 in folds 1 and 2",
+      "fold_coefficients": [
+        {"fold": 0, "slope": 0.00026743008926096877, "t": 1.6716740747720817},
+        {"fold": 1, "slope": 0.0004432932202702618, "t": 2.310785202556586},
+        {"fold": 2, "slope": -0.00027856491061179655, "t": -1.9959159942702462}
+      ],
+      "stability_score": 0.3333333333333333,
+      "factor_admitted": false,
+      "interpretation": "flow contains information and reduces direction errors, but unconditional mapping is unstable by regime and loses economic value"
     }
   ],
   "blocked_mechanisms": [
     "low absolute H12 score has non-positive after-cost incremental expectancy",
     "completed quarter-hour order-flow conflict identifies unreliable H12 exposure increases",
-    "upper-tail cross-sectional dispersion makes H12 momentum direction less reliable",
+    "upper-tail cross-sectional dispersion alone makes H12 momentum direction less reliable",
     "raw high taker sell share directly implies SHORT",
     "unconditional flow conflict scaling around the same V6 rule",
+    "unconditional residualized taker-buy sign-conflict veto",
+    "nearby threshold or veto-strength rescue of H4",
     "passive execution as a default improvement"
   ],
   "blocked_fingerprints": [
     "42fe1f477c78f9da5ce6d236b4dbffb28ca76e289bd6fdda118744488dd2ec96",
     "a6e958a90109ce92b6883a2c0397de57d3bf4bed204343e5a92dfd1c666ab65d",
-    "d8431bbf733011c594613496bd5cb86fc81d8541c3685b4bbdb6aa8a3d4afbf7"
+    "d8431bbf733011c594613496bd5cb86fc81d8541c3685b4bbdb6aa8a3d4afbf7",
+    "3520331e8f028a8a5e3f49c3592d077ea0fe1a40dc74e72b7ccdea861b1e3bc2"
   ],
   "causal_data_available_now": [
-    "21-symbol Binance USD-M 1h OHLCV and taker-buy volume from Apr-2025 through Jul-2026",
-    "21-symbol funding history over the same discovery interval",
-    "H12 effective score, target weights and corrected error labels",
-    "causal liquidity universe and fold labels",
+    "21-symbol Binance USD-M 1h OHLCV/taker-buy/quote-volume panel from Apr-2025 through Jul-2026 with 14308/14308 decision-row coverage",
+    "lag_return_1h, lag_taker_buy_quote_volume, lag_quote_volume, return_4h, taker_imbalance_4h, volume_4h computed only from completed bars before the decision",
+    "21-symbol funding history over the discovery interval",
+    "H12 effective score, target weights, corrected error labels and three outer folds",
+    "causal liquidity/activity/volatility/trend state columns already present in V6/V4 diagnostics",
     "six-symbol quarter-hour aggTrade pilot only for Jul-1 through Jul-7 2026"
   ],
   "literature": [
     {
+      "source_id": "arxiv-2607.09230-state-first-order-flow",
+      "quality": "primary",
+      "citation": "Jeon, When Does Order Flow Matter? State-Dependent L2 Liquidity-State Transitions in Crypto Futures, arXiv:2607.09230 (2026)",
+      "claim": "pre-event liquidity state is first-order; order flow adds incremental value only when layered on top of liquidity state and is not robustly cross-symbol"
+    },
+    {
       "source_id": "jfm-2026-order-flow",
       "quality": "peer_reviewed",
       "citation": "Anastasopoulos et al., Order flow and cryptocurrency returns, Journal of Financial Markets 79 (2026), DOI 10.1016/j.finmar.2026.101047",
-      "claim": "lagged order flow contains transitory price-pressure and persistent components; predictive ability strengthens after controlling for lagged returns, and nonlinear interactions can add economic value"
-    },
-    {
-      "source_id": "ssrn-2026-onchain-factors",
-      "quality": "primary",
-      "citation": "Byun et al., On-Chain Factors and Cryptocurrency Asset Pricing, SSRN 6670521 (2026)",
-      "claim": "scale-adjusted network activity and token distribution can contain pricing information beyond conventional size/momentum/volume/volatility factors"
+      "claim": "lagged order flow contains transitory price-pressure and persistent components; controlling lagged returns matters and nonlinear interactions can add economic value"
     },
     {
       "source_id": "ssrn-2026-macro-integration",
       "quality": "primary",
       "citation": "Palazzi et al., From Network Fundamentals to Macro-Financial Integration, SSRN 6725492 (2026)",
-      "claim": "Bitcoin predictor usefulness is regime-dependent and has shifted toward macro-financial variables as integration with traditional markets increased"
+      "claim": "predictor usefulness is regime-dependent; funding/open-interest remain useful across regimes while macro variables gain value after financial integration and during stress"
     },
     {
-      "source_id": "ssrn-2026-dispersion",
-      "quality": "primary",
-      "citation": "Zhang and Makgolo, Cross-Sectional Dispersion and the State Dependence of Cryptocurrency Momentum, SSRN 6648082 (2026)",
-      "claim": "dispersion can precede momentum breakdown, but V7 simple exposure scaling has already falsified this implementation"
+      "source_id": "frl-2026-regime-tail-risk",
+      "quality": "peer_reviewed",
+      "citation": "Kim, Carrying regime uncertainty forward in cryptocurrency tail-risk forecasting, Finance Research Letters 106 (2026)",
+      "claim": "delayed volatility-threshold regimes can react too late; carrying state uncertainty forward can improve contagion-hour tail-risk forecasts"
     }
   ],
   "research_constraints": {
@@ -92,8 +121,10 @@
     "prefer_existing_public_data": true,
     "no_nearby_threshold_grid_rescue": true,
     "no_direct_long_short_from_llm": true,
-    "direction_remains_h12_unless_independent_evidence_later_supports_change": true,
-    "prioritize_simple_mechanism_before_nonlinear_model": true,
+    "direction_remains_h12": true,
+    "H4_raw_or_residual_flow_cannot_be_used_unconditionally": true,
+    "state_conditioning_is_allowed_only_if_causal_and_predeclared": true,
+    "nonlinear_ML_is_not_allowed_until_factor_admission_requirements_are_met": true,
     "maximum_approved_hypotheses_to_inspect_now": 1
   },
   "required_hypothesis_schema": {
@@ -111,5 +142,5 @@
     "source_ids": ["string"],
     "materially_new_evidence": true
   },
-  "agent_instructions": "Return at most three hypotheses, rank only one for immediate single-challenge testing, prefer a mechanism testable with current 1h public data, explicitly distinguish any proposal from blocked raw-flow or threshold-retuning mechanisms, and preserve contradictory evidence."
+  "agent_instructions": "Return at most three hypotheses and rank only one for immediate testing. The immediate challenge must be materially different from unconditional H4. Prefer a simple causal state-conditioned reliability mechanism testable using existing 1h public data. If evidence is insufficient, recommend NO_TEST rather than inventing a threshold. Preserve the H4 sign reversal and negative economic result as dissent."
 }
