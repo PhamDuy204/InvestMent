@@ -1,0 +1,45 @@
+name: V7 methodology one-shot sync
+
+on:
+  push:
+    branches: [v7-factor-observatory]
+    paths:
+      - artifacts/multi_asset_v7/run_methodology_sync.flag
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v7-factor-observatory
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install project
+        run: python -m pip install -e ".[dev]"
+      - name: Apply corrected methodology
+        run: python scripts/_sync_v7_methodology_once.py
+      - name: Verify corrected methodology
+        run: |
+          pytest -q
+          ruff check src tests
+          python -m compileall -q src tests
+      - name: Remove one-shot files
+        run: |
+          rm -f scripts/_sync_v7_methodology_once.py
+          rm -f artifacts/multi_asset_v7/run_methodology_sync.flag
+          rm -f .github/workflows/v7-methodology-sync-once.yml
+      - name: Commit verified sync
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "fix: sync corrected V7 fold methodology"
+          git push origin HEAD:v7-factor-observatory
