@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import re
+import time
 from dataclasses import asdict
 from typing import Any
 
@@ -194,6 +196,25 @@ def _is_json_validation_error(exc: Exception) -> bool:
     return bool(status == 400 and ("json" in text or "validate" in text or "invalid_request_error" in text))
 
 
+def _is_rate_limit_error(exc: Exception) -> bool:
+    return getattr(exc, "status_code", None) == 429
+
+
+def _rate_limit_delay_seconds(exc: Exception) -> float:
+    response = getattr(exc, "response", None)
+    headers = getattr(response, "headers", {}) or {}
+    raw = headers.get("retry-after") or headers.get("Retry-After")
+    if raw is not None:
+        try:
+            return max(0.0, min(10.0, float(raw)))
+        except (TypeError, ValueError):
+            pass
+    match = re.search(r"try again in\s+([0-9]+(?:\.[0-9]+)?)s", str(exc), re.IGNORECASE)
+    if match:
+        return max(0.0, min(10.0, float(match.group(1)) + 0.25))
+    return 5.0
+
+
 def _chat_json_once(client: Any, *, model: str, role: str, context: Any) -> dict[str, Any]:
     response_format: dict[str, Any]
     if _is_strict_model(model):
@@ -243,8 +264,14 @@ def _chat_json(
     try:
         return _chat_json_once(client, model=model, role=role, context=context)
     except Exception as exc:
+        if _is_rate_limit_error(exc):
+            time.sleep(_rate_limit_delay_seconds(exc))
+            try:
+                return _chat_json_once(client, model=model, role=role, context=context)
+            except Exception as retry_exc:
+                exc = retry_exc
         if fallback_model is None or fallback_model == model or not _is_json_validation_error(exc):
-            raise
+            raise exc
         result = _chat_json_once(client, model=fallback_model, role=role, context=context)
         result.setdefault("_runtime_fallback", {"from": model, "to": fallback_model, "reason": "json_validation_400"})
         return result
