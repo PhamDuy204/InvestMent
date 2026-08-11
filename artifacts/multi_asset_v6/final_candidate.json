@@ -1,0 +1,39 @@
+{
+  "account_horizon_minutes": 720,
+  "bootstrap": {
+    "block_length": 20,
+    "final_equity_median": 1.4875749868891763,
+    "final_equity_p05": 1.0560891633294538,
+    "final_equity_p95": 2.240643316116982,
+    "max_drawdown_median": 0.09555087916851401,
+    "max_drawdown_p95": 0.16352731339094048,
+    "probability_final_equity_below_one": 0.026,
+    "samples": 2000
+  },
+  "direction_source": "retained_H12_Ridge_relative_return",
+  "error_counts_after": {
+    "CORRECT": 4843,
+    "FALSE_ENTER": 36,
+    "LATE_EXIT": 1810,
+    "MISSED_ENTER": 26,
+    "PREMATURE_EXIT": 21,
+    "UNNECESSARY_REBALANCE": 2530,
+    "WRONG_SIDE": 5042
+  },
+  "error_counts_before": {
+    "CORRECT": 4836,
+    "FALSE_ENTER": 39,
+    "LATE_EXIT": 1818,
+    "MISSED_ENTER": 35,
+    "PREMATURE_EXIT": 20,
+    "UNNECESSARY_REBALANCE": 2529,
+    "WRONG_SIDE": 5031
+  },
+  "execution_mode": "MARKET",
+  "name": "V6_INTEGRATED_CONTROLLER",
+  "promoted_stage_specs": [],
+  "promotion_gate_frozen": true,
+  "recommended_effective_leverage": 1.0,
+  "round_trip_cost_bps": 10.0,
+  "session_horizon_pilot_status": "PILOT_ONLY_NOT_PROMOTED_TO_ACCOUNT_CONTROLLER"
+}
