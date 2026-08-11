@@ -22,20 +22,37 @@ def drift_futures_weights(weights: np.ndarray, returns: np.ndarray, *, net_retur
     return current * (1.0 + realized) / equity_factor
 
 
-def _project_exposure_caps(weights: np.ndarray, *, gross_cap: float, net_cap: float, single_cap: float) -> np.ndarray:
+def _project_exposure_caps(
+    weights: np.ndarray,
+    *,
+    gross_cap: float,
+    net_cap: float,
+    single_cap: float,
+) -> np.ndarray:
     if gross_cap <= 0 or net_cap < 0 or single_cap <= 0:
         raise ValueError("exposure caps must be positive, except net_cap may be zero")
     result = np.clip(np.asarray(weights, dtype=float), -single_cap, single_cap)
-    for _ in range(12):
-        gross = float(np.abs(result).sum())
-        if gross > gross_cap:
-            result *= gross_cap / gross
-        net = float(result.sum())
-        if abs(net) <= net_cap + 1e-12:
-            break
-        target_net = np.sign(net) * net_cap
-        result -= (net - target_net) / len(result)
-        result = np.clip(result, -single_cap, single_cap)
+    if result.size == 0:
+        return result
+
+    gross = float(np.abs(result).sum())
+    if gross > gross_cap:
+        result *= gross_cap / gross
+
+    net = float(result.sum())
+    if abs(net) > net_cap:
+        target_net = float(np.sign(net) * net_cap)
+        low = float(np.min(result) - single_cap - abs(net) - 1.0)
+        high = float(np.max(result) + single_cap + abs(net) + 1.0)
+        for _ in range(100):
+            shift = (low + high) / 2.0
+            candidate = np.clip(result - shift, -single_cap, single_cap)
+            if float(candidate.sum()) > target_net:
+                low = shift
+            else:
+                high = shift
+        result = np.clip(result - high, -single_cap, single_cap)
+
     gross = float(np.abs(result).sum())
     if gross > gross_cap:
         result *= gross_cap / gross
