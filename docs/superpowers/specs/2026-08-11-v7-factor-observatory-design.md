@@ -99,6 +99,8 @@ The first-line sequence is fixed:
 
 V7 first-line research is capped at 24 inspected/executed configurations and at most four alpha/reliability candidate specifications before final selection. Diagnostic configurations do not escape trial accounting if their performance is inspected.
 
+If V7 escalates beyond H1-H3, the escalation phase is capped at an additional 36 inspected/executed performance configurations. Therefore the total V7 budget is at most 60 inspected/executed performance configurations after trial 857. Literature retrieval, factor coverage diagnostics, and unexecuted hypotheses may exceed this number, but no additional performance-bearing configuration may be inspected without a pre-freeze spec amendment. Exhausting the cap without a valid candidate ends V7 as `NEEDS_MORE_RESEARCH`; further mechanisms belong to V8.
+
 The trial counter continues from 857 and is never reset.
 
 ## 6. Promotion gate inside discovery/evaluation
