@@ -6,7 +6,11 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from crypto_research.burst_model_v5 import BURST_FEATURES, economic_event_metrics, non_overlapping_mask
+from crypto_research.burst_model_v5 import (
+    BURST_FEATURES,
+    economic_event_metrics,
+    non_overlapping_mask,
+)
 
 
 def _load(table_root: Path) -> pd.DataFrame:
