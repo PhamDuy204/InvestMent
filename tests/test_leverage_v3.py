@@ -80,8 +80,10 @@ def _schedule_inputs(two_periods: bool = False):
             }
         )
         return periods, market
-    market.loc[:12, ["open", "high", "low", "close"]] = np.linspace(100.0, 110.0, 13)[:, None]
-    market.loc[12:, ["open", "high", "low", "close"]] = np.linspace(110.0, 121.0, 13)[:, None]
+    first_path = np.repeat(np.linspace(100.0, 110.0, 13)[:, None], 4, axis=1)
+    second_path = np.repeat(np.linspace(110.0, 121.0, 13)[:, None], 4, axis=1)
+    market.loc[:12, ["open", "high", "low", "close"]] = first_path
+    market.loc[12:, ["open", "high", "low", "close"]] = second_path
     periods = pd.DataFrame(
         {
             "entry_timestamp": [timestamps[0], timestamps[12]],
