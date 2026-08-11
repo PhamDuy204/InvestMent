@@ -14,6 +14,18 @@ RESEARCH_TOOL_ALLOWLIST = (
     "append_evidence_card",
 )
 
+_FACTOR_FAMILIES = (
+    "microstructure",
+    "derivatives",
+    "cross_asset_macro",
+    "on_chain",
+    "news_event",
+    "attention_sentiment",
+    "cross_sectional",
+    "execution_risk",
+    "scenario_swarm",
+)
+
 _BLOCKED_CONTEXT_TERMS = (
     "api_key",
     "secret",
@@ -86,7 +98,7 @@ def _hypothesis_schema() -> dict[str, Any]:
             "cost_risk": {"type": "string"},
             "invalidation_condition": {"type": "string"},
             "required_test": {"type": "string"},
-            "factor_family": {"type": "string"},
+            "factor_family": {"type": "string", "enum": list(_FACTOR_FAMILIES)},
             "source_ids": {"type": "array", "items": {"type": "string"}},
             "materially_new_evidence": {"type": "boolean"},
         },
@@ -204,7 +216,10 @@ def _chat_json_once(client: Any, *, model: str, role: str, context: Any) -> dict
                 "content": (
                     "V7 quantitative research/backtest only. Use supplied causal evidence only. "
                     "Do not create executable trading direction, leverage changes, or exchange actions. "
-                    "Preserve contradictory evidence. Return one valid JSON object only, without markdown."
+                    "Preserve contradictory evidence. Return one valid JSON object only, without markdown. "
+                    "For hypothesis objects, include every required schema field exactly once. "
+                    "causal_inputs may contain only information available at the decision timestamp; never put a forward/future/oracle outcome in causal_inputs. "
+                    "Outcome labels belong only in required_test or invalidation_condition."
                 ),
             },
             {
@@ -262,7 +277,7 @@ def run_v7_research_council(
     ids = list_model_ids(client)
     models = select_v7_role_models(ids)
     clean = sanitize_v7_context(context)
-    json_fallback = _first_available(ids, ("openai/gpt-oss-20b", "openai/gpt-oss-120b")) or models["research_judge"]
+    json_fallback = _first_available(ids, ("openai/gpt-oss-120b", "openai/gpt-oss-20b")) or models["research_judge"]
 
     evidence = _chat_json(
         client,
