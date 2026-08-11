@@ -147,7 +147,8 @@ def build_decision_log(periods: pd.DataFrame, *, round_trip_cost_bps: float) -> 
                     "funding_sum_label": funding_sum,
                     "gross_contribution_label": float(detail["gross_contribution"]),
                     "funding_contribution_label": float(detail["funding_contribution"]),
-                    "realized_position_contribution_label": float(detail["gross_contribution"]) + float(detail["funding_contribution"]),
+                    "realized_position_contribution_label": float(detail["gross_contribution"])
+                    + float(detail["funding_contribution"]),
                     "oracle_edge_per_unit_label": max(
                         0.0,
                         holding_return - funding_sum - _full_round_trip_rate(round_trip_cost_bps),
@@ -156,6 +157,7 @@ def build_decision_log(periods: pd.DataFrame, *, round_trip_cost_bps: float) -> 
                 }
             )
     return pd.DataFrame(rows)
+
 
 V6_CAUSAL_COLUMNS = (
     "decision_timestamp",
@@ -195,6 +197,26 @@ V6_LABEL_COLUMNS = (
     "LIQUIDATION",
 )
 
+V7_CAUSAL_COLUMNS = V6_CAUSAL_COLUMNS + (
+    "qh_order_imbalance",
+    "qh_abs_order_imbalance",
+    "qh_trade_count",
+    "qh_window_start",
+    "qh_window_end",
+    "dispersion_iqr",
+    "eligible_symbol_count",
+    "qh_abs_threshold",
+    "dispersion_threshold",
+    "weak_score_threshold",
+    "weak_score_veto_enabled",
+    "high_dispersion_scale",
+    "h1_veto",
+    "h2_scaled",
+    "h3_veto",
+)
+
+V7_LABEL_COLUMNS = V6_LABEL_COLUMNS
+
 
 def enrich_v6_decision_log(
     base_log: pd.DataFrame,
@@ -220,7 +242,14 @@ def enrich_v6_decision_log(
         outcome["decision_timestamp"] = pd.to_datetime(outcome["decision_timestamp"], utc=True)
         out = out.merge(outcome, on=keys, how="left", validate="one_to_one")
 
-    for label in ("WRONG_SIDE", "FALSE_ENTER", "MISSED_ENTER", "PREMATURE_EXIT", "LATE_EXIT", "UNNECESSARY_REBALANCE"):
+    for label in (
+        "WRONG_SIDE",
+        "FALSE_ENTER",
+        "MISSED_ENTER",
+        "PREMATURE_EXIT",
+        "LATE_EXIT",
+        "UNNECESSARY_REBALANCE",
+    ):
         out[label] = out.get("error_class", pd.Series("CORRECT", index=out.index)).eq(label)
     for target, source in (
         ("EXECUTION_MISS", "execution_miss"),
@@ -246,7 +275,9 @@ def summarize_v6_errors(frame: pd.DataFrame) -> dict[str, object]:
         for value, part in frame.groupby(key, dropna=False):
             grouped[str(value)] = {
                 "before": part.get("error_class", pd.Series(dtype="object")).value_counts().to_dict(),
-                "after": part.get("v6_error_class", part.get("error_class", pd.Series(dtype="object"))).value_counts().to_dict(),
+                "after": part.get(
+                    "v6_error_class", part.get("error_class", pd.Series(dtype="object"))
+                ).value_counts().to_dict(),
             }
         groups[key] = grouped
     return {"before": before, "after": after, "groups": groups}

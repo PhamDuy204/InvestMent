@@ -1,0 +1,169 @@
+{
+  "research_only": true,
+  "trial_count": 868,
+  "council_iteration": 4,
+  "research_triggers": [
+    "corrected_H12_foldwise_evaluation_is_negative",
+    "H4_residualized_flow_reduced_raw_WRONG_SIDE_but_failed_stability_economic_and_stress_gates",
+    "H6_basis_forecast_failed_zero_of_three_folds_despite_downstream_derisking",
+    "H7_lagged_RV_only_ablation_explained_most_of_H6_derisking_but_failed_20bps_and_plus_1h_stress",
+    "no_factor_is_currently_admitted_to_the_factor_observatory",
+    "nearby_threshold_or_scale_rescue_is_forbidden"
+  ],
+  "target_error": "WRONG_SIDE_ECONOMIC_DAMAGE_AND_AFTER_COST_RELIABILITY",
+  "corrected_validation": "70/30 chronological inside each of three outer folds; every learned quantity fit only on that fold selection; portfolio state reset/unwound by fold",
+  "baseline_evaluation": {
+    "net_return": -0.03528644702102568,
+    "profit_factor": 0.9092003438570667,
+    "sharpe": -0.6998735460929627,
+    "max_drawdown": 0.06901020622840758,
+    "turnover": 50.510530534383214,
+    "trade_count": 3235
+  },
+  "latest_internal_evidence": [
+    {
+      "hypothesis": "H4_lagged_taker_buy",
+      "trial": 866,
+      "status": "PARTIAL_SIGNAL_POLICY_FALSIFIED",
+      "wrong_side_delta": -253,
+      "incremental_net_bps": -43.18609387894967,
+      "interpretation": "controlled taker flow had diagnostic information but coefficient sign and policy economics were unstable"
+    },
+    {
+      "hypothesis": "H_basis_vol_reliability_1",
+      "trial": 867,
+      "status": "REJECTED_INNER_FACTOR_NOT_ADMITTED",
+      "forecast_pass_folds": 0,
+      "evaluation_net_return": -0.001738359390038191,
+      "cost20_net_return": -0.024794134425725756,
+      "delay1h_net_return": -0.009478083623515876,
+      "wrong_side_damage_delta_bps": -2551.527844369017,
+      "interpretation": "basis information failed its forecast admission gate; downstream improvement cannot be credited to basis"
+    },
+    {
+      "hypothesis": "H7_lagged_rv_inverse_vol_ablation",
+      "trial": 868,
+      "status": "REJECTED_INNER",
+      "evaluation_net_return": -0.004002614472110366,
+      "evaluation_profit_factor": 0.9892181808447283,
+      "evaluation_sharpe": -0.08479183396960416,
+      "evaluation_max_drawdown": 0.0487931251267169,
+      "evaluation_scaled_fraction": 0.584835876098012,
+      "baseline_mean_gross_exposure": 0.4649380962041546,
+      "candidate_mean_gross_exposure": 0.3949006839752195,
+      "candidate_max_gross_exposure": 0.9988555819084826,
+      "positive_incremental_evaluation_folds": 2,
+      "cost20_net_return": -0.02694969897571098,
+      "delay1h_net_return": -0.010700431395459842,
+      "wrong_side_count_delta": 550,
+      "wrong_side_damage_delta_bps": -2580.529668565924,
+      "h7_minus_h6_evaluation_net_delta": -0.002264255082072175,
+      "interpretation": "generic continuous lagged-volatility de-risking explains most of H6 risk reduction, retains material exposure, and improves two folds, but it does not recover positive after-cost or delayed performance"
+    },
+    {
+      "error_concentration": "H7 fold 1 remains the dominant failure: baseline evaluation -5.6403%, H7 -3.2170%, H7 20bps -3.7875%, H7 delayed -3.2375%; folds 0 and 2 are positive under both stress diagnostics"
+    }
+  ],
+  "blocked_mechanisms": [
+    "weak absolute H12 score veto or neighboring score thresholds",
+    "quarter-hour conflict veto without broad causal coverage",
+    "high cross-sectional dispersion exposure scaling",
+    "raw high taker sell share implies SHORT",
+    "unconditional residualized taker-buy sign-conflict veto",
+    "state-conditioned H4 flow without empirical state evidence",
+    "simple adverse funding threshold or nearby funding grid",
+    "basis transform threshold or percentile rescue",
+    "continuous lag-RV inverse-vol anchor threshold or scale-floor tuning around H7",
+    "fixed high-vol scale 0.50 or 0.75",
+    "H4 or H8 standalone short-horizon directional trading",
+    "passive execution as default",
+    "reserve 10/20/30 percent",
+    "any reliability layer that creates the opposite H12 direction"
+  ],
+  "blocked_fingerprints": [
+    "09daea734168290a11864e1dea1fcb21deb695b9d661369a2784152a85b2201d",
+    "3520331e8f028a8a5e3f49c3592d077ea0fe1a40dc74e72b7ccdea861b1e3bc2",
+    "42fe1f477c78f9da5ce6d236b4dbffb28ca76e289bd6fdda118744488dd2ec96",
+    "4980a53fcf835d7e544f477de366bde77f0f6720c559765423d08aa8db8c6d30",
+    "a6e958a90109ce92b6883a2c0397de57d3bf4bed204343e5a92dfd1c666ab65d",
+    "d8431bbf733011c594613496bd5cb86fc81d8541c3685b4bbdb6aa8a3d4afbf7"
+  ],
+  "causal_data_available_now": [
+    "21-symbol H12 decision log from Apr-2025 through Jul-2026 with fold labels and target weights",
+    "14,308-row hourly panel with complete decision-row coverage for lag_return_1h, lag_taker_buy_quote_volume, lag_quote_volume, taker_imbalance_4h, return_4h, volume_4h, and bar_count_4h",
+    "21-symbol funding history",
+    "14,308 complete historical plus-1h execution-delay labels",
+    "14,308-row premium-index panel with 99.79% complete abs_basis and lag_rv12 coverage",
+    "quarter-hour aggTrade pilot covers only 6 symbols for 2026-07-01 through 2026-07-07 and is not adequate for a full-universe causal challenge",
+    "no broad historical L2 order-book depth/spread snapshot panel is currently available",
+    "public Binance archive data may be reused or selectively backfilled only when an approved mechanism specifically requires it and the download is justified"
+  ],
+  "literature": [
+    {
+      "source_id": "jbf-2025-liquidity-provision-returns",
+      "quality": "peer_reviewed",
+      "citation": "Farag, Luo, Yarovaya, and Zieba, Returns from liquidity provision in cryptocurrency markets, Journal of Banking & Finance 175 (2025), 107411",
+      "claim": "liquidity-provision returns are state dependent and are associated with realized variance, liquidity, trading volume, and transaction count; this motivates liquidity-state research but does not validate a coarse quote-volume proxy"
+    },
+    {
+      "source_id": "arxiv-2607.09230-state-first-order-flow",
+      "quality": "primary",
+      "citation": "Jeon, When Does Order Flow Matter? State-Dependent L2 Liquidity-State Transitions in Crypto Futures (2026)",
+      "claim": "pre-event L2 liquidity state is first-order for liquidity-regime prediction and order flow adds value only conditionally; evidence relies on actual L2 state rather than coarse OHLCV volume"
+    },
+    {
+      "source_id": "arxiv-2603.09164-slippage-at-risk",
+      "quality": "primary",
+      "citation": "Sepper, Slippage-at-Risk: A Forward-Looking Liquidity Risk Framework for Perpetual Futures Exchanges (2026)",
+      "claim": "order-book microstructure and depth concentration can forecast slippage risk; this is execution-risk evidence, but current V7 data lacks the historical L2 inputs needed to reproduce the mechanism directly"
+    },
+    {
+      "source_id": "ssrn-2026-hidden-liquidity-execution-risk",
+      "quality": "primary",
+      "citation": "Lim, Hidden Liquidity, Displayed Depth, and Execution Risk During a Bitcoin Perpetual Futures Liquidation Cascade (2026)",
+      "claim": "displayed depth can be a biased proxy for executable liquidity in stressed perpetual-futures conditions; this cautions against pretending volume alone is a validated execution-liquidity measure"
+    },
+    {
+      "source_id": "ssrn-2026-perpetual-basis",
+      "quality": "primary",
+      "citation": "Lim, The Information Content of Perpetual Basis, SSRN 6697060 (2026)",
+      "claim": "absolute basis can predict realized volatility in some assets, but V7 H6 contradicted this transfer in the present universe with zero of three forecast-pass folds"
+    },
+    {
+      "source_id": "jfm-2026-order-flow",
+      "quality": "peer_reviewed",
+      "citation": "Anastasopoulos et al., Order flow and cryptocurrency returns, Journal of Financial Markets 79 (2026), 101047",
+      "claim": "order-flow information can be incremental after controlling recent returns, but V7 H4 showed that the tested Binance mapping was economically and sign unstable"
+    }
+  ],
+  "research_constraints": {
+    "one_new_mechanism_per_challenge": true,
+    "maximum_approved_hypotheses_to_inspect_now": 1,
+    "prefer_existing_causal_data_when_the_proxy_is_scientifically_defensible": true,
+    "do_not_label_quote_volume_as_order_book_liquidity_without_validation": true,
+    "do_not_require_large_L2_backfill_unless_the_expected_information_gain_is_specific_and_material": true,
+    "do_not_repeat_basis_flow_funding_dispersion_weak_score_or_lagvol_rescue": true,
+    "no_direct_long_short_from_llm": true,
+    "direction_remains_H12": true,
+    "no_nearby_threshold_grid_rescue": true,
+    "nonlinear_ML_still_requires_factor_admission": true,
+    "scenario_sidecar_still_requires_its_predeclared_event_evidence": true,
+    "if_evidence_is_not_specific_enough_return_NO_TEST": true
+  },
+  "required_hypothesis_schema": {
+    "hypothesis_id": "string",
+    "target_error": "string",
+    "observation": "string",
+    "causal_inputs": ["string"],
+    "expected_mechanism": "string",
+    "single_change": "string",
+    "expected_effect": "string",
+    "cost_risk": "string",
+    "invalidation_condition": "string",
+    "required_test": "string",
+    "factor_family": "microstructure|derivatives|cross_asset_macro|on_chain|news_event|attention_sentiment|cross_sectional|execution_risk|scenario_swarm",
+    "source_ids": ["string"],
+    "materially_new_evidence": true
+  },
+  "agent_instructions": "Find at most three materially new hypotheses and rank at most one for immediate testing. The unresolved target is robust after-cost and delayed reliability, especially the fold-1 failure, while H12 direction, MARKET execution, and 1x maximum baseline exposure remain fixed. Do not rescue H4, H6, or H7 with nearby thresholds/transforms/scales. Do not call lag_quote_volume or trading volume an L2 liquidity measure unless the hypothesis contains a selection-only validation step that first establishes the proxy's relationship to the intended reliability target. A hypothesis requiring unavailable L2 data should be rejected unless the auditor can state a specific minimal data acquisition and predeclared causal test whose expected information gain justifies it. If the supplied evidence cannot support one exact non-leaky single-change test, return NO_TEST."
+}

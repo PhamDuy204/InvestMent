@@ -1,0 +1,40 @@
+{
+  "corrections": [
+    {
+      "after": "Replay each outer fold independently, flatten at the end of every fold, and reset portfolio state before the next fold.",
+      "before": "Portfolio state was carried from one outer fold to the next.",
+      "issue": "portfolio_state_carried_across_outer_folds",
+      "reproducibility_contract": {
+        "expected_net_return": 0.5320169155591432,
+        "expected_trade_count": 10488,
+        "expected_turnover": 153.74384840389803,
+        "status": "MATCHES_V4"
+      }
+    },
+    {
+      "after": "Split the first 70% and last 30% chronologically inside every outer fold; fit each learned threshold or model only on that fold's selection partition; evaluate only on the same fold's tail.",
+      "before": "A single global chronological 70/30 split concentrated evaluation evidence in the final outer fold and could contaminate earlier-fold decisions with later-fold information if a global threshold were fit.",
+      "issue": "global_selection_evaluation_split_across_outer_folds",
+      "status": "CORRECTED"
+    }
+  ],
+  "corrected_baseline_evaluation": {
+    "max_drawdown": 0.06901020622840758,
+    "net_return": -0.03528644702102568,
+    "profit_factor": 0.9092003438570667,
+    "sharpe": -0.6998735460929627
+  },
+  "invalidated_trials": [
+    858,
+    859,
+    860,
+    861
+  ],
+  "replacement_trials": [
+    862,
+    863,
+    864,
+    865
+  ],
+  "status": "METHODOLOGY_CORRECTED"
+}
