@@ -7,7 +7,14 @@ import pandas as pd
 
 from crypto_research.multi_asset_v2 import purged_time_folds
 from crypto_research.multi_asset_v3 import cost_aware_cross_sectional_backtest
-from crypto_research.run_v3 import HORIZON, inner_split, run_nested_cost_aware, score_ridge, select_inner_trial, stateful_summary
+from crypto_research.run_v3 import (
+    HORIZON,
+    inner_split,
+    run_nested_cost_aware,
+    score_ridge,
+    select_inner_trial,
+    stateful_summary,
+)
 
 
 def v4_overlay_configs() -> list[dict[str, Any]]:
