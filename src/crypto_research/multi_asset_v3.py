@@ -22,20 +22,37 @@ def drift_futures_weights(weights: np.ndarray, returns: np.ndarray, *, net_retur
     return current * (1.0 + realized) / equity_factor
 
 
-def _project_exposure_caps(weights: np.ndarray, *, gross_cap: float, net_cap: float, single_cap: float) -> np.ndarray:
+def _project_exposure_caps(
+    weights: np.ndarray,
+    *,
+    gross_cap: float,
+    net_cap: float,
+    single_cap: float,
+) -> np.ndarray:
     if gross_cap <= 0 or net_cap < 0 or single_cap <= 0:
         raise ValueError("exposure caps must be positive, except net_cap may be zero")
     result = np.clip(np.asarray(weights, dtype=float), -single_cap, single_cap)
-    for _ in range(12):
-        gross = float(np.abs(result).sum())
-        if gross > gross_cap:
-            result *= gross_cap / gross
-        net = float(result.sum())
-        if abs(net) <= net_cap + 1e-12:
-            break
-        target_net = np.sign(net) * net_cap
-        result -= (net - target_net) / len(result)
-        result = np.clip(result, -single_cap, single_cap)
+    if result.size == 0:
+        return result
+
+    gross = float(np.abs(result).sum())
+    if gross > gross_cap:
+        result *= gross_cap / gross
+
+    net = float(result.sum())
+    if abs(net) > net_cap:
+        target_net = float(np.sign(net) * net_cap)
+        low = float(np.min(result) - single_cap - abs(net) - 1.0)
+        high = float(np.max(result) + single_cap + abs(net) + 1.0)
+        for _ in range(100):
+            shift = (low + high) / 2.0
+            candidate = np.clip(result - shift, -single_cap, single_cap)
+            if float(candidate.sum()) > target_net:
+                low = shift
+            else:
+                high = shift
+        result = np.clip(result - high, -single_cap, single_cap)
+
     gross = float(np.abs(result).sum())
     if gross > gross_cap:
         result *= gross_cap / gross
@@ -88,8 +105,11 @@ def _rolling_covariance(returns_wide, *, timestamp, symbols: list[str], lookback
 
 def cost_aware_cross_sectional_backtest(panel, *, score_col: str, horizon: int, round_trip_cost_bps: float, risk_aversion: float, movement_penalty: float, covariance_lookback: int = 24 * 30, gross_cap: float = 1.0, net_cap: float = 0.05, single_cap: float = 0.25, eligible_col: str = "in_universe", delay_bars: int = 0, covariance_history=None, uncertainty_quantile: float | None = None, uncertainty_window: int = 20, uncertainty_min_history: int = 10, uncertainty_safety_margin: float = 0.0, initial_residuals: dict[str, list[float]] | None = None, min_abs_weight_change: float = 0.0, adverse_funding_threshold: float | None = None):
     import json
+
     import pandas as pd
+
     from crypto_research.multi_asset_v2 import _portfolio_summary
+
     if horizon <= 0 or covariance_lookback < 0 or delay_bars < 0:
         raise ValueError("invalid horizon, covariance lookback, or delay")
     if min_abs_weight_change < 0:

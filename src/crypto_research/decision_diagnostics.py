@@ -156,3 +156,97 @@ def build_decision_log(periods: pd.DataFrame, *, round_trip_cost_bps: float) -> 
                 }
             )
     return pd.DataFrame(rows)
+
+V6_CAUSAL_COLUMNS = (
+    "decision_timestamp",
+    "symbol",
+    "effective_score",
+    "previous_weight",
+    "proposed_target_weight",
+    "decision",
+    "chosen_horizon",
+    "effective_leverage",
+    "execution_mode",
+    "burst_probability",
+    "vol_state",
+    "vn_session",
+    "flow_state",
+    "funding",
+    "trend_state",
+    "correlation_state",
+    "account_equity",
+    "drawdown",
+    "margin_buffer",
+)
+
+V6_LABEL_COLUMNS = (
+    "realized_return",
+    "oracle_direction",
+    "oracle_exit",
+    "WRONG_SIDE",
+    "FALSE_ENTER",
+    "MISSED_ENTER",
+    "PREMATURE_EXIT",
+    "LATE_EXIT",
+    "UNNECESSARY_REBALANCE",
+    "EXECUTION_MISS",
+    "SLIPPAGE_DAMAGE",
+    "LEVERAGE_DAMAGE",
+    "LIQUIDATION",
+)
+
+
+def enrich_v6_decision_log(
+    base_log: pd.DataFrame,
+    controller_rows: pd.DataFrame,
+    outcomes: pd.DataFrame | None = None,
+) -> pd.DataFrame:
+    keys = ["decision_timestamp", "symbol"]
+    for frame, name in ((base_log, "base_log"), (controller_rows, "controller_rows")):
+        missing = set(keys).difference(frame.columns)
+        if missing:
+            raise ValueError(f"{name} missing keys: {sorted(missing)}")
+    base = base_log.copy()
+    controller = controller_rows.copy()
+    for frame in (base, controller):
+        frame["decision_timestamp"] = pd.to_datetime(frame["decision_timestamp"], utc=True)
+    out = base.merge(controller, on=keys, how="left", suffixes=("", "_controller"), validate="one_to_one")
+
+    if outcomes is not None:
+        outcome = outcomes.copy()
+        missing = set(keys).difference(outcome.columns)
+        if missing:
+            raise ValueError(f"outcomes missing keys: {sorted(missing)}")
+        outcome["decision_timestamp"] = pd.to_datetime(outcome["decision_timestamp"], utc=True)
+        out = out.merge(outcome, on=keys, how="left", validate="one_to_one")
+
+    for label in ("WRONG_SIDE", "FALSE_ENTER", "MISSED_ENTER", "PREMATURE_EXIT", "LATE_EXIT", "UNNECESSARY_REBALANCE"):
+        out[label] = out.get("error_class", pd.Series("CORRECT", index=out.index)).eq(label)
+    for target, source in (
+        ("EXECUTION_MISS", "execution_miss"),
+        ("SLIPPAGE_DAMAGE", "slippage_damage"),
+        ("LEVERAGE_DAMAGE", "leverage_damage"),
+        ("LIQUIDATION", "liquidation"),
+    ):
+        out[target] = out[source].fillna(False).astype(bool) if source in out.columns else False
+    for label in ("realized_return", "oracle_direction", "oracle_exit"):
+        if label not in out.columns:
+            out[label] = np.nan
+    return out
+
+
+def summarize_v6_errors(frame: pd.DataFrame) -> dict[str, object]:
+    before = frame.get("error_class", pd.Series(dtype="object")).value_counts().to_dict()
+    after = frame.get("v6_error_class", frame.get("error_class", pd.Series(dtype="object"))).value_counts().to_dict()
+    groups: dict[str, object] = {}
+    for key in ("symbol", "vn_session", "vol_state"):
+        if key not in frame.columns:
+            continue
+        grouped: dict[str, object] = {}
+        for value, part in frame.groupby(key, dropna=False):
+            grouped[str(value)] = {
+                "before": part.get("error_class", pd.Series(dtype="object")).value_counts().to_dict(),
+                "after": part.get("v6_error_class", part.get("error_class", pd.Series(dtype="object"))).value_counts().to_dict(),
+            }
+        groups[key] = grouped
+    return {"before": before, "after": after, "groups": groups}

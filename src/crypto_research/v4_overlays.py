@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from crypto_research.multi_asset_v3 import PortfolioCaps, _project_exposure_caps
+from crypto_research.multi_asset_v3 import _project_exposure_caps
 
 
 def no_trade_band(
@@ -10,7 +10,9 @@ def no_trade_band(
     target: np.ndarray,
     *,
     min_abs_change: float,
-    caps: PortfolioCaps | None = None,
+    gross_cap: float = 1.0,
+    net_cap: float = 0.05,
+    single_cap: float = 0.25,
 ) -> np.ndarray:
     """Keep inherited weights when a proposed absolute weight change is too small."""
     if min_abs_change < 0:
@@ -22,7 +24,12 @@ def no_trade_band(
     if min_abs_change == 0:
         return target.copy()
     candidate = np.where(np.abs(target - previous) >= min_abs_change, target, previous)
-    return _project_exposure_caps(candidate, caps or PortfolioCaps())
+    return _project_exposure_caps(
+        candidate,
+        gross_cap=gross_cap,
+        net_cap=net_cap,
+        single_cap=single_cap,
+    )
 
 
 def funding_adjusted_prediction(
