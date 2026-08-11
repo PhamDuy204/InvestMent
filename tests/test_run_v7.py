@@ -4,10 +4,10 @@ import numpy as np
 import pandas as pd
 import pytest
 
+from crypto_research.attribution_v7 import attribute_candidate_errors
 from crypto_research.reliability_v7 import ReliabilityGateConfig
 from crypto_research.run_v6 import replay_weight_overlay
 from crypto_research.run_v7 import (
-    attribute_candidate_errors,
     replay_v7_reliability,
     run_v7_first_line,
     split_selection_evaluation,
