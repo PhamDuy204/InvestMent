@@ -29,7 +29,7 @@ jobs:
         with:
           name: v5-pytest-log
           path: pytest.log
-      - run: ruff check src tests scripts
+      - run: ruff check src tests scripts/build_v8_execution_panel.py scripts/run_v8_h8_execution_fragility.py
       - run: python -m compileall -q src tests scripts
 
   research-council:
