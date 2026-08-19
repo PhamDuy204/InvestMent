@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-08-19T12:30:47Z",
+  "status": "DATA_LIMITATION_NO_CORPUS_NO_TEST",
+  "pipeline_status": "IMPLEMENTED_AND_TESTED",
+  "causal_contract": "published_at/first_seen_at/available_at <= decision_time",
+  "implemented": [
+    "article normalization and content hashing",
+    "first-seen causal filtering",
+    "near-duplicate narrative clustering",
+    "structured LLM extraction schema validation",
+    "direct trade-instruction rejection"
+  ],
+  "current_corpus_rows": 0,
+  "llm_label_validation_rows": 0,
+  "performance_trial_status": "NO_TEST",
+  "reason": "No timestamp-provenanced public news corpus and no locally available GROQ_API_KEY were present in the execution environment; fabricating historical labels or consuming trial 870 would violate the V8 causal/data-coverage gates.",
+  "next_allowed_direction": "Collect first-seen public primary/secondary sources forward, validate label consistency on a small annotation sample, then propose at most one predeclared narrative-reliability hypothesis."
+}
