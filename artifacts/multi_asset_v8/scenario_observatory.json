@@ -1,0 +1,12 @@
+{
+  "current_locked_predictions": 0,
+  "generated_at": "2026-08-19T11:59:35.959817+00:00",
+  "historical_backtest_allowed": false,
+  "minimum_distinct_events_before_factor_consideration": 12,
+  "minimum_temporal_groups": 2,
+  "mirofish_reference_commit": "117ed37758cdc96f73b7d5e0d22713c50439695f",
+  "mirofish_repo": "666ghj/MiroFish",
+  "reason": "No configured MiroFish sidecar/LLM credential is available locally; no synthetic prediction was fabricated.",
+  "registry": "scenario_registry.jsonl",
+  "status": "SCENARIO_RESEARCH_ONLY_NOT_CONFIGURED"
+}
