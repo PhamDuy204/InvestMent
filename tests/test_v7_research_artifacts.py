@@ -3,7 +3,6 @@ from pathlib import Path
 
 import pandas as pd
 
-
 ART = Path("artifacts/multi_asset_v7")
 
 

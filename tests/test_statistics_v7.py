@@ -1,7 +1,11 @@
 import numpy as np
 import pandas as pd
 
-from crypto_research.statistics_v7 import approximate_dsr, block_bootstrap_equity, cscv_pbo
+from crypto_research.statistics_v7 import (
+    approximate_dsr,
+    block_bootstrap_equity,
+    cscv_pbo,
+)
 
 
 def test_block_bootstrap_is_reproducible():

@@ -1,0 +1,22 @@
+{
+  "candidate_feature_columns": [
+    "lag_rv12",
+    "log_impact_1h"
+  ],
+  "causal_feature_cutoff_fraction": 1.0,
+  "coverage_fraction": 1.0,
+  "duplicate_key_count": 0,
+  "inherited_trial_count": 868,
+  "outcome_only_columns": [
+    "delay_damage_per_unit"
+  ],
+  "research_only": true,
+  "rows": 14308,
+  "source_artifacts": [
+    "artifacts/multi_asset_v4/decision_log.csv.gz",
+    "artifacts/multi_asset_v7/delay_1h_decision_log.csv.gz",
+    "artifacts/multi_asset_v7/hourly_factor_panel.csv.gz",
+    "artifacts/multi_asset_v7/basis_factor_panel.csv.gz"
+  ],
+  "symbols": 21
+}

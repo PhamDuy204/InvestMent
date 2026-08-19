@@ -1,0 +1,35 @@
+{
+  "decisions": [
+    {
+      "commit": "117ed37758cdc96f73b7d5e0d22713c50439695f",
+      "decision": "REFERENCE_AND_EXTERNAL_FORWARD_SIDECAR_ONLY",
+      "license": "AGPL-3.0",
+      "project": "MiroFish",
+      "reason": "Active and relevant, but full-stack and copyleft; V7 already has an HTTP sidecar adapter, so V8 adds only an immutable forward registry and does not vendor/import the project.",
+      "repo": "666ghj/MiroFish"
+    },
+    {
+      "decision": "CONCEPT_REFERENCE_ONLY",
+      "license": "BSD-3-Clause",
+      "project": "ABIDES-JPMC",
+      "reason": "Useful discrete-event/latency concepts but archived and calibrated to NASDAQ-style markets with old dependencies; V8 observed-book simulator is smaller and Binance-specific.",
+      "repo": "jpmorganchase/abides-jpmc-public"
+    },
+    {
+      "decision": "ARCHITECTURAL_REFERENCE_ONLY",
+      "project": "TradingAgents",
+      "reason": "Specialized roles/debate/logging are useful, but existing V7 council already provides a smaller compatible pattern."
+    },
+    {
+      "decision": "DEFER_BENCHMARK",
+      "project": "FinGPT",
+      "reason": "Potential sentiment benchmark after a labeled validation sample exists; no incremental value has been demonstrated yet."
+    },
+    {
+      "decision": "CONCEPT_REFERENCE_ONLY",
+      "project": "Qlib",
+      "reason": "Existing fold/trial infrastructure already covers the needed workflow; wholesale migration would add dependency and methodology risk."
+    }
+  ],
+  "generated_at": "2026-08-19T11:59:35.959817+00:00"
+}

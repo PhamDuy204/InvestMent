@@ -6,13 +6,25 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from crypto_research.factor_observatory_v7 import FactorEvidence, admit_factor, write_factor_observatory
-from crypto_research.flow_v7 import build_flow_overlay_targets, fit_flow_control, flow_component
+from crypto_research.factor_observatory_v7 import (
+    FactorEvidence,
+    admit_factor,
+    write_factor_observatory,
+)
+from crypto_research.flow_v7 import (
+    build_flow_overlay_targets,
+    fit_flow_control,
+    flow_component,
+)
 from crypto_research.reliability_v7 import ReliabilityGateConfig
 from crypto_research.run_v3 import stateful_summary
-from crypto_research.run_v7 import _promotion_gate, _wrong_side_count, replay_v7_reliability, split_selection_evaluation
+from crypto_research.run_v7 import (
+    _promotion_gate,
+    _wrong_side_count,
+    replay_v7_reliability,
+    split_selection_evaluation,
+)
 from crypto_research.trials_v7 import V7TrialRegistry
-
 
 ART = Path("artifacts/multi_asset_v7")
 HYPOTHESIS = "H4_lagged_taker_buy"

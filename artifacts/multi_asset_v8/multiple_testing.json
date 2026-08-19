@@ -1,0 +1,13 @@
+{
+  "catalog_file": "trial_metrics_catalog.csv",
+  "catalog_trials": [862, 863, 864, 865, 866, 867, 868, 869],
+  "cpcv_status": "NOT_CLAIMED",
+  "dsr_status": "NOT_COMPUTED_INCOMPLETE_HISTORICAL_METRIC_DISTRIBUTION",
+  "generated_at": "2026-08-19T11:59:35.959817+00:00",
+  "methodology_invalidated_trials_retained": [858, 859, 860, 861],
+  "new_v8_trial_consumed_by_this_session": false,
+  "next_performance_trial": 870,
+  "pbo_status": "NOT_COMPUTED_NO_ALIGNED_COMPLETE_CANDIDATE_RETURN_MATRIX",
+  "performance_trial_count": 869,
+  "reason": "NO_TEST: fresh forward L2/positioning evidence has already been inspected, but V8 has no predeclared numeric forward-maturity threshold that can be invented retroactively to authorize trial 870. The fresh research council also approved no materially new eligible hypothesis. Continue prospective evidence collection and predeclare any future evaluation gate before using it; trial 870 remains unconsumed."
+}

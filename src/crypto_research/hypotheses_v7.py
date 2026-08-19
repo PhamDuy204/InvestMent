@@ -3,7 +3,10 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-from crypto_research.diagnostics_v7 import mechanism_fingerprint, reject_repeated_mechanism
+from crypto_research.diagnostics_v7 import (
+    mechanism_fingerprint,
+    reject_repeated_mechanism,
+)
 
 _ALLOWED_ACTIONS = (
     "veto_entry",

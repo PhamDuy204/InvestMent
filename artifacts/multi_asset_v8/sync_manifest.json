@@ -1,0 +1,31 @@
+{
+  "github_policy": {
+    "full_h8_result_represented_by_lightweight_rerun_guard_summary": true,
+    "full_h8_result_uploaded": false,
+    "raw_execution_panel_uploaded": false
+  },
+  "pc_full_artifacts": {
+    "artifacts/multi_asset_v8/agent_research_log.jsonl": {"bytes": 2365,"sha256": "be49f52a5b4a6c27b1f9e484693898af3014a52ee42c4e68857a321515ea5e0c"},
+    "artifacts/multi_asset_v8/execution_factor_panel.csv.gz": {"bytes": 2594692,"sha256": "dc5e834f89d59cc9547443b53b9923baeca31d4d7a89575cb07db89a1990e60c"},
+    "artifacts/multi_asset_v8/experiment_registry.csv": {"bytes": 28373,"sha256": "f54880052d413b5fdcaf18a1195f0c3c76bbbe819aac49b437c3af00806c241d"},
+    "artifacts/multi_asset_v8/failure_ledger.csv.gz": {"bytes": 4632,"sha256": "998aa9c22fc862ed164862e76487a0fdcbe2955630db67d04b140e81c443178d"},
+    "artifacts/multi_asset_v8/h8_execution_fragility_results.json": {"bytes": 18906,"sha256": "9194941c31198ec5081998876d4a256423a934bd34cd4753075eb589320696c0"},
+    "artifacts/multi_asset_v8/hypothesis_registry.jsonl": {"bytes": 4093,"sha256": "3605f442fe3320b223cdab3f0eb8325680fd673f458e495dd4da6948d6ba2eb5"}
+  },
+  "research_only": true,
+  "schema_version": "v8-sync-1",
+  "source_files": {
+    "artifacts/multi_asset_v8/do_not_repeat.json": {"bytes": 2193,"git_blob_sha1": "83eb70452e1142f83baa6e1e2c7a373d9169c772","sha256": "29333afd2f412e0c304b8f8fa2d42a1880b055992a2dfb7292781119548cc9c5"},
+    "artifacts/multi_asset_v8/execution_factor_panel_integrity.json": {"bytes": 583,"git_blob_sha1": "0c218a1dd7fed874eb76ef5acdf0d0b600a3684d","sha256": "e973080d45e17defd465bbf20307d782a4edaafeb1be3d09a0ef92392febb108"},
+    "artifacts/multi_asset_v8/factor_observatory.json": {"bytes": 2953,"git_blob_sha1": "b14039245760e4894b68410ab2d1994146636d1e","sha256": "dc66943a7a61489e29e6d3686ea3bd9e9ae9d66808a3117e218c639344365122"},
+    "docs/superpowers/plans/2026-08-19-v8-execution-fragility.md": {"bytes": 6384,"git_blob_sha1": "73f201a0adb5ff67ee6e3e6c5eae6502d34393fb","sha256": "4dee22af6790b78be0c5d549ca23b64fc64646b002f7ea7218391c829e94601d"},
+    "docs/superpowers/specs/2026-08-19-v8-execution-fragility-design.md": {"bytes": 3894,"git_blob_sha1": "4e7a7b06d04674c9cc208e49d0b54f006a473136","sha256": "c6c55bfe081017c39c768eda744345aa2ffa41d66f53a76ddfae34e64ccecb7c"},
+    "scripts/build_v8_execution_panel.py": {"bytes": 4032,"git_blob_sha1": "4e58ee19916be28e37803791843fe8c01434f08d","sha256": "860a94d40e25f01bfd522693242de5e8b25e93c5cff593a3f68c78d4493274fb"},
+    "scripts/run_v8_h8_execution_fragility.py": {"bytes": 19240,"git_blob_sha1": "6884f94b438e34c4186c7dd637a053952a524868","sha256": "f3bb87b699ed9e293b4df821687a1eb22c8bcf66c816ad3a23b0288046023888"},
+    "src/crypto_research/execution_v8.py": {"bytes": 6161,"git_blob_sha1": "22a1bf9b6e075c9dc76966d0b14d7aeda6b67a89","sha256": "c9667cde5b5c1dae23706ab0bbd9480fe2fdbe2c16148ee4a7cd9ad7c44546b9"},
+    "tests/test_build_v8_execution_panel.py": {"bytes": 2109,"git_blob_sha1": "4f1b0f5ea8591041057508e95e150582185d0358","sha256": "e90ce781b16f8ddf9baf29d3eea3be47aad13f5c74dfd8f280fc06fe94587da7"},
+    "tests/test_execution_v8.py": {"bytes": 3842,"git_blob_sha1": "9594398e700c408c6f92369c78da1d9d16b41e0a","sha256": "41a206b269963b7ab4585679690b8a62eb22b2de6cc3124338cef402c906c23a"},
+    "tests/test_h8_execution_fragility.py": {"bytes": 1821,"git_blob_sha1": "ce454c59e029a6611e2826a12f5ead6ef67f3f71","sha256": "2d73d41c0649c6c2dd635fe4efb7c84a112cd44b720add9bfa21f9a628d3b9f1"}
+  },
+  "trial_tail": 869
+}

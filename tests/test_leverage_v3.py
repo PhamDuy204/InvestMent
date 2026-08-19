@@ -4,7 +4,10 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from crypto_research.leverage_v3 import simulate_cross_margin_period, simulate_weight_schedule
+from crypto_research.leverage_v3 import (
+    simulate_cross_margin_period,
+    simulate_weight_schedule,
+)
 
 
 def test_exchange_leverage_changes_margin_capacity_not_position_pnl():

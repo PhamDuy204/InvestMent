@@ -8,7 +8,11 @@ import numpy as np
 import pandas as pd
 
 from crypto_research.decision_diagnostics import classify_error
-from crypto_research.multi_asset_v3 import drift_futures_weights, rebalance_cost, turnover
+from crypto_research.multi_asset_v3 import (
+    drift_futures_weights,
+    rebalance_cost,
+    turnover,
+)
 from crypto_research.reliability_v7 import (
     ReliabilityGateConfig,
     apply_reliability_gates,
@@ -445,6 +449,31 @@ def run_v7_first_line(
         _, delayed_eval = split_selection_evaluation(delayed, selection_fraction=selection_fraction)
 
     for stage, name, artifact_name, config in candidates:
+        if stage == "H1" and config.qh_abs_threshold is None:
+            selection_qh_coverage = float(selection["qh_order_imbalance"].notna().mean())
+            metrics = {
+                "selection_qh_coverage": selection_qh_coverage,
+                "failure": "insufficient_qh_selection_coverage",
+            }
+            registry.record(
+                stage,
+                name,
+                "REJECTED_PRECHECK_DATA_LIMITATION",
+                phase="first_line",
+                config=config.__dict__,
+                metrics=metrics,
+            )
+            payload = {
+                "name": name,
+                "status": "REJECTED_PRECHECK_DATA_LIMITATION",
+                "config": config.__dict__,
+                **metrics,
+                "promotion_failures": ["insufficient_qh_selection_coverage"],
+            }
+            _write_json(root / artifact_name, payload)
+            result_rows[name] = payload
+            continue
+
         _, sel_decisions, sel_metrics = replay_v7_reliability(
             selection,
             config,

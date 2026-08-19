@@ -1,0 +1,47 @@
+{
+  "artifact_scope": "github_lightweight_rerun_guard_summary",
+  "full_result_sha256": "9194941c31198ec5081998876d4a256423a934bd34cd4753075eb589320696c0",
+  "full_result_location": "PC research worktree only",
+  "hypothesis": "H8_lagged_impact_execution_fragility",
+  "trial_number": 869,
+  "status": "REJECTED_INNER",
+  "factor_admitted": false,
+  "fold_positive_count": 1,
+  "baseline_evaluation": {
+    "net_return": -0.03528644702102568,
+    "profit_factor": 0.9092003438570667,
+    "sharpe": -0.6998735460929627,
+    "max_drawdown": 0.06901020622840758,
+    "turnover": 50.510530534383214,
+    "trade_count": 3235
+  },
+  "candidate_evaluation": {
+    "net_return": -0.03577353348587953,
+    "profit_factor": 0.9076359499677258,
+    "sharpe": -0.7123084398364544,
+    "max_drawdown": 0.06887136114176681,
+    "turnover": 50.29205193338944,
+    "trade_count": 4367
+  },
+  "cost20_net_return": -0.059728071910489344,
+  "delay1h_net_return": -0.0404595144248554,
+  "scaled_fraction": 0.25728155339805825,
+  "baseline_delay_damage": 0.10986190597492673,
+  "candidate_delay_damage": 0.10848855316439364,
+  "delay_damage_delta_bps": -13.733528105330933,
+  "wrong_side_count_delta": 551,
+  "wrong_side_damage_delta_bps": -28.833716270439957,
+  "forecast_rmse_win_folds": 1,
+  "positive_impact_slope_folds": 3,
+  "promotion_failures": [
+    "execution_fragility_forecast_admission_failed",
+    "evaluation_net_not_improved",
+    "evaluation_net_not_positive",
+    "evaluation_sharpe_worse",
+    "insufficient_multi_fold_economic_support",
+    "negative_at_20bps",
+    "negative_with_1h_delay"
+  ],
+  "rerun_guard": true,
+  "research_only": true
+}

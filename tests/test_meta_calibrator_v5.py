@@ -1,6 +1,9 @@
 import numpy as np
 
-from crypto_research.meta_calibrator_v5 import META_FEATURES, calibrate_scores_from_probability
+from crypto_research.meta_calibrator_v5 import (
+    META_FEATURES,
+    calibrate_scores_from_probability,
+)
 
 
 def test_meta_features_exclude_future_labels():

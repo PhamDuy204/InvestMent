@@ -19,7 +19,7 @@ jobs:
         shell: bash
         run: |
           set +e
-          pytest -q 2>&1 | tee pytest.log
+          python -m pytest -q 2>&1 | tee pytest.log
           code=${PIPESTATUS[0]}
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
           exit "$code"
@@ -29,8 +29,8 @@ jobs:
         with:
           name: v5-pytest-log
           path: pytest.log
-      - run: ruff check src tests
-      - run: python -m compileall -q src tests
+      - run: ruff check src tests scripts/build_v8_execution_panel.py scripts/run_v8_h8_execution_fragility.py
+      - run: python -m compileall -q src tests scripts
 
   research-council:
     if: github.event_name == 'pull_request' && github.head_ref == 'v7-factor-observatory'
