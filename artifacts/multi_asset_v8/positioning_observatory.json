@@ -1,0 +1,37 @@
+{
+  "active_schema_version": "v8-positioning-2",
+  "causal_availability": "FORWARD_ONLY_RESPONSE_RECEIPT_FIRST_SEEN",
+  "cycles_completed_since_restart": 1,
+  "error_count_since_restart": 0,
+  "feature_families": [
+    "global_long_short_account_ratio",
+    "open_interest",
+    "premium_funding_rate",
+    "taker_buy_sell_ratio",
+    "top_long_short_account_ratio",
+    "top_long_short_position_ratio"
+  ],
+  "generated_at": "2026-08-19T13:09:42.529081+00:00",
+  "historical_backfill": "DATA_LIMITATION",
+  "interpretation_guard": "No bullish/bearish mapping is assumed from long-short ratios; crowding requires empirical interaction evidence.",
+  "next_performance_trial": 870,
+  "performance_trial_status": "NO_TEST_FORWARD_COVERAGE_NOT_MATURE",
+  "pid": 1590646,
+  "process_status": "RUNNING",
+  "rows_by_schema": {
+    "v8-positioning-1": 252,
+    "v8-positioning-2": 126
+  },
+  "rows_written_since_restart": 126,
+  "status": "FORWARD_ONLY",
+  "symbols_available_v2": 21,
+  "symbols_expected": 21,
+  "v1_causal_status": "SUPERSEDED_CAUSAL_INVALID_FOR_FEATURE_USE",
+  "v1_event_after_available_violations": 67,
+  "v1_rows_retained_for_audit_only": 252,
+  "v2_checksum_duplicates": 0,
+  "v2_event_after_available_violations": 0,
+  "v2_first_seen_at_max": "2026-08-19T13:04:52.204194+00:00",
+  "v2_first_seen_at_min": "2026-08-19T13:04:33.280827+00:00",
+  "v2_valid_forward_rows": 126
+}

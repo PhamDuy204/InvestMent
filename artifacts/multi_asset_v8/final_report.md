@@ -9,7 +9,7 @@ V8 remained research/backtest/simulation/shadow-paper only. No live Binance orde
 - Repository: `PhamDuy204/InvestMent`
 - V7 remote branch: `v7-factor-observatory`, PR #4, remote head observed during this audit: `9713d98b2472957bf8ee2bde107a18a3bacee5df`.
 - V8 branch: `v8-execution-liquidity-shadow`, PR #5.
-- Existing synchronized V8 remote head before this final artifact sync: `85feaece3d07e43acd9b0158f64730cd307a614f`.
+- Existing synchronized V8 remote head before this continuation sync: `6c2adc7ea7f8692920f0af127f620992443594b4`.
 - Local PC uses linked worktrees. Heavy raw/research data remains local; lightweight code/tests/manifests/artifacts are the GitHub synchronization surface.
 - V7 remote final research artifact and local registry agree on trial continuity through 868 and the corrected H12 baseline.
 - PR #4 prose contains stale CI wording relative to its later head: the current PR head's run #376 failed, while V8 PR #5 later root-fixed the CI invocation and run #398 passed.
@@ -150,13 +150,13 @@ Because there is no frozen candidate, any current shadow decision is **ENGINEERI
 
 Fresh PC verification after restoring the missing synchronized V7 council summary and Ruff-normalizing four inherited V7 script import blocks:
 
-- `.venv/bin/python -m pytest -q` -> **176 passed**
+- `.venv/bin/python -m pytest -q` -> **177 passed**
 - `.venv/bin/ruff check .` -> **All checks passed**
 - `.venv/bin/python -m compileall -q src scripts tests` -> exit 0
 - public L2 recorder health count increased during verification
 - static/live-order safety tests remain in the suite
 
-Existing GitHub V8 PR #5 head `85feaece...` had GitHub Actions run #398 complete successfully before these final lightweight report/observatory artifacts were added.
+GitHub V8 PR #5 head `6c2adc7...` had GitHub Actions run #402 complete successfully before this continuation sync.
 
 ## Readiness scorecard
 
@@ -169,3 +169,16 @@ There is **no final candidate**, **no freeze hash**, **no freeze timestamp**, an
 V8 materially improves research infrastructure and execution observability, but it has not found a robust admitted alpha/reliability factor. H8 is falsified under the predeclared mapping, forward L2/positioning data is immature, macro/news/scenario evidence is not historically causal enough for another performance trial, and no candidate can be frozen.
 
 **NEEDS_MORE_RESEARCH**
+
+
+## Continuation audit — 2026-08-19 causal recorder integrity
+
+A fresh PC audit found a causal timestamp defect in the original positioning recorder schema. In `v8-positioning-1`, one batch-level `first_seen_at` was captured before serial HTTP calls; **67/252** retained rows therefore had `event_time > available_at`. Those rows remain on disk for auditability but are now **superseded and excluded from causal feature use**.
+
+A regression test reproduced the defect before the fix. The recorder now stamps `first_seen_at` after each individual public HTTP response and writes schema **`v8-positioning-2`**. The first post-restart cycle produced **126 rows across 21 symbols and 6 feature families**, with **0** `event_time > available_at` violations and **0** duplicate checksums.
+
+The L2 forward recorder remains healthy and public-data-only. This audit inspected **14,940** current parquet+WAL rows across **21 symbols** with **0** duplicate checksums, **0** crossed books, **0** causal-ordering violations, and **0** depth-monotonicity violations.
+
+This integrity fix is engineering-only and consumes **no performance trial**. Performance count remains **869** and trial **870 remains unconsumed** because fresh L2/positioning coverage is still far below a defensible temporal evidence window. No H8 rescue or parameter search was run.
+
+`GROQ_API_KEY` and `FRED_API_KEY` are not present in the current MCP execution environment, so no Groq council rerun or ALFRED vintage ingestion is claimed in this continuation.
