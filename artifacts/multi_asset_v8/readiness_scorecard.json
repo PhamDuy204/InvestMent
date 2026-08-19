@@ -1,0 +1,40 @@
+{
+  "categories": {
+    "causal_integrity": 90,
+    "data_quality": 58,
+    "engineering_integrity": 78,
+    "execution_realism": 68,
+    "forward_evidence": 4,
+    "multiple_testing_integrity": 82,
+    "operational_observability": 76,
+    "signal_evidence": 8,
+    "stress_robustness": 12
+  },
+  "delta_vs_v7": {
+    "numeric_delta_available": false,
+    "qualitative": {
+      "causal_integrity": "improved with shared point-in-time contract and future-mutation tests",
+      "data_quality": "improved forward observability; historical coverage still limited",
+      "execution_realism": "improved materially: live public L2 recording + observed-book simulator",
+      "forward_evidence": "infrastructure started but no frozen A1 evidence",
+      "signal_evidence": "not improved; H8 rejected and no factor admitted"
+    },
+    "reason": "No compatible V7 readiness_scorecard exists; inventing a numeric V7 baseline would be misleading."
+  },
+  "formula": "simple arithmetic mean of the nine category scores; each category is evidence-gated and documented below",
+  "generated_at": "2026-08-19T11:59:35.959817+00:00",
+  "overall_score": 52.89,
+  "rationale": {
+    "causal_integrity": "First-seen/available-at contracts, future-mutation tests, forward-only positioning/scenario rules, and no backfill.",
+    "data_quality": "21-symbol L2 and positioning forward recorders have zero observed errors, but history is short and news/macro vintage coverage is incomplete.",
+    "engineering_integrity": "Remote V8 baseline CI was green and new targeted tests are green; final score remains below 90 until post-sync full CI is green.",
+    "execution_realism": "Observed top-20 book walking with partial fills/unmodeled tail exists, but forward calibration is young and impact beyond recorded depth is intentionally unmodeled.",
+    "forward_evidence": "No frozen candidate, no untouched A1; only infrastructure-level forward collection has begun.",
+    "multiple_testing_integrity": "Append-only trial continuity preserved and no rescue grid; DSR/PBO withheld because required historical matrices are incomplete.",
+    "operational_observability": "Persistent recorders expose PID/health/state/checksums and raw data is kept outside Git.",
+    "signal_evidence": "No V8 factor admitted; H8 trial 869 rejected; trial 870 intentionally not consumed.",
+    "stress_robustness": "Latest performance candidate fails both 20bps and +1h mandatory stresses."
+  },
+  "score_type": "HEURISTIC_READINESS_INDEX_NOT_PROBABILITY",
+  "verdict": "NEEDS_MORE_RESEARCH"
+}
