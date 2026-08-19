@@ -117,3 +117,67 @@ def test_gross_exposure_stats_aggregates_by_decision_timestamp() -> None:
     assert math.isclose(stats["mean_gross_exposure"], 0.3)
     assert math.isclose(stats["median_gross_exposure"], 0.3)
     assert math.isclose(stats["max_gross_exposure"], 0.5)
+
+
+def test_execution_simulator_walks_book_and_reports_unfilled_tail() -> None:
+    from crypto_research.execution_v8 import ExecutionSimulatorV8
+
+    simulator = ExecutionSimulatorV8(fee_bps=4.0)
+    book = {"bids": [[99.0, 2.0]], "asks": [[100.0, 1.0], [101.0, 1.0]]}
+
+    result = simulator.simulate_market_order(
+        target_notional=250.0,
+        side="buy",
+        book=book,
+        decision_mid=99.5,
+        latency_ms=250,
+    )
+
+    assert math.isclose(result.filled_notional, 201.0)
+    assert math.isclose(result.unfilled_notional, 49.0)
+    assert result.unmodeled_tail
+    assert result.depth_consumed_levels == 2
+    assert math.isclose(result.vwap, 100.5)
+    assert result.best_quote == 100.0
+    assert result.arrival_mid == 99.5
+    assert result.latency_ms == 250
+    assert result.total_cost_bps >= result.fee_bps
+
+
+def test_execution_simulator_partial_level_uses_quote_notional_without_infinite_depth() -> None:
+    from crypto_research.execution_v8 import ExecutionSimulatorV8
+
+    simulator = ExecutionSimulatorV8(fee_bps=0.0)
+    book = {"bids": [[99.0, 1.0]], "asks": [[101.0, 2.0]]}
+
+    buy = simulator.simulate_market_order(target_notional=50.5, side="buy", book=book)
+    sell = simulator.simulate_market_order(target_notional=49.5, side="sell", book=book)
+
+    assert math.isclose(buy.filled_notional, 50.5)
+    assert math.isclose(buy.filled_base_quantity, 0.5)
+    assert buy.unfilled_notional == 0.0
+    assert buy.depth_consumed_levels == 1
+    assert math.isclose(sell.filled_notional, 49.5)
+    assert math.isclose(sell.filled_base_quantity, 0.5)
+    assert sell.unfilled_notional == 0.0
+
+
+def test_execution_simulator_separates_latency_from_arrival_execution_cost() -> None:
+    from crypto_research.execution_v8 import ExecutionSimulatorV8
+
+    simulator = ExecutionSimulatorV8(fee_bps=2.0)
+    book = {"bids": [[100.0, 2.0]], "asks": [[102.0, 2.0]]}
+
+    result = simulator.simulate_market_order(
+        target_notional=102.0,
+        side="buy",
+        book=book,
+        decision_mid=100.0,
+        latency_ms=500,
+    )
+
+    assert math.isclose(result.arrival_mid, 101.0)
+    assert math.isclose(result.latency_cost_bps, 100.0)
+    assert math.isclose(result.spread_cost_bps, (1.0 / 101.0) * 10_000.0)
+    assert math.isclose(result.implementation_shortfall_bps, 200.0)
+    assert math.isclose(result.total_cost_bps, 202.0)
