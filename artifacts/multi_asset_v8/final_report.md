@@ -200,3 +200,26 @@ The lightweight V8 provenance set is now synchronized to GitHub, including the a
 At the last PC health checkpoint in this continuation, the public L2 recorder had reached **21,420 records across 1,020 cycles with 0 errors**. The corrected `v8-positioning-2` recorder remained alive with its first **126-row / 21-symbol / 6-family** clean cycle and **0 causal-ordering violations**. The older `v8-positioning-1` rows remain retained only for audit and are excluded from causal feature use.
 
 Research status is unchanged by synchronization work: performance trial count = **869**, trial **870 remains unconsumed**, admitted V8 factors = **0**, freeze = **none**, A1 = **not started**, stored heuristic readiness index = **52.89/100**, and verdict = **NEEDS_MORE_RESEARCH**.
+
+
+## Continuation verification — 2026-08-19 permission repair and no-test governance
+
+The reconciled PC worktree was synchronized from provenance anchor `fe06eef977ff505322a85001649848d13fb4f342` to remote V8 head `6b42e6df918fd92b47e23b87f3919a55c8e8630c` after root-causing a linked-worktree Git permission failure. The shared common Git directory `/home/duypham/workspace/InvestMent-v6-local/.git` and its object store were owned by `root:root`, which reproduced the `objects/pack/tmp_pack_XXXXXX: Permission denied` fetch failure under user `duypham`. Ownership of the shared `.git` metadata was changed to `duypham:duypham`; no worktree contents, Git objects, raw forward data, or historical branches were reset, pruned, or rewritten.
+
+Local verification after the repair and a Ruff-only normalization of four inherited V7 import blocks completed successfully:
+
+- `python -m pytest -q` -> **198 passed**;
+- `ruff check .` -> **All checks passed**;
+- `python -m compileall -q src scripts tests` -> exit 0;
+- focused V8 live-order/shadow safety suite -> **7 passed**;
+- secret-shaped literal scan over 148 tracked non-artifact source/config/document files -> **0 hits**.
+
+The pre-update GitHub baseline head `6b42e6df918fd92b47e23b87f3919a55c8e8630c` was independently verified on GitHub Actions run **#448** with conclusion **success**; its `test` job passed pytest, the CI Ruff scope, and compileall, while the research-council job was skipped as expected.
+
+A fresh forward-data integrity audit used mixed ISO timestamp parsing. The persisted L2 snapshot contained **32,760 rows**, **21 symbols**, and **1,560 rows per symbol** over approximately **196.46 minutes** of persisted coverage, with **0** missing sidecars, **0** bad file hashes, **0** timestamp parse failures, **0** `event_time > available_at`, **0** `captured_at > available_at`, **0** duplicate checksums, **0** crossed/locked books, and **0** depth-monotonicity violations. Spread p50/p99/max were approximately **1.291739 / 6.178560 / 6.263702 bps** and the largest observed per-symbol gap was approximately **12.925 s**. Recorder health remained `RUNNING` with **0 errors**.
+
+Positioning history remains explicitly split by schema. `v8-positioning-1` retains **252 rows / 21 symbols / 6 families** for audit only and still shows **67/252** `event_time > available_at` violations. Corrected `v8-positioning-2` contains **252 rows / 21 symbols / 6 families**, exactly **2 rows per symbol-family**, approximately **60.75 minutes** of coverage, **0** causal timestamp violations, **0** duplicate checksums, and **0** sidecar/hash failures. The public positioning recorder remained `RUNNING` with **0 errors**.
+
+The earlier report language that forward coverage was "far below a defensible temporal evidence window" must **not** be interpreted as a predeclared maturity gate. No explicit numeric forward-data maturity threshold existed before the current L2/positioning sample was inspected. Therefore no retrospective row/hour/day threshold is introduced here. The deterministic state is **`NO_TEST_FORWARD_COVERAGE_METHODOLOGY_GAP`** unless a genuinely new, independently justified and predeclared performance hypothesis becomes eligible prospectively.
+
+Research state is unchanged: experiment registry maximum trial = **869**, duplicate trial numbers = **0**, trial **870 count = 0**, `performance_trial_count = 869`, `next_performance_trial = 870`, admitted V8 factors = **0**, freeze = **none**, A1 = **NOT_STARTED**, readiness = **52.89/100** (`HEURISTIC_READINESS_INDEX_NOT_PROBABILITY`), and verdict = **NEEDS_MORE_RESEARCH**. No new hypothesis was admitted, no retrospective maturity threshold was invented, and no live trading action was performed.

@@ -8,7 +8,6 @@ from groq import Groq
 
 from crypto_research.groq_v7 import run_v7_research_council
 
-
 ROOT = Path("artifacts/multi_asset_v7")
 
 
