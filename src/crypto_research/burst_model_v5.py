@@ -70,7 +70,11 @@ def _score(models, frame: pd.DataFrame) -> pd.DataFrame:
 
 
 def _prediction_metrics(scored: pd.DataFrame) -> dict[str, float]:
-    from sklearn.metrics import average_precision_score, mean_absolute_error, roc_auc_score
+    from sklearn.metrics import (
+        average_precision_score,
+        mean_absolute_error,
+        roc_auc_score,
+    )
     y = scored["jackpot"].astype(int); score = scored["burst_score"]
     actual_return = scored["tradable_return_20m"]; predicted_return = scored["predicted_return_20m"]
     actual_sell = scored["future_taker_sell_share_5m"]; predicted_sell = scored["predicted_taker_sell_share_5m"]; current_sell = scored["taker_sell_share"]
