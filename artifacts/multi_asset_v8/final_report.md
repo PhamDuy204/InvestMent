@@ -182,3 +182,21 @@ The L2 forward recorder remains healthy and public-data-only. This audit inspect
 This integrity fix is engineering-only and consumes **no performance trial**. Performance count remains **869** and trial **870 remains unconsumed** because fresh L2/positioning coverage is still far below a defensible temporal evidence window. No H8 rescue or parameter search was run.
 
 `GROQ_API_KEY` and `FRED_API_KEY` are not present in the current MCP execution environment, so no Groq council rerun or ALFRED vintage ingestion is claimed in this continuation.
+
+## Final provenance sync verification — 2026-08-19
+
+The authenticated GitHub synchronization path was completed without force-pushing V7 or V8 history. The final provenance/data-artifact head verified before this report-only update was `6a9849774e95aedb159c59425ad499b74ff04264` on PR #5.
+
+GitHub Actions run **#442** on that head completed successfully in a clean Ubuntu 24.04 / Python 3.11 environment:
+
+- `python -m pytest -q` -> **198 passed**
+- `ruff check src tests scripts/build_v8_execution_panel.py scripts/run_v8_h8_execution_fragility.py` -> **All checks passed**
+- `python -m compileall -q src tests scripts` -> exit 0
+
+The previously observed intermediate CI failures were remote synchronization drift rather than research-economics failures: remote V8 initially lacked the already-tested local `ccxt`/`pyarrow` dependencies, `ExecutionSimulatorV8`, and several inherited Ruff-only import normalizations. Those gaps were root-fixed and verified by the clean run above; no test was disabled and no H8 result was changed.
+
+The lightweight V8 provenance set is now synchronized to GitHub, including the append-only experiment registry through trial 869, hypothesis/agent logs, failure ledger, factor/liquidity/positioning/macro/sentiment/scenario observatories, multiple-testing status, readiness scorecard, source/reuse audit, trial metric catalog, and final report. Raw forward parquet/WAL data remains PC-local by design.
+
+At the last PC health checkpoint in this continuation, the public L2 recorder had reached **21,420 records across 1,020 cycles with 0 errors**. The corrected `v8-positioning-2` recorder remained alive with its first **126-row / 21-symbol / 6-family** clean cycle and **0 causal-ordering violations**. The older `v8-positioning-1` rows remain retained only for audit and are excluded from causal feature use.
+
+Research status is unchanged by synchronization work: performance trial count = **869**, trial **870 remains unconsumed**, admitted V8 factors = **0**, freeze = **none**, A1 = **not started**, stored heuristic readiness index = **52.89/100**, and verdict = **NEEDS_MORE_RESEARCH**.
