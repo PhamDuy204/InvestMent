@@ -1,0 +1,41 @@
+{
+  "fingerprints": [
+    "09daea734168290a11864e1dea1fcb21deb695b9d661369a2784152a85b2201d",
+    "3520331e8f028a8a5e3f49c3592d077ea0fe1a40dc74e72b7ccdea861b1e3bc2",
+    "42fe1f477c78f9da5ce6d236b4dbffb28ca76e289bd6fdda118744488dd2ec96",
+    "4980a53fcf835d7e544f477de366bde77f0f6720c559765423d08aa8db8c6d30",
+    "5cb84b42edc8ff1a6eff047d7bc2710b071c5b5ffd797bef0204797f04245c2c",
+    "a6e958a90109ce92b6883a2c0397de57d3bf4bed204343e5a92dfd1c666ab65d",
+    "d8431bbf733011c594613496bd5cb86fc81d8541c3685b4bbdb6aa8a3d4afbf7"
+  ],
+  "mechanisms": [
+    {
+      "expected_mechanism": "absolute completed-bar perpetual basis improves forward RV12 forecasting and can drive no-boost inverse-vol sizing",
+      "fingerprint": "09daea734168290a11864e1dea1fcb21deb695b9d661369a2784152a85b2201d"
+    },
+    {
+      "expected_mechanism": "residualized lagged taker-buy activity after controlling recent return identifies unreliable H12 exposure increases",
+      "fingerprint": "3520331e8f028a8a5e3f49c3592d077ea0fe1a40dc74e72b7ccdea861b1e3bc2"
+    },
+    {
+      "expected_mechanism": "low absolute H12 score has non-positive after-cost incremental expectancy",
+      "fingerprint": "42fe1f477c78f9da5ce6d236b4dbffb28ca76e289bd6fdda118744488dd2ec96"
+    },
+    {
+      "expected_mechanism": "generic continuous lag-RV-only volatility targeting reduces H12 wrong-side economic damage while retaining after-cost economic edge",
+      "fingerprint": "4980a53fcf835d7e544f477de366bde77f0f6720c559765423d08aa8db8c6d30"
+    },
+    {
+      "expected_mechanism": "lagged price movement per quote-notional identifies fragile H12 exposure increases after controlling lagged RV",
+      "fingerprint": "5cb84b42edc8ff1a6eff047d7bc2710b071c5b5ffd797bef0204797f04245c2c"
+    },
+    {
+      "expected_mechanism": "completed quarter-hour order-flow conflict identifies unreliable H12 exposure increases",
+      "fingerprint": "a6e958a90109ce92b6883a2c0397de57d3bf4bed204343e5a92dfd1c666ab65d"
+    },
+    {
+      "expected_mechanism": "upper-tail cross-sectional dispersion makes H12 momentum direction less reliable",
+      "fingerprint": "d8431bbf733011c594613496bd5cb86fc81d8541c3685b4bbdb6aa8a3d4afbf7"
+    }
+  ]
+}
