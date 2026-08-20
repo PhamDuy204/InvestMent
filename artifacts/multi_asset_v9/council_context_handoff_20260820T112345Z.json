@@ -1,0 +1,50 @@
+{
+  "deterministic_admission": {
+    "allow_test": false,
+    "reasons": [
+      "no predeclared materially distinct V9 candidate",
+      "no mature prospective V9 performance outcomes",
+      "no V8 factor admitted to inherit"
+    ]
+  },
+  "execution": {
+    "live_order_path": false,
+    "observed_book_simulator": "ExecutionSimulatorV8",
+    "paper_broker": "SimulatedBroker",
+    "partial_and_unfilled_supported": true
+  },
+  "methodology_constraints": [
+    "Do not grid-search or rename H8",
+    "Trial 870 only for a materially distinct predeclared hypothesis",
+    "No candidate exists to freeze",
+    "Recorder engineering/integrity checks do not consume a performance trial",
+    "Pre-boundary L2/positioning is development/calibration only"
+  ],
+  "mirofish": {
+    "role": "SCENARIO_STRESS_ONLY_IF_CONFIGURED",
+    "status": "MIROFISH_NOT_CONFIGURED_EXTERNAL_DEPENDENCY"
+  },
+  "prospective_data_integrity": {
+    "l2_causal_violations": 0,
+    "l2_rows_now": 441,
+    "l2_symbols": 21,
+    "mature_performance_outcomes": 0,
+    "positioning_causal_violations": 0,
+    "positioning_rows_now": 126,
+    "positioning_symbols": 21
+  },
+  "v8_scientific_state": {
+    "a1_started": false,
+    "admitted_factors": 0,
+    "candidate_frozen": false,
+    "h8_status": "REJECTED_INNER",
+    "h8_trial": 869,
+    "readiness": "NEEDS_MORE_RESEARCH"
+  },
+  "v9_start": {
+    "max_trial": 869,
+    "next_trial": 870,
+    "prospective_start_utc": "2026-08-20T10:34:19Z",
+    "source_sha": "3eaf36efbcc8933bab173df521bb4a4c8897ab60"
+  }
+}

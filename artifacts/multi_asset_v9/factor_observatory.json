@@ -1,0 +1,8 @@
+{
+  "inherited_status": "EVALUATED",
+  "inherited_v8_sha256": "dc66943a7a61489e29e6d3686ea3bd9e9ae9d66808a3117e218c639344365122",
+  "new_v9_factors_admitted": 0,
+  "reason": "No legitimate V9 performance hypothesis has been admitted for testing.",
+  "schema_version": "v9-factor-observatory-1",
+  "status": "NO_NEW_FACTOR_ADMITTED"
+}
