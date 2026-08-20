@@ -1,0 +1,39 @@
+{
+  "V9_prospective_data_start_utc": "2026-08-20T10:34:19Z",
+  "code_sha": "3eaf36efbcc8933bab173df521bb4a4c8897ab60",
+  "data_schemas_accepted_for_v9": {
+    "l2": [
+      "v8-l2-snapshot-1"
+    ],
+    "positioning": [
+      "v8-positioning-2"
+    ],
+    "positioning_explicitly_excluded": [
+      "v8-positioning-1"
+    ]
+  },
+  "evidence_boundary_statement": "Data with eligibility before V9_prospective_data_start_utc is development/calibration evidence only. Only observations whose eligibility is established prospectively may become untouched V9 evidence.",
+  "inherited_artifact_sha256": {
+    "do_not_repeat.json": "29333afd2f412e0c304b8f8fa2d42a1880b055992a2dfb7292781119548cc9c5",
+    "experiment_registry.csv": "f54880052d413b5fdcaf18a1195f0c3c76bbbe819aac49b437c3af00806c241d",
+    "factor_observatory.json": "dc66943a7a61489e29e6d3686ea3bd9e9ae9d66808a3117e218c639344365122",
+    "final_report.md": "110d34c2a2cc9cb7bea3644228bece35c04f49519442bceaa88147e67f5c5081",
+    "hypothesis_registry.jsonl": "3605f442fe3320b223cdab3f0eb8325680fd673f458e495dd4da6948d6ba2eb5",
+    "liquidity_observatory.json": "f0cba0294c9175c9e352b588e337e2754eccaae1fe3c2e18e7e6e18f568938c5",
+    "multiple_testing.json": "774792ece8e254d537499de1403ae695d68377c2c4b382a3bdc654306acceff9",
+    "positioning_observatory.json": "afc5c8a3efb6b7a37ea89aaf4c15b49019d375cf31bbc107375c05e44a5ed688",
+    "readiness_scorecard.json": "64b9c54f0d798be41bb44a97ec13164f471e6fc87dd9ee4c2f75138a208a4203"
+  },
+  "inherited_candidate_state": "NONE",
+  "inherited_freeze_state": "NONE",
+  "live_trading_authorized": false,
+  "methodology_version": "v9-prospective-1",
+  "next_performance_trial": 870,
+  "retrospective_threshold_invented": false,
+  "schema_version": "v9-start-manifest-1",
+  "v8_registry_max_trial": 869,
+  "v8_source_sha": "3eaf36efbcc8933bab173df521bb4a4c8897ab60",
+  "v9_branch": "v9-paper-readiness",
+  "v9_started_at_utc": "2026-08-20T10:34:19Z",
+  "v9_worktree_path": "/home/duypham/workspace/InvestMent-v9-paper-readiness"
+}
