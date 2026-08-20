@@ -1,0 +1,76 @@
+{
+  "excluded_schema": "v8-positioning-1",
+  "historical_development": {
+    "cycles_completed": 3,
+    "duplicate_checksums": 0,
+    "error_count": 0,
+    "evidence_class": "DEVELOPMENT_CALIBRATION_PRE_V9_BOUNDARY",
+    "feature_families": 6,
+    "health_file_status": "RUNNING",
+    "parquet_files": 5,
+    "pid": 1590646,
+    "pid_alive": false,
+    "rows": 630,
+    "schemas": {
+      "v8-positioning-1": {
+        "available_after_decision": 0,
+        "causal_status": "AUDIT_ONLY",
+        "event_after_available": 67,
+        "feature_families": 6,
+        "first_seen_after_available": 0,
+        "rows": 252,
+        "symbols": 21
+      },
+      "v8-positioning-2": {
+        "available_after_decision": 0,
+        "causal_status": "DEVELOPMENT_CALIBRATION_PRE_V9_BOUNDARY",
+        "event_after_available": 0,
+        "feature_families": 6,
+        "first_seen_after_available": 0,
+        "rows": 378,
+        "symbols": 21
+      }
+    },
+    "sidecars_bad_hash": 0,
+    "sidecars_missing": 0,
+    "source_path": "/home/duypham/workspace/InvestMent-v8-local-data/public_positioning",
+    "symbols_available": 21,
+    "symbols_expected": 21,
+    "timestamp_parse_failures": 0
+  },
+  "performance_use": "NOT_YET_ELIGIBLE_NO_MATURE_OUTCOMES",
+  "prospective_v9": {
+    "available_at_parse_failures": 0,
+    "cycles_completed": 1,
+    "decision_time_parse_failures": 0,
+    "duplicate_checksums": 0,
+    "error_count": 0,
+    "event_time_parse_failures": 0,
+    "evidence_class": "PROSPECTIVE_V9_CAUSAL_INTEGRITY_ONLY",
+    "feature_families": 6,
+    "first_seen_at_parse_failures": 0,
+    "health_file_status": "RUNNING",
+    "parquet_files": 1,
+    "pid": 1404686,
+    "pid_alive": true,
+    "rows": 126,
+    "schemas": {
+      "v8-positioning-2": {
+        "available_after_decision": 0,
+        "causal_status": "FORWARD_ONLY",
+        "event_after_available": 0,
+        "feature_families": 6,
+        "first_seen_after_available": 0,
+        "rows": 126,
+        "symbols": 21
+      }
+    },
+    "sidecars_bad_hash": 0,
+    "sidecars_missing": 0,
+    "source_path": "/home/duypham/workspace/InvestMent-v9-local-data/public_positioning",
+    "symbols_available": 21,
+    "symbols_expected": 21,
+    "timestamp_parse_failures": 0
+  },
+  "schema_version": "v9-positioning-observatory-1"
+}
