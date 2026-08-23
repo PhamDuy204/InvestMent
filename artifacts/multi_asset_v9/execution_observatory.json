@@ -72,5 +72,32 @@
     "timestamp_parse_failures": 0,
     "wal_rows_pending": 924
   },
+  "restart_audit_2026_08_23": {
+    "audit_at_utc": "2026-08-23T13:12:03.781262+00:00",
+    "bad_pending_json": 0,
+    "captured_after_available": 0,
+    "crossed_or_locked_books": 0,
+    "depth_monotonicity_violations": 0,
+    "duplicate_checksums": 0,
+    "event_after_available": 0,
+    "evidence_class": "PROSPECTIVE_V9_CAUSAL_INTEGRITY_ONLY",
+    "first_clean_restart_cycle_verified": true,
+    "health_path": "/home/duypham/workspace/InvestMent-v9-local-data/public_l2/recorder_health.json",
+    "latest_capture_at": "2026-08-23T13:10:18.573430+00:00",
+    "parquet_files": 1029,
+    "pending_rows": 1169,
+    "performance_trial_consumed": false,
+    "pid": 2743466,
+    "raw_files_preserved": true,
+    "reason": "HOST_REBOOT_DISCONTINUITY",
+    "rows": 62909,
+    "session_cycles_completed": 38,
+    "session_error_count": 0,
+    "session_records_appended": 798,
+    "sidecars_bad_hash": 0,
+    "sidecars_missing": 0,
+    "symbols": 21,
+    "timestamp_parse_failures": 0
+  },
   "schema_version": "v9-execution-observatory-1"
 }

@@ -1,0 +1,43 @@
+{
+  "A1": "NOT_STARTED",
+  "blockers": [
+    "SCIENCE:NO_ADMITTED_V9_FACTOR",
+    "SCIENCE:TRIAL_870_NOT_AUTHORIZED_OR_CONSUMED",
+    "SCIENCE:QWEN_COUNCIL_NEED_MORE_EVIDENCE",
+    "FREEZE:NO_CANDIDATE_FREEZE"
+  ],
+  "candidate_frozen": false,
+  "candidate_hash": null,
+  "categories": {
+    "CAUSALITY": true,
+    "EXECUTION": true,
+    "FREEZE": false,
+    "OPERATIONAL": true,
+    "SAFETY": true,
+    "SCIENCE": false,
+    "SOURCE_OF_TRUTH": true
+  },
+  "evaluated_implementation_head": "7e0d003944b5a98d0b23239feaa2bc7f28adfa66",
+  "generated_at_utc": "2026-08-23T13:12:03.781262+00:00",
+  "live_authorization": "LIVE_NOT_AUTHORIZED",
+  "mirofish_status": "MIROFISH_NOT_CONFIGURED_EXTERNAL_DEPENDENCY",
+  "new_v9_factors_admitted": 0,
+  "next_performance_trial": 870,
+  "paper_validated": false,
+  "performance_trial_count": 869,
+  "prospective_start_utc": "2026-08-20T10:34:19Z",
+  "public_market_data_paper_smoke": "PASS_ENGINEERING_ONLY",
+  "qwen_council_effective_decision": "NEED_MORE_EVIDENCE",
+  "qwen_model": "qwen/qwen3.6-27b",
+  "readiness": "V9_NOT_READY_FOR_PAPER",
+  "recorder_restart_discontinuity": {
+    "counts_as_a1": false,
+    "l2_pid": 2743466,
+    "positioning_pid": 2750224,
+    "raw_files_preserved": true,
+    "reason": "HOST_REBOOT_DISCONTINUITY"
+  },
+  "schema_version": "v9-paper-readiness-1",
+  "trial_870_consumed": false,
+  "v8_source_sha": "3eaf36efbcc8933bab173df521bb4a4c8897ab60"
+}
