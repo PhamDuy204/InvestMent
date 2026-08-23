@@ -1,0 +1,20 @@
+{
+  "A1": "NOT_STARTED",
+  "candidate_frozen": false,
+  "checked_at_utc": "2026-08-23T13:27:12.514221+00:00",
+  "live_authorization": "LIVE_NOT_AUTHORIZED",
+  "local_v10_start_sha": "697b137d5b4cdc8367975271ba4e86dcbeae8d2c",
+  "origin_v9_sha": "697b137d5b4cdc8367975271ba4e86dcbeae8d2c",
+  "paper_validated": false,
+  "registry_sha256": "f54880052d413b5fdcaf18a1195f0c3c76bbbe819aac49b437c3af00806c241d",
+  "schema_version": "v10-source-reconciliation-1",
+  "source_sha_match": true,
+  "trial_870_consumed": false,
+  "trial_continuity": {
+    "max_trial": 869,
+    "next_trial": 870,
+    "next_trial_already_present": false,
+    "registry_rows": 12
+  },
+  "v9_expected_sha": "697b137d5b4cdc8367975271ba4e86dcbeae8d2c"
+}
