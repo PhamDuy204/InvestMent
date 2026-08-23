@@ -1,0 +1,72 @@
+{
+  "development_configuration_count": 0,
+  "development_gate": "NOT_REACHED_NO_DEFENSIBLE_SMALL_MECHANISM",
+  "failure_rank": {
+    "ALPHA_FAILURE": "DOMINANT",
+    "COST_FAILURE": "SECONDARY",
+    "REGIME_INSTABILITY": "SECONDARY",
+    "TIMING_FAILURE": "MINOR"
+  },
+  "gate_details": {
+    "20bps_not_materially_catastrophic": "NOT_TESTED",
+    "aggregate_development_net_above_baseline": "NOT_TESTED",
+    "clear_causal_availability": false,
+    "economically_expected_behavior": "NOT_TESTED",
+    "no_future_leakage": true,
+    "positive_net_improvement_two_temporal_development_folds": "NOT_TESTED",
+    "relevant_delay_not_materially_catastrophic": "NOT_TESTED",
+    "safety": "PASS"
+  },
+  "generated_at_utc": "2026-08-23T17:29:35.009168+00:00",
+  "live_authorization": "LIVE_NOT_AUTHORIZED",
+  "mechanisms_considered": [
+    {
+      "development_configuration_tried": false,
+      "mechanism": "cost/no-trade-band on small rebalances",
+      "reason": "Aggregate H12 is already negative at 0bps; execution cost is secondary, not dominant.",
+      "status": "NOT_SELECTED"
+    },
+    {
+      "development_configuration_tried": false,
+      "mechanism": "shorter execution horizon / timing policy",
+      "reason": "0m H12 already has negative aggregate pre-cost economics; +60m worsens results but is not the originating failure.",
+      "status": "NOT_SELECTED"
+    },
+    {
+      "development_configuration_tried": false,
+      "mechanism": "flat-trend incremental scaling around 0.5",
+      "reason": "Trial 870 already consumed this mechanism; retuning nearby scales is forbidden.",
+      "status": "DO_NOT_REPEAT"
+    },
+    {
+      "development_configuration_tried": false,
+      "mechanism": "volatility/dispersion de-risking",
+      "reason": "Overlaps rejected H2/H6/H7 families and cannot explain fold-1 LONG losses that persist in low/mid/high causal volatility states.",
+      "status": "DO_NOT_REPEAT_OR_INSUFFICIENT"
+    },
+    {
+      "development_configuration_tried": false,
+      "mechanism": "blanket LONG suppression",
+      "reason": "It would key off an observed temporal failure rather than a stable causal state and would damage folds 0/2 where pre-cost edge is positive.",
+      "status": "NOT_CAUSALLY_DEFENSIBLE"
+    },
+    {
+      "development_configuration_tried": false,
+      "mechanism": "materially new directional-core evidence/replacement",
+      "reason": "The current directional core is non-stationary; a new causal direction model is a new research problem, not a small V11 filter.",
+      "status": "NEXT_RESEARCH_DIRECTION_NOT_A_V11_CONFIG"
+    }
+  ],
+  "mirofish_status": "NOT_USED_ROOT_CAUSE_WAS_RESOLVED_BY_EXISTING_REPLAY_AND_CAUSAL_STATE_DIAGNOSTICS",
+  "performance_trial_count": 870,
+  "qwen_v11_status": "NOT_RUN_TRIAL_871_GATE_NOT_REACHED",
+  "reason_trial_871_not_authorized": [
+    "No materially distinct, small, causally defensible V11 mechanism survived P1-P5 diagnosis.",
+    "No complete post-boundary untouched H12 evaluation outcome can yet exist at V11 closeout."
+  ],
+  "root_cause": "ALPHA_FAILURE",
+  "schema_version": "v11-development-screen-1",
+  "selected_v11_mechanism": "NONE",
+  "trial_871_authorized": false,
+  "trial_871_consumed": false
+}
