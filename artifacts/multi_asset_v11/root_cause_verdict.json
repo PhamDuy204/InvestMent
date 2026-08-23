@@ -232,6 +232,12 @@
     "positive_pre_cost_temporal_folds": 2,
     "signal_decay_classification": "NO_MEANINGFUL_EDGE"
   },
+  "failure_rank": {
+    "ALPHA_FAILURE": "DOMINANT",
+    "COST_FAILURE": "SECONDARY",
+    "REGIME_INSTABILITY": "SECONDARY",
+    "TIMING_FAILURE": "MINOR"
+  },
   "live_authorization": "LIVE_NOT_AUTHORIZED",
   "p5_reason": "Fold-1 H12 LONG exposure loses across all observed causal trend/vol/activity/session states while the same directional side is useful in other folds; no single existing causal state safely identifies the temporal failure, and volatility/dispersion/flat-trend filters overlap prior rejected mechanisms.",
   "p5_selected_mechanism": "NONE",

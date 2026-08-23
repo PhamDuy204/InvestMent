@@ -565,6 +565,12 @@ def _root_cause_verdict(
         "schema_version": "v11-root-cause-verdict-1",
         "dominant_failure": dominant,
         "secondary_failures": secondary,
+        "failure_rank": {
+            "ALPHA_FAILURE": "DOMINANT" if dominant == "ALPHA_FAILURE" else ("SECONDARY" if "ALPHA_FAILURE" in secondary else "MINOR"),
+            "REGIME_INSTABILITY": "DOMINANT" if dominant == "REGIME_INSTABILITY" else ("SECONDARY" if "REGIME_INSTABILITY" in secondary else "MINOR"),
+            "COST_FAILURE": "DOMINANT" if dominant == "COST_FAILURE" else ("SECONDARY" if "COST_FAILURE" in secondary else "MINOR"),
+            "TIMING_FAILURE": "DOMINANT" if dominant == "TIMING_FAILURE" else ("SECONDARY" if "TIMING_FAILURE" in secondary else "MINOR"),
+        },
         "evidence": {
             "aggregate_h12_net_0bps": net0,
             "aggregate_h12_net_10bps": net10,
