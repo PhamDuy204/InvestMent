@@ -1,0 +1,49 @@
+{
+  "causal_inputs": [
+    "trend_state",
+    "H12 target_weight/current portfolio weight"
+  ],
+  "checks": {
+    "local_remote_sha_equal": true,
+    "locked_candidate_code_exists": true,
+    "locked_evaluator_exists": true,
+    "trend_state_coverage_ge_70pct": true,
+    "trend_state_is_declared_causal": true,
+    "trial_access_marker_absent": true,
+    "trial_continuity_869_to_870": true,
+    "trial_result_absent": true,
+    "v10_registry_absent_before_trial": true
+  },
+  "code_commit_sha": "7e16723291d826b7fa9d06dec5dcc36a76b5946a",
+  "code_config_hash": "0369cd21a7523ebe0053344f395839fd1827e07b2e427e129bcf8da8ee6d63fe",
+  "data_sha256": {
+    "delay": "79912b5bb57c7d655b506222e50ebf0b47880b4443f67a1cff0546abc83d452e",
+    "panel": "dc5e834f89d59cc9547443b53b9923baeca31d4d7a89575cb07db89a1990e60c"
+  },
+  "distinct_from_prior": "flat-state trigger is not V6 sign-conflict, H2 dispersion, H3 weak score, H4 flow, H6/H7 volatility, or H8 execution fragility",
+  "evaluation_rule": "one access to chronological 30% held-out partition per outer fold; primary 10bps; mandatory 20bps and +1h stresses; no retuning after access",
+  "exact_change": "scale only new/increased H12 exposure by 0.5 when trend_state == flat; reductions/exits unchanged; never reverse H12 direction",
+  "held_out_candidate_metrics_inspected": false,
+  "hypothesis_id": "V10_H1_flat_trend_incremental_reliability",
+  "live_authorization": "LIVE_NOT_AUTHORIZED",
+  "mandatory_promotion_rules": [
+    "candidate evaluation net > baseline",
+    "candidate evaluation net > 0",
+    "candidate Sharpe > baseline",
+    "max drawdown <= baseline + 0.01",
+    "wrong-side economic damage reduced",
+    ">=2/3 folds improve net",
+    "20bps net >=0",
+    "+1h delay net >=0"
+  ],
+  "outcome_only_fields": [
+    "holding_return_label",
+    "funding_sum_label",
+    "oracle/error labels used only after evaluation access"
+  ],
+  "parameter_selection_rule": "selection-only bounded scales {0,0.5,0.75}; maximize positive-delta folds, require each selection fold positive at 20bps and +1h delay, then maximize mean selection net delta; selected 0.5",
+  "schema_version": "v10-methodology-audit-1",
+  "timestamp_utc": "2026-08-23T13:38:53.219540+00:00",
+  "trial_number": 870,
+  "verdict": "PASS"
+}
