@@ -1,0 +1,71 @@
+{
+  "A1": "NOT_STARTED",
+  "PAPER_VALIDATED": false,
+  "admitted_candidate": "NONE",
+  "branch": "v11-root-cause-paper-readiness",
+  "candidate_hash": null,
+  "evidence_inventory": {
+    "delay_1h_decision_log": {
+      "classification": "OBSERVED_V10_HELDOUT",
+      "eligibility": "NOT_ELIGIBLE_FOR_V11_FINAL_VALIDATION",
+      "path": "/home/duypham/workspace/InvestMent-v6-local/.worktrees/v8-execution-liquidity-shadow/artifacts/multi_asset_v7/delay_1h_decision_log.csv.gz",
+      "reason": "Used in inherited/V10 delay evaluation and therefore observed."
+    },
+    "execution_factor_panel": {
+      "classification": "OBSERVED_V10_HELDOUT",
+      "eligibility": "NOT_ELIGIBLE_FOR_V11_FINAL_VALIDATION",
+      "path": "/home/duypham/workspace/InvestMent-v8-local-data/multi_asset_v8/execution_factor_panel.csv.gz",
+      "reason": "Selection and held-out partitions through trial 870 are now observed and may be used only for diagnosis/development."
+    },
+    "other_pre_boundary_local_research_data": {
+      "classification": "NOT_ELIGIBLE",
+      "eligibility": "NOT_ELIGIBLE_UNLESS_PRIOR_UNTOUCHED_PROVENANCE_IS_EXPLICITLY_PROVEN",
+      "reason": "No pre-boundary dataset is relabeled untouched merely because it was not mentioned in a summary."
+    },
+    "post_boundary_public_data": {
+      "classification": "UNTOUCHED_ELIGIBLE",
+      "design_rule": "Do not inspect post-boundary strategy outcomes while designing a V11 mechanism.",
+      "eligibility": "CONDITIONAL_ON_CAUSAL_RECONSTRUCTION_AND_SUFFICIENT_MATURITY",
+      "paths": [
+        "/home/duypham/workspace/InvestMent-v9-local-data/public_l2",
+        "/home/duypham/workspace/InvestMent-v9-local-data/public_positioning"
+      ],
+      "start_utc_exclusive": "2026-08-23T17:16:03.853710+00:00"
+    },
+    "public_l2_pre_boundary": {
+      "classification": "OBSERVED_PROSPECTIVE",
+      "cutoff_utc": "2026-08-23T17:16:03.853710+00:00",
+      "eligibility": "NOT_ELIGIBLE_PRE_BOUNDARY",
+      "path": "/home/duypham/workspace/InvestMent-v9-local-data/public_l2",
+      "reason": "All rows timestamped before the V11 boundary are conservatively excluded from final V11 validation."
+    },
+    "public_positioning_pre_boundary": {
+      "classification": "OBSERVED_PROSPECTIVE",
+      "cutoff_utc": "2026-08-23T17:16:03.853710+00:00",
+      "eligibility": "NOT_ELIGIBLE_PRE_BOUNDARY",
+      "path": "/home/duypham/workspace/InvestMent-v9-local-data/public_positioning",
+      "reason": "All rows timestamped before the V11 boundary are conservatively excluded from final V11 validation."
+    }
+  },
+  "final_v10_source_sha": "bbed86901b01acf66698cd988c17945573ed984d",
+  "inherited_artifact_sha256": {
+    "artifacts/multi_asset_v10/do_not_repeat.json": "a32131155f95f0015ecd8e5ba4989e2ce34b885f1d89a2408e5cf733006795f4",
+    "artifacts/multi_asset_v10/experiment_registry.csv": "cf755c0c80012899f9246ae3b866c5af5f867df1332d1c1793e54ec589311dae",
+    "artifacts/multi_asset_v10/final_report.md": "c5188611383347a763e191a3bbd4bfa21b0379e499bad7f5861b996d6512a994",
+    "artifacts/multi_asset_v10/h1_flat_trend_results.json": "69c50e88041a04a49064c821055afc932252ca0113851bad83f25920270c2430",
+    "artifacts/multi_asset_v10/paper_readiness.json": "01e6d3b6de71c6c7f3cb5e115321df7fe417d6cd0718fb3e6904deb9ded5258e",
+    "artifacts/multi_asset_v10/source_reconciliation.json": "e8eeee481692a1449ce51f3864ef9da0c98830e32b7979969d96111df14a8456"
+  },
+  "inherited_max_performance_trial": 870,
+  "live_authorization": "LIVE_NOT_AUTHORIZED",
+  "next_numerical_performance_trial": 871,
+  "prospective_boundary": {
+    "currently_proven_complete_untouched_evaluation_dataset": false,
+    "rule": "Post-boundary data reserved for final validation must not be inspected during candidate design.",
+    "timestamp_utc": "2026-08-23T17:16:03.853710+00:00"
+  },
+  "schema_version": "v11-start-manifest-1",
+  "trial_871_authorized": false,
+  "trial_871_consumed": false,
+  "v11_start_utc": "2026-08-23T17:16:03.853710+00:00"
+}
