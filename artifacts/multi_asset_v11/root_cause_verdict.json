@@ -1,0 +1,251 @@
+{
+  "authorization_note": "P1-P4 diagnosis never authorizes performance access by itself; development gate, fixed candidate, methodology audit, council, and proven untouched evaluation evidence are still required.",
+  "competing_explanation": "Execution cost and timing can worsen economics, but they are not the primary explanation when aggregate held-out H12 is already non-positive at 0bps.",
+  "dominant_failure": "ALPHA_FAILURE",
+  "evidence": {
+    "aggregate_gross_holding_return_sum": -0.007414934437974814,
+    "aggregate_h12_net_0bps": -0.010609462856901786,
+    "aggregate_h12_net_10bps": -0.03528644702102568,
+    "aggregate_h12_net_20bps": -0.05935734629088296,
+    "delay_60m_minus_0m_net_0bps": -0.004897672628786376,
+    "fold1_long_failure_broadness": {
+      "activity_state": {
+        "all_long_states_negative_gross": true,
+        "negative_gross_states": 3,
+        "states": 3
+      },
+      "global_session": {
+        "all_long_states_negative_gross": true,
+        "negative_gross_states": 2,
+        "states": 2
+      },
+      "trend_state": {
+        "all_long_states_negative_gross": true,
+        "negative_gross_states": 3,
+        "states": 3
+      },
+      "vol_state": {
+        "all_long_states_negative_gross": true,
+        "negative_gross_states": 3,
+        "states": 3
+      }
+    },
+    "fold1_net_0bps": -0.050265741355275284,
+    "fold1_net_10bps": -0.05640285075015172,
+    "fold1_selection_net_0bps": 0.16354102867131948,
+    "fold1_worst_regime_contrasts": [
+      {
+        "dimension": "action_type",
+        "fold1_gross_per_row": -0.0023979293528731374,
+        "fold1_gross_sum": -0.004795858705746275,
+        "fold1_minus_others_gross_per_row": -0.002922001496202524,
+        "fold1_minus_others_net_per_row": -0.0028970207328846503,
+        "fold1_net_per_row": -0.002389391458791083,
+        "fold1_net_sum": -0.004778782917582166,
+        "fold1_rows": 2,
+        "other_fold_net_signs": [
+          1,
+          1
+        ],
+        "other_folds_mean_gross_per_row": 0.0005240721433293867,
+        "other_folds_mean_net_per_row": 0.0005076292740935672,
+        "regime": {
+          "action_type": "ENTER"
+        }
+      },
+      {
+        "dimension": "funding_state",
+        "fold1_gross_per_row": -0.0001472454062461902,
+        "fold1_gross_sum": -0.008540233562279032,
+        "fold1_minus_others_gross_per_row": -0.00033215167745608487,
+        "fold1_minus_others_net_per_row": -0.00032830511526697954,
+        "fold1_net_per_row": -0.00015281456124855,
+        "fold1_net_sum": -0.0088632445524159,
+        "fold1_rows": 58,
+        "other_fold_net_signs": [
+          1,
+          1
+        ],
+        "other_folds_mean_gross_per_row": 0.00018490627120989464,
+        "other_folds_mean_net_per_row": 0.00017549055401842954,
+        "regime": {
+          "funding_state": "negative"
+        }
+      },
+      {
+        "dimension": "side_x_trend_state",
+        "fold1_gross_per_row": -0.00024318168530676278,
+        "fold1_gross_sum": -0.04839315537604579,
+        "fold1_minus_others_gross_per_row": -0.00028071129027627557,
+        "fold1_minus_others_net_per_row": -0.0002747578217301202,
+        "fold1_net_per_row": -0.0002494370782309773,
+        "fold1_net_sum": -0.04963797856796448,
+        "fold1_rows": 199,
+        "other_fold_net_signs": [
+          1,
+          1
+        ],
+        "other_folds_mean_gross_per_row": 3.7529604969512805e-05,
+        "other_folds_mean_net_per_row": 2.532074349914289e-05,
+        "regime": {
+          "side": "LONG",
+          "trend_state": "up"
+        }
+      },
+      {
+        "dimension": "side_x_trend_state",
+        "fold1_gross_per_row": -0.00014331961814930514,
+        "fold1_gross_sum": -0.025797531266874923,
+        "fold1_minus_others_gross_per_row": -0.00019079876477811356,
+        "fold1_minus_others_net_per_row": -0.0001866657689804013,
+        "fold1_net_per_row": -0.00014741984954494972,
+        "fold1_net_sum": -0.026535572918090947,
+        "fold1_rows": 180,
+        "other_fold_net_signs": [
+          1,
+          1
+        ],
+        "other_folds_mean_gross_per_row": 4.747914662880841e-05,
+        "other_folds_mean_net_per_row": 3.924591943545159e-05,
+        "regime": {
+          "side": "LONG",
+          "trend_state": "flat"
+        }
+      },
+      {
+        "dimension": "side",
+        "fold1_gross_per_row": -0.00014657544635030012,
+        "fold1_gross_sum": -0.10392199146236278,
+        "fold1_minus_others_gross_per_row": -0.00017950946974275165,
+        "fold1_minus_others_net_per_row": -0.00017454556694216253,
+        "fold1_net_per_row": -0.0001513114162413734,
+        "fold1_net_sum": -0.10727979411513375,
+        "fold1_rows": 709,
+        "other_fold_net_signs": [
+          1,
+          1
+        ],
+        "other_folds_mean_gross_per_row": 3.293402339245153e-05,
+        "other_folds_mean_net_per_row": 2.3234150700789126e-05,
+        "regime": {
+          "side": "LONG"
+        }
+      },
+      {
+        "dimension": "side_x_trend_state",
+        "fold1_gross_per_row": -9.009486308921838e-05,
+        "fold1_gross_sum": -0.029731304819442063,
+        "fold1_minus_others_gross_per_row": -0.00010516380872036191,
+        "fold1_minus_others_net_per_row": -0.00010180813615229331,
+        "fold1_net_per_row": -9.426134130023734e-05,
+        "fold1_net_sum": -0.031106242629078323,
+        "fold1_rows": 330,
+        "other_fold_net_signs": [
+          1,
+          -1
+        ],
+        "other_folds_mean_gross_per_row": 1.506894563114354e-05,
+        "other_folds_mean_net_per_row": 7.546794852055972e-06,
+        "regime": {
+          "side": "LONG",
+          "trend_state": "down"
+        }
+      },
+      {
+        "dimension": "trend_state",
+        "fold1_gross_per_row": -4.322486014551377e-05,
+        "fold1_gross_sum": -0.014566777869038141,
+        "fold1_minus_others_gross_per_row": -0.00010391798492065328,
+        "fold1_minus_others_net_per_row": -0.0001029119494277397,
+        "fold1_net_per_row": -4.701720413127003e-05,
+        "fold1_net_sum": -0.015844797792237998,
+        "fold1_rows": 337,
+        "other_fold_net_signs": [
+          1,
+          1
+        ],
+        "other_folds_mean_gross_per_row": 6.0693124775139504e-05,
+        "other_folds_mean_net_per_row": 5.589474529646967e-05,
+        "regime": {
+          "trend_state": "flat"
+        }
+      },
+      {
+        "dimension": "vol_state",
+        "fold1_gross_per_row": -9.802074716604059e-05,
+        "fold1_gross_sum": -0.04381527398322014,
+        "fold1_minus_others_gross_per_row": -9.537478780556808e-05,
+        "fold1_minus_others_net_per_row": -9.209701946641811e-05,
+        "fold1_net_per_row": -0.00010379619544014797,
+        "fold1_net_sum": -0.046396899361746145,
+        "fold1_rows": 447,
+        "other_fold_net_signs": [
+          -1,
+          -1
+        ],
+        "other_folds_mean_gross_per_row": -2.6459593604725115e-06,
+        "other_folds_mean_net_per_row": -1.169917597372986e-05,
+        "regime": {
+          "vol_state": "high"
+        }
+      },
+      {
+        "dimension": "trend_state",
+        "fold1_gross_per_row": -0.00012241846443568894,
+        "fold1_gross_sum": -0.04394822873241233,
+        "fold1_minus_others_gross_per_row": -8.789205976063502e-05,
+        "fold1_minus_others_net_per_row": -8.453561444655568e-05,
+        "fold1_net_per_row": -0.00012734221081479253,
+        "fold1_net_sum": -0.045715853682510514,
+        "fold1_rows": 359,
+        "other_fold_net_signs": [
+          1,
+          -1
+        ],
+        "other_folds_mean_gross_per_row": -3.4526404675053925e-05,
+        "other_folds_mean_net_per_row": -4.280659636823685e-05,
+        "regime": {
+          "trend_state": "up"
+        }
+      },
+      {
+        "dimension": "action_type",
+        "fold1_gross_per_row": -6.682703241506715e-05,
+        "fold1_gross_sum": -0.04724671191745247,
+        "fold1_minus_others_gross_per_row": -7.596513991630556e-05,
+        "fold1_minus_others_net_per_row": -7.481562750768764e-05,
+        "fold1_net_per_row": -7.283035226151578e-05,
+        "fold1_net_sum": -0.05149105904889166,
+        "fold1_rows": 707,
+        "other_fold_net_signs": [
+          -1,
+          1
+        ],
+        "other_folds_mean_gross_per_row": 9.13810750123841e-06,
+        "other_folds_mean_net_per_row": 1.985275246171862e-06,
+        "regime": {
+          "action_type": "REBALANCE"
+        }
+      }
+    ],
+    "fold_count": 3,
+    "positive_pre_cost_temporal_folds": 2,
+    "signal_decay_classification": "NO_MEANINGFUL_EDGE"
+  },
+  "live_authorization": "LIVE_NOT_AUTHORIZED",
+  "p5_reason": "Fold-1 H12 LONG exposure loses across all observed causal trend/vol/activity/session states while the same directional side is useful in other folds; no single existing causal state safely identifies the temporal failure, and volatility/dispersion/flat-trend filters overlap prior rejected mechanisms.",
+  "p5_selected_mechanism": "NONE",
+  "performance_trial_count_after_diagnostic": 870,
+  "ruled_out": [
+    "Pure cost-only failure",
+    "Trial-870 flat-trend scale rescue; trial 870 is observed and must not be retuned"
+  ],
+  "schema_version": "v11-root-cause-verdict-1",
+  "secondary_failures": [
+    "REGIME_INSTABILITY",
+    "COST_FAILURE"
+  ],
+  "shortest_reasonable_next_intervention": "Do not add another H12 filter. The directional core needs materially new causal evidence/replacement before another performance trial.",
+  "trial_871_authorized_by_this_verdict": false,
+  "trial_871_consumed": false
+}
