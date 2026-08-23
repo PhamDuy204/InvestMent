@@ -14,6 +14,7 @@ class ReliabilityGateConfig:
     weak_score_threshold: float | None
     weak_score_veto_enabled: bool
     high_dispersion_scale: float = 0.5
+    flat_trend_scale: float | None = None
 
     def __post_init__(self) -> None:
         for value, name in (
@@ -25,6 +26,11 @@ class ReliabilityGateConfig:
                 raise ValueError(f"{name} must be finite and non-negative")
         if not 0.0 <= float(self.high_dispersion_scale) <= 1.0:
             raise ValueError("high_dispersion_scale must be in [0, 1]")
+        if self.flat_trend_scale is not None and (
+            not np.isfinite(float(self.flat_trend_scale))
+            or not 0.0 <= float(self.flat_trend_scale) <= 1.0
+        ):
+            raise ValueError("flat_trend_scale must be finite and in [0, 1]")
 
 
 def _finite_quantile(series: pd.Series, quantile: float) -> float | None:
@@ -159,6 +165,16 @@ def apply_reliability_gates(
     ):
         target = _veto_increase(previous, target)
         h3_veto = True
+
+    trend_state = str(
+        row.get("trend_state", "") if hasattr(row, "get") else getattr(row, "trend_state", "")
+    )
+    if (
+        config.flat_trend_scale is not None
+        and trend_state == "flat"
+        and _is_increase(previous, target)
+    ):
+        target = _scale_increase(previous, target, float(config.flat_trend_scale))
 
     if base_sign and np.sign(target) not in (0.0, base_sign) and not (
         previous * base_target_weight < 0 and target == previous
