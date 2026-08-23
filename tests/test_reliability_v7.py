@@ -88,3 +88,19 @@ def test_fit_isolation_ignores_evaluation_mutation():
     evaluation.loc[:, "realized_net_contribution"] = 999.0
     after = fit_reliability_gates(train)
     assert before == after
+
+
+def test_flat_trend_scale_applies_only_to_increased_exposure() -> None:
+    config = ReliabilityGateConfig(
+        None,
+        None,
+        None,
+        False,
+        flat_trend_scale=0.5,
+    )
+    flat = {"trend_state": "flat", "effective_score": 0.02}
+    trending = {"trend_state": "up", "effective_score": 0.02}
+
+    assert apply_reliability_gates(flat, 0.2, 0.4, config)["target_weight"] == pytest.approx(0.3)
+    assert apply_reliability_gates(flat, 0.4, 0.2, config)["target_weight"] == pytest.approx(0.2)
+    assert apply_reliability_gates(trending, 0.2, 0.4, config)["target_weight"] == pytest.approx(0.4)

@@ -1,0 +1,93 @@
+{
+  "inherited_a1": "NOT_STARTED",
+  "inherited_artifact_sha256": {
+    "artifacts/multi_asset_v8/do_not_repeat.json": "29333afd2f412e0c304b8f8fa2d42a1880b055992a2dfb7292781119548cc9c5",
+    "artifacts/multi_asset_v8/experiment_registry.csv": "f54880052d413b5fdcaf18a1195f0c3c76bbbe819aac49b437c3af00806c241d",
+    "artifacts/multi_asset_v8/failure_ledger.csv.gz": "998aa9c22fc862ed164862e76487a0fdcbe2955630db67d04b140e81c443178d",
+    "artifacts/multi_asset_v8/hypothesis_registry.jsonl": "3605f442fe3320b223cdab3f0eb8325680fd673f458e495dd4da6948d6ba2eb5",
+    "artifacts/multi_asset_v9/paper_readiness.json": "5b1a0833c022699d512255cc0b6fbec86fd0c9111d25937a1e060c1e8026a273",
+    "artifacts/multi_asset_v9/source_reconciliation.json": "4d5956429094199fae8b852716507ccb92232995a4da737ecbae18c4b98e540c",
+    "artifacts/multi_asset_v9/v9_start_manifest.json": "e91b95ef7ee78ad4276976603898aab8d4cca95504fea4741563a4ff0aa8d614"
+  },
+  "inherited_candidate": "NONE",
+  "inherited_max_trial": 869,
+  "live_authorization": "LIVE_NOT_AUTHORIZED",
+  "local_data_paths": {
+    "l2": "/home/duypham/workspace/InvestMent-v9-local-data/public_l2",
+    "positioning": "/home/duypham/workspace/InvestMent-v9-local-data/public_positioning",
+    "v8_execution_panel": "/home/duypham/workspace/InvestMent-v8-local-data/multi_asset_v8/execution_factor_panel.csv.gz"
+  },
+  "next_performance_trial": 870,
+  "paper_validated": false,
+  "prospective_boundary_policy": {
+    "v10_start_does_not_relabel_old_v9_data_as_untouched": true,
+    "v9_forward_data_keeps_original_eligibility": true
+  },
+  "recorder_health_at_start": {
+    "l2": {
+      "path": "/home/duypham/workspace/InvestMent-v9-local-data/public_l2/recorder_health.json",
+      "snapshot": {
+        "cycles_completed": 165,
+        "error_count": 0,
+        "last_cycle_started_at": "2026-08-23T13:27:07.726929+00:00",
+        "last_health_at": "2026-08-23T13:27:09.827215+00:00",
+        "pid": 2743466,
+        "records_appended": 3465,
+        "research_only": true,
+        "schema_version": "v8-l2-snapshot-1",
+        "status": "RUNNING",
+        "symbols_expected": [
+          "1000PEPE/USDT:USDT",
+          "1000SHIB/USDT:USDT",
+          "AAVE/USDT:USDT",
+          "ADA/USDT:USDT",
+          "AVAX/USDT:USDT",
+          "BNB/USDT:USDT",
+          "BTC/USDT:USDT",
+          "DOGE/USDT:USDT",
+          "DOT/USDT:USDT",
+          "ETH/USDT:USDT",
+          "FIL/USDT:USDT",
+          "LINK/USDT:USDT",
+          "LTC/USDT:USDT",
+          "NEAR/USDT:USDT",
+          "SOL/USDT:USDT",
+          "SUI/USDT:USDT",
+          "UNI/USDT:USDT",
+          "WLD/USDT:USDT",
+          "XLM/USDT:USDT",
+          "XRP/USDT:USDT",
+          "ZEC/USDT:USDT"
+        ]
+      }
+    },
+    "positioning": {
+      "path": "/home/duypham/workspace/InvestMent-v9-local-data/public_positioning/recorder_health.json",
+      "snapshot": {
+        "cycles_completed": 1,
+        "error_count": 0,
+        "last_health_at": "2026-08-23T13:09:07.249746+00:00",
+        "pid": 2750224,
+        "research_only": true,
+        "rows_written_total": 126,
+        "status": "RUNNING"
+      }
+    }
+  },
+  "research_boundary": {
+    "candidate_discovery_uses_development_selection_only": true,
+    "inherited_baseline_evaluation_metrics_may_be_referenced": true,
+    "new_candidate_held_out_metrics_used_for_selection": false
+  },
+  "schema_version": "v10-start-manifest-1",
+  "trial_870_consumed": false,
+  "trial_continuity": {
+    "max_trial": 869,
+    "next_trial": 870,
+    "next_trial_already_present": false,
+    "registry_rows": 12
+  },
+  "v10_branch": "v10-scientific-candidate",
+  "v10_start_utc": "2026-08-23T13:27:12.514221+00:00",
+  "v9_source_sha": "697b137d5b4cdc8367975271ba4e86dcbeae8d2c"
+}

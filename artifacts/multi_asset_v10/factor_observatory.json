@@ -1,0 +1,42 @@
+{
+  "admission_rule": {
+    "allowed_source_quality": [
+      "official",
+      "peer_reviewed",
+      "primary"
+    ],
+    "attention_sentiment_requires_reverse_causality_check": true,
+    "incremental_net_bps": ">0",
+    "incremental_sharpe_delta": ">=0",
+    "minimum_coverage_fraction": 0.7,
+    "minimum_evaluation_fold_count": 2,
+    "minimum_stability_score": 0.5
+  },
+  "factors": [
+    {
+      "admitted": false,
+      "association_value": -1.5164,
+      "causal_available": true,
+      "coverage_fraction": 1.0,
+      "evaluation_fold_count": 3,
+      "factor_family": "cross_sectional",
+      "feature_name": "flat_trend_incremental_reliability",
+      "incremental_net_bps": 11.425183771903713,
+      "incremental_sharpe_delta": 0.021897693860122636,
+      "rejection_reasons": [
+        "stability_below_0_50"
+      ],
+      "reverse_causality_checked": true,
+      "source_ids": [
+        "doi:10.1016/j.najef.2022.101733",
+        "doi:10.1016/j.frl.2025.108356"
+      ],
+      "source_quality": "peer_reviewed",
+      "stability_score": 0.3333333333333333,
+      "status": "REJECTED_INNER",
+      "target_error": "WRONG_SIDE_ECONOMIC_DAMAGE",
+      "turnover_delta": -1.6135544850067376
+    }
+  ],
+  "status": "EVALUATED"
+}

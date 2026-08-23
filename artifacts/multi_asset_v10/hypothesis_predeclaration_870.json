@@ -1,0 +1,47 @@
+{
+  "causal_inputs": [
+    "trend_state",
+    "H12 target_weight",
+    "current portfolio weight"
+  ],
+  "code_commit_sha": "7e16723291d826b7fa9d06dec5dcc36a76b5946a",
+  "code_config_hash": "0369cd21a7523ebe0053344f395839fd1827e07b2e427e129bcf8da8ee6d63fe",
+  "costs": {
+    "execution": "historical execution approximation where book-level history is unavailable",
+    "funding": "reuse inherited replay funding semantics",
+    "primary_round_trip_bps": 10.0,
+    "stress_round_trip_bps": 20.0
+  },
+  "council_reference": "artifacts/multi_asset_v10/council_output_870.json",
+  "data_provenance": {
+    "delay_path": "/home/duypham/workspace/InvestMent-v6-local/.worktrees/v8-execution-liquidity-shadow/artifacts/multi_asset_v7/delay_1h_decision_log.csv.gz",
+    "delay_sha256": "79912b5bb57c7d655b506222e50ebf0b47880b4443f67a1cff0546abc83d452e",
+    "inherited_max_trial": 869,
+    "panel_path": "/home/duypham/workspace/InvestMent-v8-local-data/multi_asset_v8/execution_factor_panel.csv.gz",
+    "panel_sha256": "dc5e834f89d59cc9547443b53b9923baeca31d4d7a89575cb07db89a1990e60c",
+    "v9_source_sha": "697b137d5b4cdc8367975271ba4e86dcbeae8d2c"
+  },
+  "development_evidence_reference": "artifacts/multi_asset_v10/development_screen.json",
+  "distinct_from_prior": "Distinct from V6 trend-conflict (target sign opposing up/down trend), H2 dispersion, H3 weak-score, H4 flow, H6/H7 volatility sizing, and H8 execution fragility. This is a flat-state incremental-exposure reliability rule.",
+  "evaluation_rule": "Exactly one access to the remaining chronological 30% of each outer fold. No post-access retuning. Promotion requires candidate net > baseline and >0; candidate Sharpe > baseline; max drawdown <= baseline + 0.01; wrong-side economic damage reduced; >=2/3 folds improve net; 20bps net >=0; +1h-delay net >=0.",
+  "exact_feature_definition": "Use inherited causal trend_state. Trigger iff trend_state == \"flat\" at decision time; no future/outcome field is an input.",
+  "exact_model_or_rule_change": "When trigger is true, apply the existing V7 incremental exposure scaler with scale=0.5 to new/increased H12 exposure only. Reductions and exits pass unchanged. Never reverse H12 direction.",
+  "failure_condition": "Any mandatory evaluation rule failure => REJECTED_INNER and no candidate freeze; trial 870 is not rerun or rescued.",
+  "hypothesis_id": "V10_H1_flat_trend_incremental_reliability",
+  "live_authorization": "LIVE_NOT_AUTHORIZED",
+  "mechanism": "H12 continuation reliability is weaker when the inherited causal trend state is flat; reduce only incremental exposure rather than changing direction or forcing exits.",
+  "methodology_audit_reference": "artifacts/multi_asset_v10/methodology_audit_870.json",
+  "new_candidate_held_out_metrics_inspected_before_lock": false,
+  "parameter_selection_rule": "On the chronological 70% selection partition within each outer fold, compare scales {0.0,0.5,0.75}. First maximize folds with positive net delta vs baseline; require candidate net >0 at 20bps and +1h delay in every selection fold; among survivors maximize mean selection net delta. This prospectively selects 0.5.",
+  "schema_version": "v10-hypothesis-predeclaration-1",
+  "selection_rule": "Chronological first 70% of each existing outer fold; candidate discovery and scale choice are confined to this partition.",
+  "stress_tests": [
+    "20bps transaction-cost stress",
+    "+1h delayed replay"
+  ],
+  "target_failure": "WRONG_SIDE_ECONOMIC_DAMAGE / unreliable H12 exposure increases in weak-trend state",
+  "timestamp_utc": "2026-08-23T13:43:50.936069+00:00",
+  "training_rule": "No V10 refit of H12. Reuse the inherited H12 decisions and causal state. V10 adds one reliability mapping only.",
+  "trial_870_consumed_at_predeclaration": false,
+  "trial_number": 870
+}

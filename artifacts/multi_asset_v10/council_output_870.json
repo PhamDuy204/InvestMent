@@ -1,0 +1,27 @@
+{
+  "advisory_decision": "SUPPORT_TEST",
+  "completed_at_utc": "2026-08-23T13:43:50.936069+00:00",
+  "deterministic_methodology": "PASS",
+  "fatal_objections": [],
+  "live_authorization": "LIVE_NOT_AUTHORIZED",
+  "model": "qwen/qwen3.6-27b",
+  "policy": "Advisory only; concrete leakage/provenance/evaluation-peeking/duplication/fatal-methodology objections block. Vague evidence concerns do not.",
+  "prior_attempts": [
+    {
+      "detail": "existing V9 four-role call exceeded Groq on-demand TPM limit before verdict",
+      "status": "TOOLING_FAILURE"
+    },
+    {
+      "detail": "compact JSON-mode call returned json_validate_failed before verdict",
+      "status": "TOOLING_FAILURE"
+    },
+    {
+      "detail": "compact free-form structured call returned empty content before verdict",
+      "status": "TOOLING_FAILURE"
+    }
+  ],
+  "raw_advisory_response": "SUPPORT_TEST FATAL_NONE",
+  "reasoning_persisted": false,
+  "schema_version": "v10-qwen-council-1",
+  "status": "COMPLETED"
+}

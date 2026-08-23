@@ -1,0 +1,76 @@
+{
+  "A1": "NOT_STARTED",
+  "blockers": [
+    "SCIENCE:TRIAL_870_REJECTED_INNER",
+    "SCIENCE:AGGREGATE_HELD_OUT_NET_NEGATIVE",
+    "SCIENCE:INSUFFICIENT_MULTI_FOLD_SUPPORT_1_OF_3",
+    "SCIENCE:NEGATIVE_20BPS_STRESS",
+    "SCIENCE:NEGATIVE_DELAY_1H_STRESS",
+    "SCIENCE:NO_ADMITTED_V10_FACTOR",
+    "FREEZE:NO_CANDIDATE_FREEZE"
+  ],
+  "candidate_frozen": false,
+  "candidate_hash": null,
+  "categories": {
+    "CAUSALITY": true,
+    "EXECUTION": true,
+    "FREEZE": false,
+    "OPERATIONAL": true,
+    "SAFETY": true,
+    "SCIENCE": false,
+    "SOURCE_OF_TRUTH": true
+  },
+  "evidence_head_at_generation": "7fcb8ce471ae5d47b3729df823504cbb443fefa9",
+  "generated_at_utc": "2026-08-23T13:47:31.313934+00:00",
+  "live_authorization": "LIVE_NOT_AUTHORIZED",
+  "local_remote_equal_at_generation": true,
+  "mirofish_status": "NOT_USED",
+  "new_v10_factors_admitted": 0,
+  "next_performance_trial": 871,
+  "next_trial_authorized": false,
+  "paper_validated": false,
+  "performance_trial_count": 870,
+  "pr_base": "v9-paper-readiness",
+  "pr_number": 7,
+  "preliminary_local_verification": {
+    "compileall": "PASS",
+    "focused_paper_execution_safety": "26 passed",
+    "git_diff_check": "PASS",
+    "pytest": "218 passed",
+    "ruff": "PASS"
+  },
+  "public_market_data_paper_smoke": "PASS_ENGINEERING_ONLY_INHERITED_V9",
+  "qwen_council_advisory_decision": "SUPPORT_TEST",
+  "qwen_council_fatal_objections": [],
+  "qwen_model": "qwen/qwen3.6-27b",
+  "readiness": "V10_NOT_READY_FOR_PAPER",
+  "recorder_health": {
+    "l2": {
+      "cycles_completed": 336,
+      "error_count": 0,
+      "last_health_at": "2026-08-23T13:47:30.405167+00:00",
+      "pid": 2743466,
+      "pid_alive": true,
+      "records_appended": 7056,
+      "start_records_appended": 3465,
+      "status": "RUNNING"
+    },
+    "positioning": {
+      "cycles_completed": 1,
+      "error_count": 0,
+      "interval_seconds": 3600,
+      "last_health_at": "2026-08-23T13:09:07.249746+00:00",
+      "note": "First cycle remains current because recorder runs on a 3600-second interval; PID is alive and error_count=0.",
+      "pid": 2750224,
+      "pid_alive": true,
+      "rows_written_total": 126,
+      "status": "RUNNING"
+    }
+  },
+  "schema_version": "v10-paper-readiness-1",
+  "trial_870_consumed": true,
+  "trial_870_count": 1,
+  "trial_870_status": "REJECTED_INNER",
+  "v8_source_sha": "3eaf36efbcc8933bab173df521bb4a4c8897ab60",
+  "v9_source_sha": "697b137d5b4cdc8367975271ba4e86dcbeae8d2c"
+}

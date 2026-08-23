@@ -1,0 +1,161 @@
+{
+  "causality": {
+    "evaluation_partition_used_for_parameter_choice": false,
+    "future_data_used_as_candidate_inputs": false,
+    "outcome_labels_used_as_candidate_inputs": false,
+    "trend_state_listed_in_V6_CAUSAL_COLUMNS": true
+  },
+  "code_sha256": {
+    "src/crypto_research/reliability_v7.py": "6022f45fe40449bf05f4c67e5c8cf6f3ad13d878ac51b83b1b415593b404770f",
+    "tests/test_reliability_v7.py": "b49b0b2be0f53fcf7baba01f67bca29d981baec05fa9a5edc60d220bdad2587f"
+  },
+  "distinct_from_prior": [
+    "not V6 trend-conflict: prior trigger was target sign opposing up/down state; this trigger is flat state regardless of target sign",
+    "not H2 dispersion",
+    "not H3 weak-score",
+    "not H4 flow",
+    "not H6/H7 volatility sizing",
+    "not H8 execution fragility"
+  ],
+  "generated_at_utc": "2026-08-23T13:35:47.743559+00:00",
+  "held_out_candidate_metrics_inspected": false,
+  "inherited_failure_map": [
+    {
+      "hypothesis": "H12 corrected baseline",
+      "lesson": "directional core lacks robust reliability control",
+      "result": "held-out net -3.5286%, Sharpe -0.6999"
+    },
+    {
+      "hypothesis": "H1 QH conflict veto",
+      "lesson": "historical quarter-hour coverage insufficient",
+      "result": "precheck rejection"
+    },
+    {
+      "hypothesis": "H2 high dispersion gate",
+      "lesson": "upper-tail dispersion gate worsened economics",
+      "result": "trial 864 rejected"
+    },
+    {
+      "hypothesis": "H3 weak score veto",
+      "lesson": "low absolute H12 score is not a sufficient reliability veto",
+      "result": "trial 865 rejected"
+    },
+    {
+      "hypothesis": "H4 lagged taker flow",
+      "lesson": "factor information did not map stably into economics",
+      "result": "trial 866 rejected"
+    },
+    {
+      "hypothesis": "H6 basis-vol reliability",
+      "lesson": "basis failed attribution; generic de-risking helped",
+      "result": "trial 867 rejected"
+    },
+    {
+      "hypothesis": "H7 lagged-RV inverse-vol",
+      "lesson": "volatility de-risking reduced damage but remained negative under promotion stresses",
+      "result": "trial 868 rejected"
+    },
+    {
+      "hypothesis": "H8 execution fragility",
+      "lesson": "execution-risk scaling did not repair H12 economics",
+      "result": "trial 869 rejected"
+    }
+  ],
+  "literature": [
+    {
+      "doi": "10.1016/j.najef.2022.101733",
+      "title": "Intraday return predictability in the cryptocurrency markets: Momentum, reversal, or both",
+      "use": "supports intraday return predictability being state/liquidity dependent; does not determine the 0.5 scale"
+    },
+    {
+      "doi": "10.1016/j.frl.2025.108356",
+      "title": "State transitions and momentum effect in cryptocurrency market",
+      "use": "supports momentum reliability depending on market-state transitions; does not specify this project rule"
+    },
+    {
+      "doi": "10.1016/j.irfa.2021.101908",
+      "title": "Up or down? Short-term reversal, momentum, and liquidity effects in cryptocurrency markets",
+      "use": "supports liquidity-dependent reversal/momentum heterogeneity in crypto"
+    }
+  ],
+  "live_authorization": "LIVE_NOT_AUTHORIZED",
+  "mechanisms_screened": [
+    {
+      "id": "flat_trend_incremental_reliability",
+      "mechanism": "scale only increases in H12 exposure when inherited causal trend_state is flat",
+      "selection_scales": [
+        0.0,
+        0.5,
+        0.75
+      ]
+    },
+    {
+      "id": "state_transition_incremental_reliability",
+      "mechanism": "scale exposure increases on causal trend-state transitions",
+      "selection_scales": [
+        0.0,
+        0.5,
+        0.75
+      ]
+    },
+    {
+      "id": "nonflat_transition_incremental_reliability",
+      "mechanism": "scale exposure increases only on up/down sign-state transitions",
+      "selection_scales": [
+        0.0,
+        0.5,
+        0.75
+      ]
+    }
+  ],
+  "schema_version": "v10-development-screen-1",
+  "selected": {
+    "exact_change": "When trend_state == flat, apply existing V7 incremental exposure scaler with scale=0.5; reductions/exits remain unscaled; H12 direction is never reversed.",
+    "flat_trend_scale": 0.5,
+    "hypothesis_id": "V10_H1_flat_trend_incremental_reliability",
+    "mean_selection_net_delta": 0.0030662224864802154,
+    "mean_selection_turnover_delta": -1.10165219186588,
+    "selection_fold_metrics": [
+      {
+        "baseline_net": 0.016221144361006967,
+        "baseline_sharpe": 1.920879055395418,
+        "candidate_20bps_net": 0.008829198677870131,
+        "candidate_delay1h_net": 0.02076655844383657,
+        "candidate_net": 0.01797980391092202,
+        "candidate_sharpe": 2.1110196754661135,
+        "fold": 0,
+        "net_delta": 0.0017586595499150537,
+        "sharpe_delta": 0.19014062007069543,
+        "turnover_delta": -0.6821901928719178
+      },
+      {
+        "baseline_net": 0.1453716016603417,
+        "baseline_sharpe": 2.569546099414991,
+        "candidate_20bps_net": 0.1353325992034553,
+        "candidate_delay1h_net": 0.14092973841761958,
+        "candidate_net": 0.15278563380278398,
+        "candidate_sharpe": 2.5491108752525173,
+        "fold": 1,
+        "net_delta": 0.007414032142442295,
+        "sharpe_delta": -0.020435224162473453,
+        "turnover_delta": -0.9732398162258633
+      },
+      {
+        "baseline_net": 0.3624511355446931,
+        "baseline_sharpe": 3.9399513081918465,
+        "candidate_20bps_net": 0.32613225616216446,
+        "candidate_delay1h_net": 0.34022950973959043,
+        "candidate_net": 0.3624771113117764,
+        "candidate_sharpe": 3.943274250176652,
+        "fold": 2,
+        "net_delta": 2.5975767083297185e-05,
+        "sharpe_delta": 0.0033229419848055386,
+        "turnover_delta": -1.6495265664998584
+      }
+    ],
+    "selection_nonnegative_sharpe_delta_folds": 2,
+    "selection_positive_net_delta_folds": 3,
+    "selection_rule": "Among scales {0,0.5,0.75}, first maximize count of folds with positive net delta vs H12 baseline; require candidate net >0 at 20bps and +1h delay in every selection fold; among survivors choose highest mean net delta. This selects 0.5 over 0.75. Scale 0 fails 3/3 positive-fold criterion."
+  },
+  "validation": "70_30_chronological_within_each_outer_fold; development uses selection only"
+}
