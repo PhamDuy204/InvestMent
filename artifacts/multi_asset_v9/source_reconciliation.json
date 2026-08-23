@@ -1,0 +1,129 @@
+{
+  "candidate_frozen": false,
+  "groq": {
+    "active_qwen_model": "qwen/qwen3.6-27b",
+    "completion_budget_by_role": {
+      "error_scientist": 6144,
+      "evidence_scout": 6144,
+      "methodology_auditor": 4096,
+      "research_judge": 4096
+    },
+    "council_effective_decision": "NEED_MORE_EVIDENCE",
+    "performance_trial_authorized": false,
+    "reasoning_format": "hidden",
+    "reasoning_persisted": false,
+    "secret_persisted": false,
+    "smoke": "QWEN_HIDDEN_OK"
+  },
+  "live_authorization": "LIVE_NOT_AUTHORIZED",
+  "max_trial": 869,
+  "mirofish": {
+    "official_repo": "666ghj/MiroFish",
+    "pinned_matches_upstream_main": true,
+    "pinned_sha": "117ed37758cdc96f73b7d5e0d22713c50439695f",
+    "public_ingress": false,
+    "required_bind_if_started": "127.0.0.1",
+    "sidecar_path": "/home/duypham/workspace/MiroFish-v9-sidecar",
+    "started": false,
+    "status": "MIROFISH_NOT_CONFIGURED_EXTERNAL_DEPENDENCY",
+    "upstream_main_sha": "117ed37758cdc96f73b7d5e0d22713c50439695f",
+    "zep_api_key_present": false
+  },
+  "next_trial": 870,
+  "old_recorders_found_dead": true,
+  "prospective_start_utc": "2026-08-20T10:34:19Z",
+  "public_market_data_paper_smoke": "PASS_ENGINEERING_ONLY",
+  "recorder_restart_2026_08_23": {
+    "a1_evidence": false,
+    "audit_at_utc": "2026-08-23T13:12:03.781262+00:00",
+    "continuity_erased": false,
+    "host_boot_time_local": "2026-08-23 10:37:29 +07:00",
+    "l2": {
+      "bad_pending_json": 0,
+      "captured_after_available": 0,
+      "crossed_or_locked_books": 0,
+      "depth_monotonicity_violations": 0,
+      "duplicate_checksums": 0,
+      "event_after_available": 0,
+      "first_clean_restart_cycle_verified": true,
+      "health_path": "/home/duypham/workspace/InvestMent-v9-local-data/public_l2/recorder_health.json",
+      "latest_capture_at": "2026-08-23T13:10:18.573430+00:00",
+      "parquet_files": 1029,
+      "pending_rows": 1169,
+      "pid": 2743466,
+      "rows": 62909,
+      "session_cycles_completed": 38,
+      "session_error_count": 0,
+      "session_records_appended": 798,
+      "sidecars_bad_hash": 0,
+      "sidecars_missing": 0,
+      "symbols": 21,
+      "timestamp_parse_failures": 0
+    },
+    "performance_trial_consumed": false,
+    "positioning": {
+      "available_after_decision": 0,
+      "corrected_without_source_change": true,
+      "duplicate_checksums": 0,
+      "event_after_available": 0,
+      "feature_families": 6,
+      "first_clean_restart_cycle_verified": true,
+      "first_restart_attempt_error": "OPERATOR_INVOCATION_USED_CCXT_SYMBOL_FORMAT_FOR_BINANCE_REST_ENDPOINTS",
+      "first_restart_attempt_errors": 21,
+      "first_restart_attempt_rows_written": 0,
+      "first_seen_after_available": 0,
+      "health_path": "/home/duypham/workspace/InvestMent-v9-local-data/public_positioning/recorder_health.json",
+      "latest_available_at": "2026-08-23T13:09:07.169184+00:00",
+      "parquet_files": 8,
+      "pid": 2750224,
+      "rows": 1008,
+      "schemas": [
+        "v8-positioning-2"
+      ],
+      "session_cycles_completed": 1,
+      "session_error_count": 0,
+      "session_rows_written": 126,
+      "sidecars_bad_hash": 0,
+      "sidecars_missing": 0,
+      "symbols": 21,
+      "timestamp_parse_failures": 0
+    },
+    "previous_l2_pid": 1404681,
+    "previous_positioning_pid": 1404686,
+    "previous_processes_dead_at_audit": true,
+    "raw_files_preserved": true,
+    "reason": "HOST_REBOOT_DISCONTINUITY"
+  },
+  "registry_byte_identical_at_v9_start": true,
+  "retrospective_threshold_invented": false,
+  "schema_version": "v9-source-reconciliation-1",
+  "trial_870_consumed": false,
+  "v8_registry_sha256": "f54880052d413b5fdcaf18a1195f0c3c76bbbe819aac49b437c3af00806c241d",
+  "v8_source_sha": "3eaf36efbcc8933bab173df521bb4a4c8897ab60",
+  "v9_branch": "v9-paper-readiness",
+  "v9_l2_recorder": {
+    "causal_violations": 0,
+    "health_path": "/home/duypham/workspace/InvestMent-v9-local-data/public_l2/recorder_health.json",
+    "pid": 2743466,
+    "pid_alive": true,
+    "rows_at_final_audit": 62909
+  },
+  "v9_positioning_recorder": {
+    "health_path": "/home/duypham/workspace/InvestMent-v9-local-data/public_positioning/recorder_health.json",
+    "pid": 2750224,
+    "pid_alive": true,
+    "rows_at_final_audit": 1008,
+    "schemas": {
+      "v8-positioning-2": {
+        "available_after_decision": 0,
+        "causal_status": "FORWARD_ONLY",
+        "event_after_available": 0,
+        "feature_families": 6,
+        "first_seen_after_available": 0,
+        "rows": 126,
+        "symbols": 21
+      }
+    }
+  },
+  "v9_registry_sha256": "f54880052d413b5fdcaf18a1195f0c3c76bbbe819aac49b437c3af00806c241d"
+}

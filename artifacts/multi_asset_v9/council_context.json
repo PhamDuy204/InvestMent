@@ -1,0 +1,147 @@
+{
+  "deterministic_admission": {
+    "allow_test": false,
+    "reasons": [
+      "no exact materially distinct predeclared V9 candidate has yet passed local methodology audit",
+      "interaction literature is promising but exact intraday futures mapping remains underdetermined without selecting among variants",
+      "zero admitted inherited factors"
+    ]
+  },
+  "distinctness_audit": {
+    "btc_lead_lag_rejected_as_new_hypothesis": true,
+    "generic_nonlinear_ml_not_eligible": true,
+    "interaction_direction": "potentially distinct only if one exact interaction is evidence-backed and predeclared without evaluation peeking",
+    "reason": "retained H12 feature set already includes btc_ret_1_lag1, btc_ret_4_lag1, eth lead-lags, market returns and breadth",
+    "reason_ml": "fixed V7 nonlinear challenger requires at least two admitted features; current admitted feature count is zero"
+  },
+  "execution": {
+    "live_order_path": false,
+    "observed_book_simulator": "ExecutionSimulatorV8",
+    "paper_broker": "SimulatedBroker",
+    "partial_and_unfilled_supported": true,
+    "public_market_data_smoke": "PASS"
+  },
+  "failure_history": [
+    {
+      "id": "H1",
+      "mechanism": "quarter-hour order-imbalance conflict veto",
+      "status": "REJECTED_PRECHECK_DATA_LIMITATION"
+    },
+    {
+      "id": "H2",
+      "mechanism": "high cross-sectional dispersion reliability gate",
+      "status": "REJECTED_INNER"
+    },
+    {
+      "id": "H3",
+      "mechanism": "weak absolute H12 score veto",
+      "status": "REJECTED_INNER"
+    },
+    {
+      "id": "H4",
+      "mechanism": "lagged taker-buy flow residualized on lagged return",
+      "status": "REJECTED_INNER"
+    },
+    {
+      "id": "H5",
+      "mechanism": "state-conditioned H4 flow interaction",
+      "status": "REJECTED_BY_AUDITOR_NO_TEST"
+    },
+    {
+      "id": "H6",
+      "mechanism": "abs basis plus lagged realized volatility sizing",
+      "status": "REJECTED_INNER"
+    },
+    {
+      "id": "H7",
+      "mechanism": "lagged realized-volatility-only inverse-vol ablation",
+      "status": "REJECTED_INNER"
+    },
+    {
+      "id": "H8",
+      "mechanism": "lagged price-impact execution fragility after lag-RV control",
+      "status": "REJECTED_INNER"
+    }
+  ],
+  "historical_causal_data": {
+    "available_features_relevant_to_literature": [
+      "ret_24",
+      "realized_vol_24",
+      "quote_volume_z24",
+      "liquidity_rank",
+      "momentum_rank_24",
+      "cross_sectional_dispersion",
+      "market_breadth_positive",
+      "btc_ret_1_lag1",
+      "btc_ret_4_lag1",
+      "eth_ret_1_lag1",
+      "eth_ret_4_lag1",
+      "funding_rate"
+    ],
+    "decision_rows": 14308,
+    "feature_cutoff_after_decision_count": 0,
+    "hourly_panel_has_completed_lag_1h": true,
+    "independent_of_v9": true,
+    "outer_folds": 3,
+    "range_utc": [
+      "2025-04-16T12:00:00Z",
+      "2026-07-31T08:00:00Z"
+    ],
+    "symbols": 21
+  },
+  "methodology_constraints": [
+    "Do not grid-search or rename H8.",
+    "Do not test BTC/ETH lead-lag as new because it is already in retained H12 inputs.",
+    "Do not launch generic nonlinear ML with zero admitted factors.",
+    "Trial 870 only for one materially distinct exact predeclared hypothesis.",
+    "If literature/data mapping does not determine one exact single-change test, choose NEED_MORE_EVIDENCE rather than inventing a threshold or pair.",
+    "Historical point-in-time data may support trial 870; V9 prospective data is not required unless the mechanism itself requires it."
+  ],
+  "mirofish": {
+    "role": "SCENARIO_STRESS_ONLY_IF_CONFIGURED",
+    "status": "MIROFISH_NOT_CONFIGURED_EXTERNAL_DEPENDENCY"
+  },
+  "new_external_evidence": [
+    {
+      "constraint": "Accessible evidence does not uniquely identify one exact intraday futures interaction/sign for this 21-symbol H12 universe.",
+      "finding": "Cross-sectional crypto interaction effects are strongest around liquidity, risk and past-return measures; paper uses broad double sorts and multiple-testing control.",
+      "quality": "peer_reviewed",
+      "source_id": "irfa-2025-cross-sectional-interactions"
+    },
+    {
+      "constraint": "Study is daily and broad spot universe; V9 uses a small highly liquid futures universe and H12 horizon.",
+      "finding": "Daily reversal dominates broad crypto cross-section while the largest/most tradeable coins show daily momentum; effect depends on liquidity.",
+      "quality": "peer_reviewed",
+      "source_id": "irfa-2021-reversal-momentum-liquidity"
+    },
+    {
+      "constraint": "Not materially new here because retained H12 Ridge already includes BTC/ETH lagged returns and market return/breadth features.",
+      "finding": "Lagged returns of other cryptocurrencies, especially BTC, can predict focal-coin returns.",
+      "quality": "peer_reviewed",
+      "source_id": "jedc-2024-cross-crypto-predictability"
+    }
+  ],
+  "prospective_data_integrity": {
+    "l2_causal_violations": 0,
+    "l2_rows_now_at_audit": 4942,
+    "l2_symbols": 21,
+    "mature_performance_outcomes": 0,
+    "positioning_causal_violations": 0,
+    "positioning_rows_now_at_audit": 126,
+    "positioning_symbols": 21
+  },
+  "v8_scientific_state": {
+    "a1_started": false,
+    "admitted_factors": 0,
+    "candidate_frozen": false,
+    "h8_status": "REJECTED_INNER",
+    "h8_trial": 869,
+    "readiness": "NEEDS_MORE_RESEARCH"
+  },
+  "v9_start": {
+    "max_trial": 869,
+    "next_trial": 870,
+    "prospective_start_utc": "2026-08-20T10:34:19Z",
+    "source_sha": "3eaf36efbcc8933bab173df521bb4a4c8897ab60"
+  }
+}

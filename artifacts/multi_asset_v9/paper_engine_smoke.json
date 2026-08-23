@@ -1,0 +1,29 @@
+{
+  "decision_id": "f050e560f71849ccdd4eeb2f27329ba229f8151469da979d4bcf91a9f374b3ec",
+  "duplicate_decision": "BLOCKED:ValueError",
+  "evidence_class": "ENGINEERING_ONLY",
+  "fees_bps": 4.0,
+  "funding_field": 0.0001,
+  "future_data": "BLOCKED:ValueError",
+  "latency_ms": 50,
+  "partial_fill": {
+    "filled_notional": 101.0,
+    "target_notional": 250.0,
+    "unfilled_notional": 149.0,
+    "unmodeled_tail": true
+  },
+  "private_exchange_order_call_performed": false,
+  "public_market_data_smoke": {
+    "decision_id": "235b9992bfd3329e5507bc398624aa45f3f87bc184fbe3361087029442f152b3",
+    "evidence_class": "ENGINEERING_ONLY",
+    "execution_type": "SIMULATED_FILL_ONLY",
+    "filled_notional": 100.0,
+    "status": "PASS",
+    "unfilled_notional": 0.0
+  },
+  "restart_state_restored": true,
+  "same_input_same_candidate_same_decision_id": true,
+  "schema_version": "v9-paper-engine-smoke-2",
+  "simulated_only": true,
+  "stale_data": "BLOCKED:ValueError"
+}

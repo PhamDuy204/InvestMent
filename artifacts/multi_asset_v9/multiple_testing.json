@@ -1,0 +1,13 @@
+{
+  "cpcv": "NOT_COMPUTABLE_WITH_CURRENT_PROVENANCE",
+  "cscv": "NOT_COMPUTABLE_WITH_CURRENT_PROVENANCE",
+  "dsr": "NOT_COMPUTABLE_WITH_CURRENT_PROVENANCE",
+  "inherited_v8_sha256": "774792ece8e254d537499de1403ae695d68377c2c4b382a3bdc654306acceff9",
+  "next_performance_trial": 870,
+  "pbo": "NOT_COMPUTABLE_WITH_CURRENT_PROVENANCE",
+  "performance_trial_count": 869,
+  "schema_version": "v9-multiple-testing-1",
+  "status": "NO_V9_PERFORMANCE_TRIAL",
+  "trial_870_present": false,
+  "v9_performance_trials_consumed": 0
+}

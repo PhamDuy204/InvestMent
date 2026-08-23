@@ -1,0 +1,53 @@
+{
+  "deterministic_allow_test": false,
+  "effective_decision": "NEED_MORE_EVIDENCE",
+  "error_scientist": {
+    "hypotheses": [],
+    "largest_failure_mode": "Insufficient evidence to map cross-sectional interaction literature to an exact, predeclared intraday futures single-change test; zero admitted factors block nonlinear/interaction expansion; BTC/ETH lead-lag already saturated in H12.",
+    "notes": [
+      "Trial 870 blocked per deterministic admission rules: allow_test is false.",
+      "Current readiness remains NEEDS_MORE_RESEARCH.",
+      "External literature indicates liquidity/risk/past-return interactions but lacks exact intraday futures mapping for this 21-symbol universe.",
+      "Zero admitted inherited factors prevent launching generic nonlinear ML or interaction tests per methodology constraints.",
+      "BTC/ETH lead-lag effects are already captured in retained H12 features, blocking reuse as a new hypothesis.",
+      "Per methodology constraints, choosing NEED_MORE_EVIDENCE rather than inventing a threshold or pair until an exact single-change test is predeclared and passes audit."
+    ]
+  },
+  "evidence_scout": {
+    "evidence_gaps": [
+      "No exact materially distinct predeclared V9 candidate has passed local methodology audit.",
+      "Interaction literature is promising but exact intraday futures mapping remains underdetermined without selecting among variants.",
+      "Zero admitted inherited factors prevents launching generic nonlinear ML or interaction tests.",
+      "BTC/ETH lead-lag effects are already captured in retained H12 features, blocking reuse as a new hypothesis."
+    ],
+    "new_evidence": [],
+    "notes": [
+      "Trial 870 is blocked. Deterministic admission requires one exact single-change test backed by evidence and predeclared without evaluation peeking.",
+      "Current readiness: NEEDS_MORE_RESEARCH. Must identify a distinct causal mechanism mapping to available features before proceeding.",
+      "All historical trials H1-H8 rejected. No prospective performance outcomes yet."
+    ]
+  },
+  "json_mode": "JSON_OBJECT_LOCAL_VALIDATION",
+  "judge": {
+    "decision": "NEED_MORE_EVIDENCE",
+    "hypothesis_id": null,
+    "reasoning_summary": "Deterministic admission rules explicitly set allow_test to false. Zero admitted inherited factors block nonlinear/interaction expansion per methodology constraints. External literature on cross-sectional crypto interactions lacks an exact, predeclared intraday futures mapping for this 21-symbol universe, and BTC/ETH lead-lag effects are already saturated in retained H12 features. Per methodology constraints, when literature/data mapping fails to determine one exact single-change test, NEED_MORE_EVIDENCE is mandated. Trial 870 remains blocked until a materially distinct, predeclared hypothesis passes local methodology audit."
+  },
+  "methodology_auditor": {
+    "decision": "NEED_MORE_EVIDENCE",
+    "reasons": [
+      "Deterministic admission rules explicitly set allow_test to false.",
+      "No exact materially distinct predeclared V9 candidate has passed local methodology audit.",
+      "Zero admitted inherited factors block nonlinear/interaction expansion per methodology constraints.",
+      "BTC/ETH lead-lag effects are already captured in retained H12 features, blocking reuse as a new hypothesis.",
+      "External literature does not uniquely identify one exact intraday futures interaction/sign for this 21-symbol universe.",
+      "Methodology constraints mandate choosing NEED_MORE_EVIDENCE when literature/data mapping fails to determine an exact single-change test."
+    ]
+  },
+  "model": "qwen/qwen3.6-27b",
+  "performance_trial_authorized": false,
+  "reasoning_persisted": false,
+  "schema_version": "v9-qwen-council-1",
+  "status": "COMPLETED",
+  "strict_json_schema_assumed": false
+}
