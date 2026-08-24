@@ -12,3 +12,5 @@
 - Searched for a materially new existing/public family. Binance USD-M daily `metrics` exposes 5-minute open-interest and trader-positioning fields. Metadata/schema audit only: all 21 V11 symbols were present with 288 rows/day on four representative dates spanning the historical folds. No H12 outcomes were inspected for this audit.
 - Next blocker is full-range metrics continuity/semantics audit before any new factor test.
 - Trial 871 remains unauthorized/unconsumed. `READY_TO_START_PAPER=false`; `LIVE_NOT_AUTHORIZED`.
+- Full local verification after the checkpoint: `219 passed in 4.23s` using the existing V9 research venv; no code/dependency changes were introduced.
+- Checkpoint commit/push was reconciled with PR #8 open against `v10-scientific-candidate`; exact local/remote/PR head matched before this final log-only commit. GitHub `V5 CI` was queued on that checkpoint SHA.
