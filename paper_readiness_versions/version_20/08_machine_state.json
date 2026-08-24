@@ -1,0 +1,34 @@
+{
+  "schema_version": "paper-readiness-evolution-1",
+  "version": 20,
+  "root_cause": "ALPHA_FAILURE",
+  "metrics_full_range_audit": {
+    "expected_files": 9912,
+    "clean_files": 9846,
+    "issue_files": 66,
+    "missing_files": 0,
+    "parse_failures": 0,
+    "duplicate_timestamp_files": 0,
+    "issue_dates": 6
+  },
+  "causal_decision_coverage": {
+    "decision_rows": 14308,
+    "decision_timestamps": 942,
+    "symbols": 21,
+    "all_six_metrics_fraction": 1.0,
+    "oi_log_change_1h_fraction": 1.0,
+    "source_age_minutes": 5.0
+  },
+  "metrics_source_verdict": "PASS_WITH_FIXED_CAUSAL_AVAILABILITY_RULE",
+  "dominant_next_problem": "PREDECLARE_FIRST_POSITIONING_MECHANISM_BEFORE_OUTCOME_ACCESS",
+  "development_configuration_count_unique": 4,
+  "performance_trial_max": 870,
+  "next_trial": 871,
+  "next_trial_authorized": false,
+  "next_trial_consumed": false,
+  "candidate_frozen": false,
+  "ready_to_start_paper": false,
+  "a1": "NOT_STARTED",
+  "paper_validated": false,
+  "live_authorization": "LIVE_NOT_AUTHORIZED"
+}

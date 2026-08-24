@@ -14,3 +14,4 @@
 - Trial 871 remains unauthorized/unconsumed. `READY_TO_START_PAPER=false`; `LIVE_NOT_AUTHORIZED`.
 - Full local verification after the checkpoint: `219 passed in 4.23s` using the existing V9 research venv; no code/dependency changes were introduced.
 - Checkpoint commit/push was reconciled with PR #8 open against `v10-scientific-candidate`; exact local/remote/PR head matched before this final log-only commit. GitHub `V5 CI` was queued on that checkpoint SHA.
+- 2026-08-24 research note: external integrity audit found documented Binance USD-M daily `metrics` missing and duplicate 5-minute timestamps (including BTCUSDT/ETHUSDT in 2023-2025); representative-date file presence is therefore insufficient. Before any positioning factor/outcome test, require full-range per-symbol continuity, duplicate, and common-gap audit over the exact development panel. No H12 outcome/trial consumed; LIVE_NOT_AUTHORIZED.
