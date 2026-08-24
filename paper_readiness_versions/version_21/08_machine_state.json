@@ -1,0 +1,24 @@
+{
+  "schema_version": "paper-readiness-evolution-1",
+  "version": 21,
+  "root_cause": "ALPHA_FAILURE",
+  "predeclaration_committed_before_outcome_access": true,
+  "mechanism_budget": 3,
+  "ordered_mechanisms": [
+    "H21_A_GLOBAL_CROWD_SHORT_CONTRARIAN",
+    "H21_B_TOP_TRADER_VS_GLOBAL_DIVERGENCE",
+    "H21_C_OI_TREND_CONFIRMATION"
+  ],
+  "next_mechanism": "H21_A_GLOBAL_CROWD_SHORT_CONTRARIAN",
+  "mechanisms_inspected": 0,
+  "development_configuration_count_unique_prior": 4,
+  "performance_trial_max": 870,
+  "next_trial": 871,
+  "next_trial_authorized": false,
+  "next_trial_consumed": false,
+  "candidate_frozen": false,
+  "ready_to_start_paper": false,
+  "a1": "NOT_STARTED",
+  "paper_validated": false,
+  "live_authorization": "LIVE_NOT_AUTHORIZED"
+}
