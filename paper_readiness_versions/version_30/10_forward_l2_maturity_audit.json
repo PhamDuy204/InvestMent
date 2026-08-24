@@ -1,0 +1,51 @@
+{
+  "audit_type": "forward_l2_maturity_no_outcomes",
+  "source_root": "/home/duypham/workspace/InvestMent-v9-local-data/public_l2",
+  "schema_version": "v8-l2-snapshot-1",
+  "expected_symbols": 21,
+  "parquet_files": 3675,
+  "sha256_sidecar_failures": 0,
+  "timestamp_parse_failures": 0,
+  "rows_total": 220500,
+  "rows_per_symbol": 10500,
+  "median_snapshot_gap_seconds": 7.350569,
+  "same_day_gap_gt_20_seconds": 0,
+  "same_day_gap_gt_60_seconds": 0,
+  "max_same_day_gap_seconds": 10.031683,
+  "dates": {
+    "2026-08-20": {
+      "symbols": 21,
+      "rows": 61740,
+      "first_capture_utc": "2026-08-20T10:46:51.139497+00:00",
+      "last_capture_utc": "2026-08-20T16:49:20.901412+00:00",
+      "common_21_symbol_span_hours": 6.040275976388888
+    },
+    "2026-08-23": {
+      "symbols": 21,
+      "rows": 110880,
+      "first_capture_utc": "2026-08-23T13:07:32.664387+00:00",
+      "last_capture_utc": "2026-08-23T23:59:44.863041+00:00",
+      "common_21_symbol_span_hours": 10.868853479722222
+    },
+    "2026-08-24": {
+      "symbols": 21,
+      "rows": 47880,
+      "first_capture_utc": "2026-08-24T00:00:04.939233+00:00",
+      "last_capture_utc": "2026-08-24T04:42:33.428376+00:00",
+      "common_21_symbol_span_hours": 4.706546399444445
+    }
+  },
+  "development_cutoff_utc": "2026-08-20T23:59:59+00:00",
+  "development_rows": 61740,
+  "development_common_21_symbol_span_hours": 6.040275976388888,
+  "reserved_rows": 158760,
+  "reserved_first_capture_utc": "2026-08-23T13:07:32.664387+00:00",
+  "reserved_last_capture_utc": "2026-08-24T04:42:33.428376+00:00",
+  "cross_window_outage_hours_approx": 68.3,
+  "feature_already_exists": "top_of_book_imbalance",
+  "feature_formula": "(bid_qty - ask_qty) / (bid_qty + ask_qty)",
+  "outcomes_read": false,
+  "trial_871_consumed": false,
+  "verdict": "NOT_ENOUGH_DEVELOPMENT_L2_FOR_CHRONOLOGICAL_H12_TEST",
+  "reason": "Only ~6.04 hours of common 21-symbol L2 lie on or before the fixed DEVELOPMENT cutoff. Post-cutoff L2 remains reserved and was audited only for metadata/schema/continuity, not outcomes. The 2026-08-20 to 2026-08-23 recorder hole prevents treating all observed L2 as one continuous forward window."
+}
