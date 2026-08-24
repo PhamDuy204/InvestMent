@@ -1,0 +1,329 @@
+{
+  "hypothesis": "V29_FIXED_RIDGE_PLUS_H21C",
+  "availability": {
+    "original_in_universe_rows": 307095,
+    "model_in_universe_rows": 306896,
+    "excluded_source_unavailable_rows": 199
+  },
+  "features": {
+    "baseline": [
+      "ret_1",
+      "ret_4",
+      "ret_12",
+      "ret_24",
+      "ret_72",
+      "ret_168",
+      "reversal_1",
+      "realized_vol_24",
+      "range_pct"
+    ],
+    "candidate": [
+      "ret_1",
+      "ret_4",
+      "ret_12",
+      "ret_24",
+      "ret_72",
+      "ret_168",
+      "reversal_1",
+      "realized_vol_24",
+      "range_pct",
+      "h21c_oi_trend"
+    ]
+  },
+  "alpha": 1.0,
+  "folds": [
+    {
+      "fold": 0,
+      "train_rows_baseline": 137006,
+      "train_rows_candidate": 137006,
+      "baseline_predictive": {
+        "rows": 56550,
+        "timestamps": 3770,
+        "mean_timestamp_ic": -0.0027642902624761545,
+        "positive_timestamp_fraction": 0.4862068965517241
+      },
+      "candidate_predictive": {
+        "rows": 56550,
+        "timestamps": 3770,
+        "mean_timestamp_ic": -0.0042624890678171256,
+        "positive_timestamp_fraction": 0.48938992042440316
+      },
+      "candidate_minus_baseline_ic": -0.001498198805340971,
+      "standardized_h21c_coefficient": 0.00016527934960873758
+    },
+    {
+      "fold": 1,
+      "train_rows_baseline": 193556,
+      "train_rows_candidate": 193556,
+      "baseline_predictive": {
+        "rows": 56580,
+        "timestamps": 3772,
+        "mean_timestamp_ic": -0.03291841279994013,
+        "positive_timestamp_fraction": 0.4546659597030753
+      },
+      "candidate_predictive": {
+        "rows": 56580,
+        "timestamps": 3772,
+        "mean_timestamp_ic": -0.031912419656504695,
+        "positive_timestamp_fraction": 0.4628844114528102
+      },
+      "candidate_minus_baseline_ic": 0.0010059931434354338,
+      "standardized_h21c_coefficient": 0.00015082945063068566
+    },
+    {
+      "fold": 2,
+      "train_rows_baseline": 250136,
+      "train_rows_candidate": 250136,
+      "baseline_predictive": {
+        "rows": 56400,
+        "timestamps": 3760,
+        "mean_timestamp_ic": -0.024584235145484898,
+        "positive_timestamp_fraction": 0.4643617021276596
+      },
+      "candidate_predictive": {
+        "rows": 56400,
+        "timestamps": 3760,
+        "mean_timestamp_ic": -0.02377824870416,
+        "positive_timestamp_fraction": 0.4640957446808511
+      },
+      "candidate_minus_baseline_ic": 0.0008059864413248984,
+      "standardized_h21c_coefficient": 8.956006721453891e-05
+    }
+  ],
+  "predictive_aggregate": {
+    "baseline_mean_ic": -0.02008897940263373,
+    "candidate_mean_ic": -0.01998438580949394,
+    "delta": 0.00010459359313978733
+  },
+  "predictive_gates": {
+    "aggregate_ic_gt_baseline": true,
+    "ic_improved_folds_min_2": true,
+    "positive_h21c_coefficient_folds_min_2": true
+  },
+  "predictive_gate_pass": true,
+  "development_configuration_attempt_number": 10,
+  "development_only": true,
+  "post_2026_08_20_outcome_used": false,
+  "trial_871_consumed": false,
+  "economics": {
+    "baseline": {
+      "folds": [
+        {
+          "fold": 0,
+          "metrics": {
+            "net_return": 0.008661982337389462,
+            "annualized_return": 0.06851931982510573,
+            "volatility": 0.020671918941481116,
+            "sharpe": 3.216356587199014,
+            "sortino": 3.5329036303839425,
+            "max_drawdown": 0.006087742015612892,
+            "calmar": 11.255292955808255,
+            "profit_factor": 1.3776327482263946,
+            "win_rate": 0.5368421052631579,
+            "expectancy": 9.107981185955734e-05,
+            "trade_count": 955,
+            "long_trades": 769,
+            "short_trades": 673,
+            "turnover": 8.036086221795637,
+            "funding_return": -0.00020315935183198906,
+            "transaction_cost": 0.004018043110897819,
+            "worst_period": -0.001551875153124347,
+            "var_95": -0.0013298961986651324,
+            "cvar_95": -0.001449344263733552
+          },
+          "wrong_side_damage": 0.1526226659030592
+        },
+        {
+          "fold": 1,
+          "metrics": {
+            "net_return": -0.056095547647840305,
+            "annualized_return": -0.3582856665636426,
+            "volatility": 0.056036542624755555,
+            "sharpe": -7.886294916872746,
+            "sortino": -6.724019608668555,
+            "max_drawdown": 0.04977029396913158,
+            "calmar": -7.198785419789919,
+            "profit_factor": 0.3770671240652246,
+            "win_rate": 0.3894736842105263,
+            "expectancy": -0.0006053708236448393,
+            "trade_count": 986,
+            "long_trades": 702,
+            "short_trades": 724,
+            "turnover": 12.901088771435157,
+            "funding_return": 0.00018941339340226238,
+            "transaction_cost": 0.0064505443857175776,
+            "worst_period": -0.010478276438660533,
+            "var_95": -0.003999107965821942,
+            "cvar_95": -0.006283096883967677
+          },
+          "wrong_side_damage": 0.2710011140252428
+        },
+        {
+          "fold": 2,
+          "metrics": {
+            "net_return": 0.01068470217768791,
+            "annualized_return": 0.0850954709513243,
+            "volatility": 0.20081682779428536,
+            "sharpe": 0.5054359593321206,
+            "sortino": 0.6100868455747646,
+            "max_drawdown": 0.06521468402338945,
+            "calmar": 1.3048513877764791,
+            "profit_factor": 1.0526214457967717,
+            "win_rate": 0.47368421052631576,
+            "expectancy": 0.00013904115891265461,
+            "trade_count": 1285,
+            "long_trades": 662,
+            "short_trades": 779,
+            "turnover": 29.42437069348975,
+            "funding_return": -0.00040765024012587997,
+            "transaction_cost": 0.014712185346744873,
+            "worst_period": -0.013994365317943796,
+            "var_95": -0.010193877595298564,
+            "cvar_95": -0.012124875776261174
+          },
+          "wrong_side_damage": 0.7949746602415748
+        }
+      ],
+      "metrics": {
+        "net_return": -0.037746766976549995,
+        "annualized_return": -0.09385571324888098,
+        "volatility": 0.12088565468942133,
+        "sharpe": -0.7553484966180188,
+        "sortino": -0.8763833745275235,
+        "max_drawdown": 0.07102939196170496,
+        "calmar": -1.3213644472626582,
+        "profit_factor": 0.9026661040549767,
+        "win_rate": 0.4666666666666667,
+        "expectancy": -0.00012508328429087584,
+        "trade_count": 3226,
+        "long_trades": 2133,
+        "short_trades": 2176,
+        "turnover": 50.36154568672053,
+        "funding_return": -0.0004213961985556064,
+        "transaction_cost": 0.025180772843360268,
+        "worst_period": -0.013994365317943796,
+        "var_95": -0.007358412682457233,
+        "cvar_95": -0.009703481691325812
+      },
+      "wrong_side_damage": 1.2185984401698768
+    },
+    "candidate": {
+      "folds": [
+        {
+          "fold": 0,
+          "metrics": {
+            "net_return": 0.009537214935082527,
+            "annualized_return": 0.07566459837948458,
+            "volatility": 0.022389618360571316,
+            "sharpe": 3.268940711355257,
+            "sortino": 3.563183884750639,
+            "max_drawdown": 0.006283717376789252,
+            "calmar": 12.041375167345034,
+            "profit_factor": 1.381361798704378,
+            "win_rate": 0.5263157894736842,
+            "expectancy": 0.00010026073283640921,
+            "trade_count": 940,
+            "long_trades": 775,
+            "short_trades": 650,
+            "turnover": 8.753161289697989,
+            "funding_return": -0.00020900979538396845,
+            "transaction_cost": 0.004376580644848994,
+            "worst_period": -0.002511901446036407,
+            "var_95": -0.0013020410494207417,
+            "cvar_95": -0.0016368856486721258
+          },
+          "wrong_side_damage": 0.16005600843752169
+        },
+        {
+          "fold": 1,
+          "metrics": {
+            "net_return": -0.0678312317848091,
+            "annualized_return": -0.4171058656855071,
+            "volatility": 0.06281490726296987,
+            "sharpe": -8.558401327109289,
+            "sortino": -7.758155650667431,
+            "max_drawdown": 0.06184990083110858,
+            "calmar": -6.743840492557683,
+            "profit_factor": 0.32617227673536014,
+            "win_rate": 0.3263157894736842,
+            "expectancy": -0.0007364317612077374,
+            "trade_count": 1083,
+            "long_trades": 698,
+            "short_trades": 728,
+            "turnover": 16.45016643767706,
+            "funding_return": 0.00029588885841703516,
+            "transaction_cost": 0.008225083218838527,
+            "worst_period": -0.01186586432680287,
+            "var_95": -0.004474435586405865,
+            "cvar_95": -0.00706452190398222
+          },
+          "wrong_side_damage": 0.34594464049938983
+        },
+        {
+          "fold": 2,
+          "metrics": {
+            "net_return": 0.004043152858707044,
+            "annualized_return": 0.03149148581426586,
+            "volatility": 0.1997635818897018,
+            "sharpe": 0.25349902636755894,
+            "sortino": 0.3026425595987499,
+            "max_drawdown": 0.06630558940650072,
+            "calmar": 0.4749446629785691,
+            "profit_factor": 1.0258190944351822,
+            "win_rate": 0.4631578947368421,
+            "expectancy": 6.936968974347335e-05,
+            "trade_count": 1274,
+            "long_trades": 632,
+            "short_trades": 810,
+            "turnover": 29.96366359231265,
+            "funding_return": -0.00048818569027723877,
+            "transaction_cost": 0.014981831796156322,
+            "worst_period": -0.013651255811522163,
+            "var_95": -0.009737731989942277,
+            "cvar_95": -0.012203550770309757
+          },
+          "wrong_side_damage": 0.8004880939208646
+        }
+      ],
+      "metrics": {
+        "net_return": -0.05513609224937199,
+        "annualized_return": -0.13520984656417978,
+        "volatility": 0.12161399406455943,
+        "sharpe": -1.134093655314822,
+        "sortino": -1.31720868415588,
+        "max_drawdown": 0.08543315472086238,
+        "calmar": -1.5826390469362144,
+        "profit_factor": 0.859791801766595,
+        "win_rate": 0.43859649122807015,
+        "expectancy": -0.00018893377954261816,
+        "trade_count": 3297,
+        "long_trades": 2105,
+        "short_trades": 2188,
+        "turnover": 55.16699131968769,
+        "funding_return": -0.000401306627244172,
+        "transaction_cost": 0.027583495659843842,
+        "worst_period": -0.013651255811522163,
+        "var_95": -0.007808702726506207,
+        "cvar_95": -0.009909681620727286
+      },
+      "wrong_side_damage": 1.306488742857776
+    },
+    "delta": {
+      "net_return": -0.017389325272821998,
+      "sharpe": -0.37874515869680314,
+      "turnover": 4.805445632967157,
+      "wrong_side_damage": 0.08789030268789921,
+      "net_improved_folds": 1,
+      "wrong_side_improved_folds": 0
+    },
+    "gates": {
+      "aggregate_net_gt_baseline": false,
+      "aggregate_net_positive": false,
+      "net_improved_folds_min_2": false,
+      "wrong_side_damage_lt_baseline": false,
+      "wrong_side_improved_folds_min_2": false,
+      "turnover_lte_baseline": false
+    },
+    "fixed_gate_pass": false
+  }
+}
