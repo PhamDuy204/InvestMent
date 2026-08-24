@@ -1,0 +1,142 @@
+{
+  "original": {
+    "folds": [
+      {
+        "fold": 0,
+        "rows": 1447,
+        "net_return": 0.008905825530114209,
+        "sharpe": 3.312858087008188,
+        "wrong_side_count": 443,
+        "wrong_side_damage": 0.15241385793851228,
+        "turnover": 8.097385107936258
+      },
+      {
+        "fold": 1,
+        "rows": 1428,
+        "net_return": -0.05640285075015172,
+        "sharpe": -7.932650504644104,
+        "wrong_side_count": 485,
+        "wrong_side_damage": 0.2720286303069322,
+        "turnover": 12.95351160726491
+      },
+      {
+        "fold": 2,
+        "rows": 1451,
+        "net_return": 0.013353869036274002,
+        "sharpe": 0.6056600932804898,
+        "wrong_side_count": 602,
+        "wrong_side_damage": 0.794098836395901,
+        "turnover": 29.459633819182045
+      }
+    ],
+    "aggregate": {
+      "net_return": -0.03528644702102568,
+      "sharpe": -0.6998735460929627,
+      "profit_factor": 0.9092003438570667,
+      "max_drawdown": 0.06901020622840758,
+      "turnover": 50.510530534383214,
+      "transaction_cost": 0.025255265267191608
+    },
+    "wrong_side_count": 1530,
+    "wrong_side_damage": 1.2185413246413455
+  },
+  "ridge": {
+    "folds": [
+      {
+        "fold": 0,
+        "rows": 1447,
+        "net_return": 0.008905825530113987,
+        "sharpe": 3.3128580870081876,
+        "wrong_side_count": 443,
+        "wrong_side_damage": 0.15241385793851336,
+        "turnover": 8.09738510793626
+      },
+      {
+        "fold": 1,
+        "rows": 1428,
+        "net_return": -0.056402850750151834,
+        "sharpe": -7.932650504644117,
+        "wrong_side_count": 485,
+        "wrong_side_damage": 0.2720286303069336,
+        "turnover": 12.953511607264922
+      },
+      {
+        "fold": 2,
+        "rows": 1451,
+        "net_return": 0.013353869036275112,
+        "sharpe": 0.6056600932804905,
+        "wrong_side_count": 602,
+        "wrong_side_damage": 0.794098836395904,
+        "turnover": 29.459633819182063
+      }
+    ],
+    "aggregate": {
+      "net_return": -0.03528644702102535,
+      "sharpe": -0.6998735460929664,
+      "profit_factor": 0.9092003438570666,
+      "max_drawdown": 0.06901020622840705,
+      "turnover": 50.51053053438325,
+      "transaction_cost": 0.025255265267191625
+    },
+    "wrong_side_count": 1530,
+    "wrong_side_damage": 1.2185413246413508
+  },
+  "hist_gb": {
+    "folds": [
+      {
+        "fold": 0,
+        "rows": 1434,
+        "net_return": -0.001001862151429278,
+        "sharpe": -0.05447512352129844,
+        "wrong_side_count": 561,
+        "wrong_side_damage": 0.3152904990472274,
+        "turnover": 18.670345491291453
+      },
+      {
+        "fold": 1,
+        "rows": 1451,
+        "net_return": -0.003686544547092385,
+        "sharpe": -0.18839805390783468,
+        "wrong_side_count": 520,
+        "wrong_side_damage": 0.4959159146655935,
+        "turnover": 18.635211772412802
+      },
+      {
+        "fold": 2,
+        "rows": 1445,
+        "net_return": -0.06645078454296716,
+        "sharpe": -3.5799689557320473,
+        "wrong_side_count": 447,
+        "wrong_side_damage": 0.7704111525078957,
+        "turnover": 15.687621712711257
+      }
+    ],
+    "aggregate": {
+      "net_return": -0.07082419495862058,
+      "sharpe": -1.5537328272524884,
+      "profit_factor": 0.8355158148451366,
+      "max_drawdown": 0.12713572797726627,
+      "turnover": 52.99317897641552,
+      "transaction_cost": 0.02649658948820776
+    },
+    "wrong_side_count": 1528,
+    "wrong_side_damage": 1.5816175662207166
+  },
+  "ridge_reproduction": {
+    "orig_rows": 14308,
+    "regen_rows": 14308,
+    "all_keys_match": true,
+    "max_abs_target_weight_diff": 8.701372955499664e-15,
+    "max_abs_effective_score_diff": 9.999054535747565e-17,
+    "max_abs_holding_return_diff": 9.974659986866641e-17,
+    "max_abs_funding_sum_diff": 9.999054535747565e-17
+  },
+  "histgb_minus_ridge": {
+    "aggregate_net_delta": -0.03553774793759523,
+    "aggregate_sharpe_delta": -0.853859281159522,
+    "wrong_side_count_delta": -2,
+    "wrong_side_damage_delta": 0.3630762415793658,
+    "fold_net_improved_count": 1,
+    "fold_damage_improved_count": 1
+  }
+}
