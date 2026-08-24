@@ -1,0 +1,31 @@
+{
+  "schema_version": "paper-readiness-evolution-1",
+  "version": 31,
+  "root_cause": "ALPHA_FAILURE",
+  "dominant_next_problem": "ACCUMULATE_PROSPECTIVE_DEVELOPMENT_L2_BLOCK",
+  "historical_l2_source_verdict": "NO_NEW_FREE_PUBLIC_AUDITABLE_SOURCE_ADOPTED",
+  "forward_l2_boundary": {
+    "development_start_utc": "2026-08-24T06:00:00Z",
+    "development_end_utc": "2026-08-31T06:00:00Z",
+    "purge_hours": 12,
+    "untouched_start_utc": "2026-08-31T18:00:00Z",
+    "untouched_end_utc": "2026-09-07T18:00:00Z",
+    "continuity_reset_common_outage_minutes": 15,
+    "minimum_symbols_per_hour": 20,
+    "minimum_hourly_coverage_per_symbol": 0.95,
+    "decision_cadence": "1h",
+    "feature": "top_of_book_imbalance"
+  },
+  "preboundary_post_cutoff_l2_status": "QUARANTINED_NOT_RECLASSIFIED_AS_DEVELOPMENT",
+  "outcomes_opened_for_new_boundary": false,
+  "development_configuration_count_unique": 10,
+  "performance_trial_max": 870,
+  "next_trial": 871,
+  "next_trial_authorized": false,
+  "next_trial_consumed": false,
+  "candidate_frozen": false,
+  "ready_to_start_paper": false,
+  "a1": "NOT_STARTED",
+  "paper_validated": false,
+  "live_authorization": "LIVE_NOT_AUTHORIZED"
+}
