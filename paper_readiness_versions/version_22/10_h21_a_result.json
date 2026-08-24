@@ -1,0 +1,41 @@
+{
+  "hypothesis": "H21_A_GLOBAL_CROWD_SHORT_CONTRARIAN",
+  "feature": "-log(count_long_short_ratio)",
+  "sign_expectation": "positive future H12 return",
+  "folds": [
+    {
+      "fold": 0,
+      "timestamps": 314,
+      "mean_ic": 0.00011351674427732978,
+      "ic_positive_fraction": 0.49044585987261147,
+      "mean_spread": 9.104349315597832e-05,
+      "spread_positive_fraction": 0.49363057324840764
+    },
+    {
+      "fold": 1,
+      "timestamps": 314,
+      "mean_ic": -0.03464267872754197,
+      "ic_positive_fraction": 0.4745222929936306,
+      "mean_spread": 0.002270446053457634,
+      "spread_positive_fraction": 0.5286624203821656
+    },
+    {
+      "fold": 2,
+      "timestamps": 314,
+      "mean_ic": -0.0165614726635387,
+      "ic_positive_fraction": 0.4968152866242038,
+      "mean_spread": 0.0014429696058669012,
+      "spread_positive_fraction": 0.46496815286624205
+    }
+  ],
+  "aggregate": {
+    "mean_ic": -0.017030211548934446,
+    "mean_spread": 0.001268153050826838,
+    "ic_positive_folds": 1,
+    "spread_positive_folds": 3
+  },
+  "fixed_gate_pass": false,
+  "mechanism_attempt_number": 1,
+  "development_only": true,
+  "post_2026_08_20_outcome_used": false
+}
