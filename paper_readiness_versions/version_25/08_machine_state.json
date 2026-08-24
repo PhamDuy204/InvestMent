@@ -1,0 +1,22 @@
+{
+  "schema_version": "paper-readiness-evolution-1",
+  "version": 25,
+  "root_cause": "ALPHA_FAILURE",
+  "h21_c_predictive_verdict": "PASS",
+  "h21_c_raw_economic_verdict": "REJECT_RAW_DIRECTIONAL_MAPPING",
+  "baseline_net_10bps": -0.03528644702102568,
+  "raw_h21c_net_10bps": -0.0702798015258862,
+  "raw_h21c_turnover": 315.21861016872623,
+  "raw_h21c_wrong_side_damage": 2.691839126626417,
+  "development_configuration_count_unique": 8,
+  "dominant_next_problem": "PREDECLARE_MINIMAL_H21C_RELIABILITY_MAPPING",
+  "performance_trial_max": 870,
+  "next_trial": 871,
+  "next_trial_authorized": false,
+  "next_trial_consumed": false,
+  "candidate_frozen": false,
+  "ready_to_start_paper": false,
+  "a1": "NOT_STARTED",
+  "paper_validated": false,
+  "live_authorization": "LIVE_NOT_AUTHORIZED"
+}
