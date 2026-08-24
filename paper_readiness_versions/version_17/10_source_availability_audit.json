@@ -1,0 +1,19 @@
+{
+  "schema_version": "v16-source-availability-audit-1",
+  "question": "Is there another historical top-of-book/order-book source that should replace rejected Binance bookDepth for the old H12 folds?",
+  "local_repo_archive": "NONE_FOUND_WITH_OLD_FOLD_OVERLAP",
+  "binance_public_bookticker": "INSUFFICIENT_COVERAGE_FOR_2025_2026_FOLDS",
+  "binance_legacy_historical_l2": "NOT_AVAILABLE_AS_CURRENT_PUBLIC_BULK_PATH",
+  "tardis_binance_futures": {
+    "technical_coverage_since": "2019-11-17",
+    "channels": ["depth", "bookTicker", "depthSnapshot"],
+    "integrity_control": "incremental sequence validation plus REST snapshot overlap validation",
+    "free_access": "sample CSV coverage only",
+    "full_old_fold_access": "service/API access required",
+    "decision": "NOT_ADOPTED_AT_THIS_CHECKPOINT"
+  },
+  "verdict": "STOP_HISTORICAL_MICROSTRUCTURE_RESCUE_AND_USE_FORWARD_ONLY_L2",
+  "performance_trial_count_after_audit": 870,
+  "trial_871_consumed": false,
+  "live_authorization": "LIVE_NOT_AUTHORIZED"
+}
