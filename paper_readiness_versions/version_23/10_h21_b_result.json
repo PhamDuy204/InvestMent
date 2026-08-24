@@ -1,0 +1,41 @@
+{
+  "hypothesis": "H21_B_TOP_TRADER_VS_GLOBAL_DIVERGENCE",
+  "feature": "log(sum_toptrader_long_short_ratio)-log(count_long_short_ratio)",
+  "sign_expectation": "positive future H12 return",
+  "folds": [
+    {
+      "fold": 0,
+      "timestamps": 314,
+      "mean_ic": -0.003818979821227863,
+      "ic_positive_fraction": 0.49363057324840764,
+      "mean_spread": -9.239405047865334e-05,
+      "spread_positive_fraction": 0.4968152866242038
+    },
+    {
+      "fold": 1,
+      "timestamps": 314,
+      "mean_ic": -0.00541200556655783,
+      "ic_positive_fraction": 0.4713375796178344,
+      "mean_spread": 0.0019861793664688464,
+      "spread_positive_fraction": 0.4745222929936306
+    },
+    {
+      "fold": 2,
+      "timestamps": 314,
+      "mean_ic": -0.01884561998140989,
+      "ic_positive_fraction": 0.4713375796178344,
+      "mean_spread": -0.00126883802765452,
+      "spread_positive_fraction": 0.45222929936305734
+    }
+  ],
+  "aggregate": {
+    "mean_ic": -0.009358868456398524,
+    "mean_spread": 0.00020831576277855767,
+    "ic_positive_folds": 0,
+    "spread_positive_folds": 1
+  },
+  "fixed_gate_pass": false,
+  "mechanism_attempt_number": 2,
+  "development_only": true,
+  "post_2026_08_20_outcome_used": false
+}
