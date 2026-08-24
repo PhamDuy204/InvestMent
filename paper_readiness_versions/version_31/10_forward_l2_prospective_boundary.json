@@ -1,0 +1,32 @@
+{
+  "schema_version": "v31-forward-l2-boundary-1",
+  "created_before_development_start": true,
+  "development": {
+    "start_utc": "2026-08-24T06:00:00Z",
+    "end_utc": "2026-08-31T06:00:00Z",
+    "contiguous_calendar_days": 7,
+    "decision_cadence": "1h",
+    "expected_symbol_count": 21,
+    "minimum_symbols_per_hour": 20,
+    "minimum_hourly_coverage_per_symbol": 0.95,
+    "continuity_resets_if_common_outage_exceeds_minutes": 15,
+    "development_split": "two_equal_chronological_halves",
+    "feature": "top_of_book_imbalance",
+    "feature_fitted_parameters": 0
+  },
+  "purge": {
+    "hours": 12,
+    "start_utc": "2026-08-31T06:00:00Z",
+    "end_utc": "2026-08-31T18:00:00Z"
+  },
+  "untouched": {
+    "start_utc": "2026-08-31T18:00:00Z",
+    "end_utc": "2026-09-07T18:00:00Z",
+    "calendar_days": 7,
+    "must_remain_unread_during_development": true
+  },
+  "preboundary_post_cutoff_data": "QUARANTINED_NOT_DEVELOPMENT",
+  "outcomes_inspected": false,
+  "trial_871_consumed": false,
+  "live_authorization": "LIVE_NOT_AUTHORIZED"
+}

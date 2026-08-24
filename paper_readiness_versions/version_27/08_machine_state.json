@@ -1,0 +1,22 @@
+{
+  "schema_version": "paper-readiness-evolution-1",
+  "version": 27,
+  "root_cause": "ALPHA_FAILURE",
+  "h26_verdict": "REJECT_FIXED_CONFLICT_VETO",
+  "h26_candidate_net_10bps": -0.043772547145946916,
+  "h26_baseline_net_10bps": -0.03528644702102568,
+  "h26_wrong_side_improved_folds": 3,
+  "h26_net_improved_folds": 1,
+  "h26_turnover_delta": -8.48049744360631,
+  "development_configuration_count_unique": 9,
+  "dominant_next_problem": "AUDIT_FULL_HOURLY_METRICS_COVERAGE_FOR_AUGMENTED_RIDGE",
+  "performance_trial_max": 870,
+  "next_trial": 871,
+  "next_trial_authorized": false,
+  "next_trial_consumed": false,
+  "candidate_frozen": false,
+  "ready_to_start_paper": false,
+  "a1": "NOT_STARTED",
+  "paper_validated": false,
+  "live_authorization": "LIVE_NOT_AUTHORIZED"
+}

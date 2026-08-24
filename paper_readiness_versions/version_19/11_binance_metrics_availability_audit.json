@@ -1,0 +1,1739 @@
+{
+  "symbols": [
+    "1000PEPEUSDT",
+    "1000SHIBUSDT",
+    "AAVEUSDT",
+    "ADAUSDT",
+    "AVAXUSDT",
+    "BNBUSDT",
+    "BTCUSDT",
+    "DOGEUSDT",
+    "DOTUSDT",
+    "ETHUSDT",
+    "FILUSDT",
+    "LINKUSDT",
+    "LTCUSDT",
+    "NEARUSDT",
+    "SOLUSDT",
+    "SUIUSDT",
+    "UNIUSDT",
+    "WLDUSDT",
+    "XLMUSDT",
+    "XRPUSDT",
+    "ZECUSDT"
+  ],
+  "dates": [
+    "2025-04-16",
+    "2025-09-20",
+    "2026-02-24",
+    "2026-07-31"
+  ],
+  "summary": {
+    "2025-04-16": {
+      "ok": 21,
+      "rows_min": 288,
+      "rows_max": 288,
+      "all_288": true
+    },
+    "2025-09-20": {
+      "ok": 21,
+      "rows_min": 288,
+      "rows_max": 288,
+      "all_288": true
+    },
+    "2026-02-24": {
+      "ok": 21,
+      "rows_min": 288,
+      "rows_max": 288,
+      "all_288": true
+    },
+    "2026-07-31": {
+      "ok": 21,
+      "rows_min": 288,
+      "rows_max": 288,
+      "all_288": true
+    }
+  },
+  "rows": [
+    {
+      "date": "2025-04-16",
+      "symbol": "1000PEPEUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-04-16",
+      "symbol": "1000SHIBUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-04-16",
+      "symbol": "AAVEUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-04-16",
+      "symbol": "ADAUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-04-16",
+      "symbol": "AVAXUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-04-16",
+      "symbol": "BNBUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-04-16",
+      "symbol": "BTCUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-04-16",
+      "symbol": "DOGEUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-04-16",
+      "symbol": "DOTUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-04-16",
+      "symbol": "ETHUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-04-16",
+      "symbol": "FILUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-04-16",
+      "symbol": "LINKUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-04-16",
+      "symbol": "LTCUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-04-16",
+      "symbol": "NEARUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-04-16",
+      "symbol": "SOLUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-04-16",
+      "symbol": "SUIUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-04-16",
+      "symbol": "UNIUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-04-16",
+      "symbol": "WLDUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-04-16",
+      "symbol": "XLMUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-04-16",
+      "symbol": "XRPUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-04-16",
+      "symbol": "ZECUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-04-16 00:00:00+00:00",
+      "max": "2025-04-16 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "1000PEPEUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "1000SHIBUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "AAVEUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "ADAUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "AVAXUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "BNBUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "BTCUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "DOGEUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "DOTUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "ETHUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "FILUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "LINKUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "LTCUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "NEARUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "SOLUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "SUIUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "UNIUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "WLDUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "XLMUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "XRPUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "symbol": "ZECUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2025-09-20 00:00:00+00:00",
+      "max": "2025-09-20 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "1000PEPEUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "1000SHIBUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "AAVEUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "ADAUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "AVAXUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "BNBUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "BTCUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "DOGEUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "DOTUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "ETHUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "FILUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "LINKUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "LTCUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "NEARUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "SOLUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "SUIUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "UNIUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "WLDUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "XLMUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "XRPUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "symbol": "ZECUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-02-24 00:00:00+00:00",
+      "max": "2026-02-24 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "1000PEPEUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "1000SHIBUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "AAVEUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "ADAUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "AVAXUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "BNBUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "BTCUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "DOGEUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "DOTUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "ETHUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "FILUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "LINKUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "LTCUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "NEARUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "SOLUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "SUIUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "UNIUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "WLDUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "XLMUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "XRPUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "ZECUSDT",
+      "ok": true,
+      "rows": 288,
+      "min": "2026-07-31 00:00:00+00:00",
+      "max": "2026-07-31 23:55:00+00:00",
+      "duplicates": 0,
+      "unique": 288,
+      "header": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": "v13-existing-causal-scan-1",
+  "evidence_class": "OBSERVED_V10_PANEL_DEVELOPMENT_DIAGNOSTIC_ONLY",
+  "question": "Does one already-existing causal variable explain H12 directional-edge failure consistently across chronological selection folds without reusing a rejected mechanism?",
+  "selection_rule": "first 70% of decision timestamps within each outer fold, identical chronological boundary semantics to split_selection_evaluation",
+  "target": "sign(effective_score) * holding_return_label",
+  "continuous_spearman_by_fold": {
+    "market_ret_4": [0.01097, -0.06953, 0.03341],
+    "ret_24": [-0.02022, -0.07870, -0.02359],
+    "cross_sectional_dispersion": [-0.04448, 0.00581, -0.09657],
+    "realized_vol_24": [-0.03766, -0.00764, -0.04558],
+    "trade_count_z24": [-0.01396, -0.03352, -0.03218],
+    "quote_volume_z24": [-0.01211, -0.02593, -0.02844],
+    "taker_imbalance": [-0.02561, -0.04374, -0.01455],
+    "funding_rate": [-0.00718, -0.06636, -0.01161],
+    "lag_return_1h": [0.03855, 0.04034, 0.01473],
+    "lag_rv12": [-0.04344, 0.01082, -0.03902]
+  },
+  "interpretation": {
+    "lag_return_1h": "weak same-sign association in all three selection folds, but not materially new: recent/lagged return information is already represented in H12 and lag_return_1h was already used in prior H4/H8 research controls/inputs",
+    "other_same_sign_raw_features": "realized volatility, activity/volume, taker imbalance and funding show weak same-sign associations but are already direct H12 factor columns and/or prior rejected reliability families",
+    "categorical_states": "trend/funding/session/exposure/vol/activity state means do not provide a consistent state-specific directional rescue across all folds"
+  },
+  "verdict": "NO_MATERIALLY_NEW_EXISTING_CAUSAL_INTERACTION",
+  "decision": "RETIRE_CURRENT_H12_RESCUE_PATH_AND_SEEK_NEW_FACTOR_FAMILY",
+  "performance_trial_count_after_diagnostic": 870,
+  "trial_871_consumed": false,
+  "live_authorization": "LIVE_NOT_AUTHORIZED"
+}

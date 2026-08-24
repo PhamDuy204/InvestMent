@@ -1,0 +1,55 @@
+{
+  "evidence_class": "OBSERVED_V10_PANEL_DIAGNOSTIC_ONLY",
+  "live_authorization": "LIVE_NOT_AUTHORIZED",
+  "metric": "per-decision-timestamp Spearman correlation between effective_score and holding_return_label; 70/30 split identical to split_selection_evaluation",
+  "performance_trial_count_after_diagnostic": 870,
+  "question": "Does H12 effective_score preserve stable cross-sectional ranking information across chronological slices?",
+  "reason": "IC is near zero or sign-unstable in selection slices and reverses materially between selection and observed evaluation in folds 1 and 2. A rank-only rescue is not supported.",
+  "results": {
+    "fold_0": {
+      "observed_evaluation": {
+        "mean_ic": 0.014394073418841219,
+        "median_ic": 0.024999999999999998,
+        "n_timestamps": 95,
+        "positive_rate": 0.5157894736842106
+      },
+      "selection": {
+        "mean_ic": 0.004367787345985177,
+        "median_ic": 0.0035714285714285704,
+        "n_timestamps": 219,
+        "positive_rate": 0.502283105022831
+      }
+    },
+    "fold_1": {
+      "observed_evaluation": {
+        "mean_ic": -0.07647279964617425,
+        "median_ic": -0.10357142857142855,
+        "n_timestamps": 95,
+        "positive_rate": 0.4105263157894737
+      },
+      "selection": {
+        "mean_ic": 0.026997501415779845,
+        "median_ic": 0.010714285714285713,
+        "n_timestamps": 219,
+        "positive_rate": 0.5296803652968036
+      }
+    },
+    "fold_2": {
+      "observed_evaluation": {
+        "mean_ic": 0.047111897390535146,
+        "median_ic": 0.02941176470588235,
+        "n_timestamps": 95,
+        "positive_rate": 0.5368421052631579
+      },
+      "selection": {
+        "mean_ic": -0.021648181636700067,
+        "median_ic": -0.0035714285714285704,
+        "n_timestamps": 219,
+        "positive_rate": 0.4840182648401826
+      }
+    }
+  },
+  "schema_version": "v12-rank-diagnostic-1",
+  "trial_871_consumed": false,
+  "verdict": "NO_STABLE_RELATIVE_RANK_EDGE"
+}

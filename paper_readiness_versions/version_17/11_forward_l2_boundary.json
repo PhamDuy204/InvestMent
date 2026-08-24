@@ -1,0 +1,37 @@
+{
+  "schema_version": "v17-forward-l2-boundary-1",
+  "feature": {
+    "name": "top_of_book_imbalance",
+    "formula": "(bid_qty - ask_qty) / (bid_qty + ask_qty)",
+    "source": "existing src/crypto_research/l2_shadow_v8.py persisted field",
+    "fitted_parameters": 0
+  },
+  "observed_metadata_only": {
+    "parquet_files": 3003,
+    "parquet_rows": 180180,
+    "symbols": 21,
+    "rows_per_symbol": 8580,
+    "common_wall_clock_span_hours": 85.96,
+    "common_segments_hours": [6.041, 11.616],
+    "max_common_gap_hours": 68.3,
+    "outcomes_inspected": false
+  },
+  "development_eligibility": {
+    "contiguous_calendar_days": 7,
+    "decision_cadence": "1h",
+    "expected_symbol_count": 21,
+    "minimum_symbols_per_hour": 20,
+    "minimum_hourly_coverage_per_symbol": 0.95,
+    "continuity_resets_if_common_outage_exceeds_minutes": 15,
+    "development_split": "two equal chronological halves"
+  },
+  "future_untouched_rule": {
+    "purge_hours_after_development": 12,
+    "untouched_calendar_days": 7,
+    "must_remain_unread_during_development": true
+  },
+  "current_verdict": "NEED_MORE_FORWARD_L2_EVIDENCE",
+  "trial_871_authorized": false,
+  "trial_871_consumed": false,
+  "live_authorization": "LIVE_NOT_AUTHORIZED"
+}

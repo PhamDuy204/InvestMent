@@ -1,0 +1,19 @@
+{
+  "schema_version": "paper-readiness-evolution-1",
+  "version": 11,
+  "initialized_from_branch": "v11-root-cause-paper-readiness",
+  "initialized_from_sha": "510316ef4022706d7db10b132edb19a5e44041e8",
+  "root_cause": "ALPHA_FAILURE",
+  "dominant_next_problem": "MATERIALLY_NEW_CAUSAL_DIRECTIONAL_SOURCE",
+  "performance_trial_max": 870,
+  "next_trial": 871,
+  "next_trial_authorized": false,
+  "next_trial_consumed": false,
+  "development_configuration_count": 0,
+  "candidate_frozen": false,
+  "ready_to_start_paper": false,
+  "a1": "NOT_STARTED",
+  "paper_validated": false,
+  "live_authorization": "LIVE_NOT_AUTHORIZED",
+  "next_version_rule": "create only after meaningful scientific/code/readiness checkpoint changes"
+}

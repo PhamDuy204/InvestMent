@@ -1,0 +1,42 @@
+{
+  "schema_version": "v14-new-factor-provenance-audit-1",
+  "question": "Is there a materially new causal information source with historical development coverage that does not require touching reserved post-boundary outcomes?",
+  "historical_h12_panel": {
+    "rows": 14308,
+    "symbols": 21,
+    "folds": 3,
+    "start_utc": "2025-04-16T12:00:00+00:00",
+    "end_utc": "2026-07-31T08:00:00+00:00"
+  },
+  "local_l2": {
+    "first_seen_utc": "2026-08-20T10:46:51.139497+00:00",
+    "historical_panel_overlap": false,
+    "pre_boundary_sessions": ["2026-08-20", "2026-08-23"],
+    "status": "FORWARD_RESEARCH_ONLY_FOR_OLD_FOLDS"
+  },
+  "local_positioning": {
+    "first_seen_date": "2026-08-20",
+    "causal_availability": "FORWARD_ONLY_FIRST_SEEN",
+    "historical_backfill": "DATA_LIMITATION",
+    "historical_panel_overlap": false
+  },
+  "binance_data_vision_bookdepth": {
+    "source": "official Binance public-data/Data Vision USD-M daily bookDepth",
+    "sample_schema": ["timestamp", "percentage", "depth", "notional"],
+    "sample_buckets": [-5, -4, -3, -2, -1, 1, 2, 3, 4, 5],
+    "representative_btcusdt_http_status": {
+      "2025-04-16": 200,
+      "2025-09-20": 200,
+      "2026-02-24": 200,
+      "2026-07-31": 200
+    },
+    "historical_bookticker_2025_04_16_http_status": 404,
+    "data_quality_warning": "Binance public-data issue #431 reports possible bookDepth misalignment; fixed integrity audit required before use",
+    "status": "FOUND_PENDING_INTEGRITY_AUDIT"
+  },
+  "verdict": "HISTORICAL_PUBLIC_DEPTH_SOURCE_FOUND",
+  "next_gate": "BOOKDEPTH_INTEGRITY_AND_SEMANTICS_AUDIT",
+  "performance_trial_count_after_audit": 870,
+  "trial_871_consumed": false,
+  "live_authorization": "LIVE_NOT_AUTHORIZED"
+}

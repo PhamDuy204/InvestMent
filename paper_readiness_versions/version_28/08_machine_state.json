@@ -1,0 +1,26 @@
+{
+  "schema_version": "paper-readiness-evolution-1",
+  "version": 28,
+  "root_cause": "ALPHA_FAILURE",
+  "hourly_h21c_coverage": {
+    "eligible_rows": 307095,
+    "finite_rows": 306896,
+    "nonfinite_rows": 199,
+    "finite_fraction": 0.9993519920545759,
+    "missing_source_files": 0
+  },
+  "availability_mask": "in_universe_15 AND finite_h21c_for_both_baseline_and_candidate",
+  "v29_experiment": "RIDGE_PRICE_PLUS_ONE_H21C_FEATURE_ALPHA_1",
+  "predeclared_before_model_fit": true,
+  "development_configuration_count_unique_prior": 9,
+  "dominant_next_problem": "RUN_FIXED_AUGMENTED_RIDGE_V29",
+  "performance_trial_max": 870,
+  "next_trial": 871,
+  "next_trial_authorized": false,
+  "next_trial_consumed": false,
+  "candidate_frozen": false,
+  "ready_to_start_paper": false,
+  "a1": "NOT_STARTED",
+  "paper_validated": false,
+  "live_authorization": "LIVE_NOT_AUTHORIZED"
+}

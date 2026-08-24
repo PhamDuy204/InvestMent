@@ -1,0 +1,112 @@
+{
+  "aggregate_delta_60m_minus_0m": {
+    "gross_holding_return_sum": -0.005261224508692559,
+    "net_0bps": -0.004897672628786376,
+    "net_10bps": -0.004902150592443921
+  },
+  "classification": "NO_MEANINGFUL_EDGE",
+  "delay_60m": {
+    "aggregate": {
+      "decision_rows": 4326,
+      "funding_contribution_sum": -0.0004161617517901389,
+      "gross_holding_return_sum": -0.012676158946667373,
+      "net_0bps": -0.015507135485688162,
+      "net_10bps": -0.0401885976134696,
+      "wrong_side_count": 2099,
+      "wrong_side_rate": 0.48520573277854834
+    },
+    "folds": [
+      {
+        "decision_rows": 1447,
+        "fold": 0,
+        "funding_contribution_sum": -0.0001995712904180858,
+        "gross_holding_return_sum": 0.01255159624244223,
+        "net_0bps": 0.012401024335008115,
+        "net_10bps": 0.008287616941574871,
+        "wrong_side_count": 704,
+        "wrong_side_rate": 0.4865238424326192
+      },
+      {
+        "decision_rows": 1428,
+        "fold": 1,
+        "funding_contribution_sum": 0.00018043589524403258,
+        "gross_holding_return_sum": -0.05121355391092831,
+        "net_0bps": -0.04992709551434393,
+        "net_10bps": -0.05610526454174547,
+        "wrong_side_count": 722,
+        "wrong_side_rate": 0.5056022408963585
+      },
+      {
+        "decision_rows": 1451,
+        "fold": 2,
+        "funding_contribution_sum": -0.00039702635661608565,
+        "gross_holding_return_sum": 0.025985798721818706,
+        "net_0bps": 0.02353586347018255,
+        "net_10bps": 0.008504656060036586,
+        "wrong_side_count": 673,
+        "wrong_side_rate": 0.4638180565127498
+      }
+    ],
+    "label": "60m"
+  },
+  "evidence_class": "OBSERVED_V10_HELDOUT_DIAGNOSTIC_ONLY",
+  "instant": {
+    "aggregate": {
+      "decision_rows": 4326,
+      "funding_contribution_sum": -0.0004161617517901389,
+      "gross_holding_return_sum": -0.007414934437974814,
+      "net_0bps": -0.010609462856901786,
+      "net_10bps": -0.03528644702102568,
+      "wrong_side_count": 1530,
+      "wrong_side_rate": 0.3536754507628294
+    },
+    "folds": [
+      {
+        "decision_rows": 1447,
+        "fold": 0,
+        "funding_contribution_sum": -0.0001995712904180858,
+        "gross_holding_return_sum": 0.013142477263844593,
+        "net_0bps": 0.012998243314153113,
+        "net_10bps": 0.008905825530114209,
+        "wrong_side_count": 443,
+        "wrong_side_rate": 0.3061506565307533
+      },
+      {
+        "decision_rows": 1428,
+        "fold": 1,
+        "funding_contribution_sum": 0.00018043589524403258,
+        "gross_holding_return_sum": -0.051539411769716006,
+        "net_0bps": -0.050265741355275284,
+        "net_10bps": -0.05640285075015172,
+        "wrong_side_count": 485,
+        "wrong_side_rate": 0.3396358543417367
+      },
+      {
+        "decision_rows": 1451,
+        "fold": 2,
+        "funding_contribution_sum": -0.00039702635661608565,
+        "gross_holding_return_sum": 0.030982000067896594,
+        "net_0bps": 0.028387895038440414,
+        "net_10bps": 0.013353869036274002,
+        "wrong_side_count": 602,
+        "wrong_side_rate": 0.4148862853204686
+      }
+    ],
+    "label": "0m"
+  },
+  "live_authorization": "LIVE_NOT_AUTHORIZED",
+  "performance_trial_count_after_diagnostic": 870,
+  "schema_version": "v11-signal-decay-1",
+  "supported_delays_minutes": [
+    0,
+    60
+  ],
+  "trial_871_consumed": false,
+  "unsupported_delay_note": "Only the inherited 0m panel and +1h causal delayed decision log exist; no synthetic intermediate/longer delay is fabricated.",
+  "unsupported_requested_delays_minutes": [
+    15,
+    30,
+    120,
+    240
+  ]
+}

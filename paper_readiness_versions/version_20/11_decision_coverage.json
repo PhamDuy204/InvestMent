@@ -1,0 +1,47 @@
+{
+  "decision_rows": 14308,
+  "symbols": 21,
+  "decision_timestamps": 942,
+  "strict_rule": "latest completed metrics row strictly before endpoint; tolerance <=15m; no forward/back fill beyond source asof; 1h OI change compares latest <t to latest <t-1h",
+  "field_coverage": {
+    "sum_open_interest": {
+      "available": 14308,
+      "fraction": 1.0
+    },
+    "sum_open_interest_value": {
+      "available": 14308,
+      "fraction": 1.0
+    },
+    "count_toptrader_long_short_ratio": {
+      "available": 14308,
+      "fraction": 1.0
+    },
+    "sum_toptrader_long_short_ratio": {
+      "available": 14308,
+      "fraction": 1.0
+    },
+    "count_long_short_ratio": {
+      "available": 14308,
+      "fraction": 1.0
+    },
+    "sum_taker_long_short_vol_ratio": {
+      "available": 14308,
+      "fraction": 1.0
+    }
+  },
+  "oi_log_change_1h": {
+    "available": 14308,
+    "fraction": 1.0
+  },
+  "latest_age_minutes": {
+    "min": 5.0,
+    "median": 5.0,
+    "max": 5.0
+  },
+  "prev_age_minutes": {
+    "min": 5.0,
+    "median": 5.0,
+    "max": 5.0
+  },
+  "unavailable_oi_change_by_date": {}
+}

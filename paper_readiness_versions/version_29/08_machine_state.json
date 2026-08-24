@@ -1,0 +1,41 @@
+{
+  "schema_version": "paper-readiness-evolution-1",
+  "version": 29,
+  "root_cause": "ALPHA_FAILURE",
+  "v29_experiment": "RIDGE_PRICE_PLUS_ONE_H21C_FEATURE_ALPHA_1",
+  "predictive_gate_pass": true,
+  "predictive": {
+    "baseline_mean_ic": -0.02008897940263373,
+    "candidate_mean_ic": -0.01998438580949394,
+    "delta_ic": 0.00010459359313978733,
+    "ic_improved_folds": 2,
+    "positive_h21c_coefficient_folds": 3
+  },
+  "economic_verdict": "REJECT_FIXED_RIDGE_PLUS_H21C",
+  "economics": {
+    "baseline_net_10bps": -0.037746766976549995,
+    "candidate_net_10bps": -0.05513609224937199,
+    "net_delta": -0.017389325272821998,
+    "baseline_sharpe": -0.7553484966180188,
+    "candidate_sharpe": -1.134093655314822,
+    "baseline_turnover": 50.36154568672053,
+    "candidate_turnover": 55.16699131968769,
+    "baseline_wrong_side_damage": 1.2185984401698768,
+    "candidate_wrong_side_damage": 1.306488742857776,
+    "net_improved_folds": 1,
+    "wrong_side_improved_folds": 0
+  },
+  "harness_correction": "DISCARDED_FIRST_ECONOMIC_INVOCATION_WITH_WRONG_IN_UNIVERSE_COLUMN_BEFORE_V29_CHECKPOINT",
+  "historical_h21c_line": "CLOSED_NO_RETUNING",
+  "development_configuration_count_unique": 10,
+  "dominant_next_problem": "MATERIALLY_NEW_INFORMATION_OR_MATURE_FORWARD_L2",
+  "performance_trial_max": 870,
+  "next_trial": 871,
+  "next_trial_authorized": false,
+  "next_trial_consumed": false,
+  "candidate_frozen": false,
+  "ready_to_start_paper": false,
+  "a1": "NOT_STARTED",
+  "paper_validated": false,
+  "live_authorization": "LIVE_NOT_AUTHORIZED"
+}

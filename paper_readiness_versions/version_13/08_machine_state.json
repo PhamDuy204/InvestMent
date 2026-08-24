@@ -1,0 +1,18 @@
+{
+  "a1": "NOT_STARTED",
+  "candidate_frozen": false,
+  "development_configuration_count": 0,
+  "dominant_next_problem": "MATERIALLY_NEW_CAUSAL_FACTOR_FAMILY",
+  "existing_causal_scan": "NO_MATERIALLY_NEW_EXISTING_CAUSAL_INTERACTION",
+  "live_authorization": "LIVE_NOT_AUTHORIZED",
+  "next_trial": 871,
+  "next_trial_authorized": false,
+  "next_trial_consumed": false,
+  "paper_validated": false,
+  "performance_trial_max": 870,
+  "rank_diagnostic": "NO_STABLE_RELATIVE_RANK_EDGE",
+  "ready_to_start_paper": false,
+  "root_cause": "ALPHA_FAILURE",
+  "schema_version": "paper-readiness-evolution-1",
+  "version": 13
+}

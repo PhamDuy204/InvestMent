@@ -1,0 +1,21 @@
+{
+  "schema_version": "paper-readiness-evolution-1",
+  "version": 14,
+  "root_cause": "ALPHA_FAILURE",
+  "rank_diagnostic": "NO_STABLE_RELATIVE_RANK_EDGE",
+  "existing_causal_scan": "NO_MATERIALLY_NEW_EXISTING_CAUSAL_INTERACTION",
+  "new_factor_source": "BINANCE_HISTORICAL_USDM_BOOKDEPTH",
+  "new_factor_source_status": "FOUND_PENDING_INTEGRITY_AUDIT",
+  "local_l2_historical_overlap": false,
+  "positioning_causal_status": "FORWARD_ONLY_FIRST_SEEN",
+  "dominant_next_problem": "HISTORICAL_BOOKDEPTH_INTEGRITY_AND_SEMANTICS",
+  "performance_trial_max": 870,
+  "next_trial": 871,
+  "next_trial_authorized": false,
+  "next_trial_consumed": false,
+  "candidate_frozen": false,
+  "ready_to_start_paper": false,
+  "a1": "NOT_STARTED",
+  "paper_validated": false,
+  "live_authorization": "LIVE_NOT_AUTHORIZED"
+}

@@ -1,0 +1,49 @@
+{
+  "cpcv": {
+    "reason": "No new V11 candidate was selected and no provenance-complete combinatorial path matrix is available or needed for a diagnostic-only ending.",
+    "status": "NOT_COMPUTABLE_WITH_CURRENT_PROVENANCE",
+    "value": null
+  },
+  "deflated_sharpe_ratio": {
+    "reason": "V11 admitted no candidate and consumed no new performance trial. The repository does not preserve a sufficiently aligned joint return/trial-selection structure for a defensible V11 DSR; applying it to a rejected baseline would not establish readiness.",
+    "status": "NOT_COMPUTABLE_WITH_CURRENT_PROVENANCE",
+    "value": null
+  },
+  "development_configuration_count_v11": 0,
+  "generated_at_utc": "2026-08-23T17:29:35.009168+00:00",
+  "inherited_through_v9_max_trial": 869,
+  "live_authorization": "LIVE_NOT_AUTHORIZED",
+  "max_performance_trial": 870,
+  "methodology_note": "DSR/PBO are not cargo-culted. Their purpose is selection/multiple-testing control; missing provenance is reported rather than reconstructed from insufficient scalar summaries.",
+  "pbo_cscv": {
+    "reason": "No aligned candidate-return matrix across the actually selected/tried V11 configurations exists; V11 tried zero configurations.",
+    "status": "NOT_COMPUTABLE_WITH_CURRENT_PROVENANCE",
+    "value": null
+  },
+  "probabilistic_sharpe_or_bootstrap": "NOT_RUN_NO_CANDIDATE_TO_VALIDATE",
+  "registry_rows": 13,
+  "registry_trials_present": [
+    858,
+    859,
+    860,
+    861,
+    862,
+    863,
+    864,
+    865,
+    866,
+    867,
+    868,
+    869,
+    870
+  ],
+  "schema_version": "v11-multiple-testing-1",
+  "v10_trial_870": {
+    "consumed": true,
+    "status": "REJECTED_INNER"
+  },
+  "v11_trial_871": {
+    "authorized": false,
+    "consumed": false
+  }
+}

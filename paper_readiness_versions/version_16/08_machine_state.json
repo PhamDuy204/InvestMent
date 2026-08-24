@@ -1,0 +1,20 @@
+{
+  "schema_version": "paper-readiness-evolution-1",
+  "version": 16,
+  "root_cause": "ALPHA_FAILURE",
+  "rank_diagnostic": "NO_STABLE_RELATIVE_RANK_EDGE",
+  "existing_causal_scan": "NO_MATERIALLY_NEW_EXISTING_CAUSAL_INTERACTION",
+  "historical_bookdepth_status": "REJECT_BOOKDEPTH_AS_CROSS_FOLD_DEVELOPMENT_SOURCE",
+  "alternative_historical_microstructure_status": "STOP_HISTORICAL_MICROSTRUCTURE_RESCUE_AND_USE_FORWARD_ONLY_L2",
+  "tardis_status": "TECHNICALLY_VIABLE_NOT_ADOPTED_REQUIRES_FULL_SERVICE_ACCESS_AND_NEW_DATA_PATH",
+  "dominant_next_problem": "FORWARD_L2_BOUNDARY_AND_SAMPLE_SUFFICIENCY_WITHOUT_OUTCOME_ACCESS",
+  "performance_trial_max": 870,
+  "next_trial": 871,
+  "next_trial_authorized": false,
+  "next_trial_consumed": false,
+  "candidate_frozen": false,
+  "ready_to_start_paper": false,
+  "a1": "NOT_STARTED",
+  "paper_validated": false,
+  "live_authorization": "LIVE_NOT_AUTHORIZED"
+}

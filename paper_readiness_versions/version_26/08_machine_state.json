@@ -1,0 +1,27 @@
+{
+  "schema_version": "paper-readiness-evolution-1",
+  "version": 26,
+  "root_cause": "ALPHA_FAILURE",
+  "hypothesis_id": "H26_H21C_H12_CONFLICT_VETO",
+  "mapping": "V7_H1_VETO_WITH_H21C_AS_CONFLICT_INPUT_AND_THRESHOLD_0",
+  "predeclared_before_h26_economics": true,
+  "development_configuration_count_unique_prior": 8,
+  "pass_gate": {
+    "aggregate_net_positive": true,
+    "aggregate_net_gt_baseline": true,
+    "net_improved_folds_min": 2,
+    "aggregate_wrong_side_damage_lt_baseline": true,
+    "wrong_side_improved_folds_min": 2,
+    "turnover_lte_baseline": true
+  },
+  "dominant_next_problem": "RUN_H26_CORRECTED_10BPS_REPLAY",
+  "performance_trial_max": 870,
+  "next_trial": 871,
+  "next_trial_authorized": false,
+  "next_trial_consumed": false,
+  "candidate_frozen": false,
+  "ready_to_start_paper": false,
+  "a1": "NOT_STARTED",
+  "paper_validated": false,
+  "live_authorization": "LIVE_NOT_AUTHORIZED"
+}

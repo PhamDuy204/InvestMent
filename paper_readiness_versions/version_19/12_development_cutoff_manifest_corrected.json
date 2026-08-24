@@ -1,0 +1,15 @@
+{
+  "symbols": 30,
+  "raw_rows": 693360,
+  "funding_rows": 93462,
+  "panel_rows": 693360,
+  "raw_min": "2024-01-01 00:00:00+00:00",
+  "raw_max": "2026-08-20 23:00:00+00:00",
+  "latest_mature_h12_decision": "2026-08-20 11:00:00+00:00",
+  "information_cutoff_utc": "2026-08-20T23:59:59Z",
+  "post_cutoff_rows_read": 0,
+  "corrected_v4_v11_universe_column": "in_universe_15",
+  "in_universe_15_eligible_rows": 314295,
+  "in_universe_15_symbols_ever": 26,
+  "provenance_correction": "V18 initial probe used in_universe_10; exact V4/V11 reproduction requires in_universe_15."
+}

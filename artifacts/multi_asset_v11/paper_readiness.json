@@ -1,0 +1,116 @@
+{
+  "A1": "NOT_STARTED",
+  "PAPER_VALIDATED": false,
+  "READY_TO_START_PAPER": false,
+  "blockers": [
+    "SCIENCE:H12_AGGREGATE_PRE_COST_EDGE_NEGATIVE",
+    "SCIENCE:FOLD1_DIRECTIONAL_SIGN_REVERSAL_AND_BROAD_LONG_FAILURE",
+    "SCIENCE:NO_DEFENSIBLE_SMALL_V11_MECHANISM",
+    "SCIENCE:NO_ADMITTED_CANDIDATE",
+    "SCIENCE:TRIAL_871_NOT_AUTHORIZED_OR_CONSUMED",
+    "SCIENCE:NO_COMPLETE_POST_BOUNDARY_UNTOUCHED_H12_OUTCOME_AT_CLOSEOUT",
+    "FREEZE:NO_CANDIDATE_FREEZE"
+  ],
+  "branch": "v11-root-cause-paper-readiness",
+  "candidate_frozen": false,
+  "candidate_hash": null,
+  "categories": {
+    "CAUSALITY": true,
+    "EXECUTION": true,
+    "FREEZE": false,
+    "OPERATIONAL": true,
+    "SAFETY": true,
+    "SCIENCE": false,
+    "SOURCE_OF_TRUTH": true
+  },
+  "development_configuration_count": 0,
+  "evidence_head_at_generation": "41b1cf6491171eca75a46cad362bd11a64b63799",
+  "factor_admitted": false,
+  "failure_rank": {
+    "ALPHA_FAILURE": "DOMINANT",
+    "COST_FAILURE": "SECONDARY",
+    "REGIME_INSTABILITY": "SECONDARY",
+    "TIMING_FAILURE": "MINOR"
+  },
+  "final_v10_source_sha": "bbed86901b01acf66698cd988c17945573ed984d",
+  "generated_at_utc": "2026-08-23T17:29:35.009168+00:00",
+  "live_authorization": "LIVE_NOT_AUTHORIZED",
+  "live_private_exchange_mutation_occurred": false,
+  "local_verification_so_far": {
+    "compileall": "PASS",
+    "git_diff_check": "PASS",
+    "pytest": "219 passed",
+    "ruff": "PASS",
+    "trial_871_guard": "PASS"
+  },
+  "mirofish_status": "NOT_USED",
+  "performance_trial_count": 870,
+  "pr_base": "v10-scientific-candidate",
+  "pr_head": "v11-root-cause-paper-readiness",
+  "pr_number": 8,
+  "prospective_evidence": {
+    "boundary_utc": "2026-08-23T17:16:03.853710+00:00",
+    "earliest_possible_complete_h12_label_after_boundary_utc": "2026-08-24T05:16:03.853710+00:00",
+    "note": "This is derived from the inherited 12-hour H12 horizon, not from an outcome-dependent maturity threshold.",
+    "status": "INSUFFICIENT_AT_V11_CLOSEOUT"
+  },
+  "qwen": {
+    "inherited_v10_advisory": "SUPPORT_TEST / FATAL_NONE",
+    "inherited_v10_model": "qwen/qwen3.6-27b",
+    "v11_status": "NOT_RUN_TRIAL_871_GATE_NOT_REACHED"
+  },
+  "readiness": "V11_NOT_READY_FOR_PAPER",
+  "recorder_health": {
+    "l2": {
+      "cycles_completed": 2128,
+      "error_count": 0,
+      "last_cycle_started_at": "2026-08-23T17:29:28.129906+00:00",
+      "last_health_at": "2026-08-23T17:29:30.761444+00:00",
+      "pid": 2743466,
+      "pid_alive": true,
+      "records_appended": 44688,
+      "research_only": true,
+      "schema_version": "v8-l2-snapshot-1",
+      "status": "RUNNING",
+      "symbols_expected": [
+        "1000PEPE/USDT:USDT",
+        "1000SHIB/USDT:USDT",
+        "AAVE/USDT:USDT",
+        "ADA/USDT:USDT",
+        "AVAX/USDT:USDT",
+        "BNB/USDT:USDT",
+        "BTC/USDT:USDT",
+        "DOGE/USDT:USDT",
+        "DOT/USDT:USDT",
+        "ETH/USDT:USDT",
+        "FIL/USDT:USDT",
+        "LINK/USDT:USDT",
+        "LTC/USDT:USDT",
+        "NEAR/USDT:USDT",
+        "SOL/USDT:USDT",
+        "SUI/USDT:USDT",
+        "UNI/USDT:USDT",
+        "WLD/USDT:USDT",
+        "XLM/USDT:USDT",
+        "XRP/USDT:USDT",
+        "ZEC/USDT:USDT"
+      ]
+    },
+    "positioning": {
+      "cycles_completed": 5,
+      "error_count": 0,
+      "interval_seconds": 3600,
+      "last_health_at": "2026-08-23T17:10:34.190008+00:00",
+      "pid": 2750224,
+      "pid_alive": true,
+      "research_only": true,
+      "rows_written_total": 630,
+      "status": "RUNNING"
+    }
+  },
+  "root_cause": "ALPHA_FAILURE",
+  "schema_version": "v11-paper-readiness-1",
+  "selected_mechanism": "NONE",
+  "trial_871_authorized": false,
+  "trial_871_consumed": false
+}

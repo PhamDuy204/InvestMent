@@ -1,0 +1,41 @@
+{
+  "hypothesis": "H21_C_OI_TREND_CONFIRMATION",
+  "feature": "sign(ret_4)*oi_log_change_1h",
+  "sign_expectation": "positive future H12 return",
+  "folds": [
+    {
+      "fold": 0,
+      "timestamps": 314,
+      "mean_ic": 0.0239208103623615,
+      "ic_positive_fraction": 0.5382165605095541,
+      "mean_spread": 0.0013761999175953138,
+      "spread_positive_fraction": 0.5382165605095541
+    },
+    {
+      "fold": 1,
+      "timestamps": 314,
+      "mean_ic": -0.0008171421434815978,
+      "ic_positive_fraction": 0.49363057324840764,
+      "mean_spread": 0.0007603602238504045,
+      "spread_positive_fraction": 0.4745222929936306
+    },
+    {
+      "fold": 2,
+      "timestamps": 314,
+      "mean_ic": 0.030336106093255877,
+      "ic_positive_fraction": 0.554140127388535,
+      "mean_spread": 0.0014532794782929582,
+      "spread_positive_fraction": 0.535031847133758
+    }
+  ],
+  "aggregate": {
+    "mean_ic": 0.017813258104045264,
+    "mean_spread": 0.0011966132065795592,
+    "ic_positive_folds": 2,
+    "spread_positive_folds": 3
+  },
+  "fixed_gate_pass": true,
+  "mechanism_attempt_number": 3,
+  "development_only": true,
+  "post_2026_08_20_outcome_used": false
+}
