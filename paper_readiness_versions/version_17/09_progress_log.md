@@ -13,3 +13,12 @@
 - Predeclared future split: two chronological development halves, then 12h H12 purge, then 7-day untouched evaluation block. Existing 30-day A1 forward gate remains unchanged.
 - Current state is `NEED_MORE_FORWARD_L2_EVIDENCE`; no development outcomes inspected, no strategy code/dependency changed, no performance replay/trial consumed.
 - Trial 871 remains unauthorized/unconsumed. `LIVE_NOT_AUTHORIZED`.
+
+## Hourly check — 2026-08-24T01:51:49Z
+
+- Re-read the complete V17 protocol/state before acting; worktree started clean at `ea8b7b5df3de398ca03dbb57765976ed41a3fe96` and `origin/v11-root-cause-paper-readiness` matched exactly by `git ls-remote`.
+- Recorder health: L2 `RUNNING`, 6,179 cycles, 129,759 health-counter records, 0 errors; positioning `RUNNING`, 13 cycles, 1,638 rows, 0 errors.
+- Recomputed continuity from parquet **filenames only** (no parquet content or H12 outcome access): 21 symbols, common latest segment `2026-08-23T13:07:34.665826Z` to `2026-08-24T01:44:00.742588Z` = `12.607h`.
+- Fixed V17 eligibility still fails: `12.607h < 168h`; therefore status remains `NEED_MORE_FORWARD_L2_EVIDENCE`.
+- No feature/strategy code, dependency, threshold, development outcome, replay, candidate, or performance trial was opened. No `version_18` was created because no meaningful scientific/readiness checkpoint changed.
+- Trial 871 remains unauthorized/unconsumed; `LIVE_NOT_AUTHORIZED` remains invariant.
