@@ -1,0 +1,11 @@
+{
+  "symbols": 30,
+  "raw_rows": 693360,
+  "funding_rows": 93462,
+  "panel_rows": 693360,
+  "raw_min": "2024-01-01 00:00:00+00:00",
+  "raw_max": "2026-08-20 23:00:00+00:00",
+  "latest_mature_h12_decision": "2026-08-20 11:00:00+00:00",
+  "information_cutoff_utc": "2026-08-20T23:59:59Z",
+  "post_cutoff_rows_read": 0
+}
