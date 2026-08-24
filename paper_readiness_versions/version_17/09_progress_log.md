@@ -22,3 +22,12 @@
 - Fixed V17 eligibility still fails: `12.607h < 168h`; therefore status remains `NEED_MORE_FORWARD_L2_EVIDENCE`.
 - No feature/strategy code, dependency, threshold, development outcome, replay, candidate, or performance trial was opened. No `version_18` was created because no meaningful scientific/readiness checkpoint changed.
 - Trial 871 remains unauthorized/unconsumed; `LIVE_NOT_AUTHORIZED` remains invariant.
+
+## Model-escalation note — 2026-08-24 Asia/Ho_Chi_Minh
+
+- Verified H12 is a trained 12h relative-return Ridge regression (`StandardScaler -> Ridge(alpha=1.0)`), not merely a rule.
+- V17 is still incomplete (<7 contiguous days), so no H12 refit, stacking, RL, Optuna, or outcome inspection was started.
+- Added `12_v18_model_escalation_plan.md`: when V17 closes, use the minimum ladder Ridge benchmark -> existing HistGB/ExtraTrees -> leakage-safe chronological stacking; RL only as a bounded policy layer if stable predictive edge already exists.
+- No new dependency installed yet: scikit-learn already covers the first three model families; additional RL/Optuna dependencies are YAGNI until their gate is reached.
+- If a future actual training/HPO run is estimated >1h, launch it as a background task and create an hourly condition-watch monitor for that run.
+- Trial 871 remains unauthorized/unconsumed. `LIVE_NOT_AUTHORIZED`.
