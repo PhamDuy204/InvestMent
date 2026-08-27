@@ -135,7 +135,10 @@ def common_linear_usdt_symbols(clients: dict[str, Any], limit: int = 20) -> list
 
     venue_symbols: list[set[str]] = []
     for client in clients.values():
-        markets = client.load_markets()
+        try:
+            markets = client.load_markets()
+        except Exception:
+            continue
         venue_symbols.append(
             {
                 str(market["symbol"])
@@ -143,6 +146,8 @@ def common_linear_usdt_symbols(clients: dict[str, Any], limit: int = 20) -> list
                 if _eligible_linear_usdt_swap(market)
             }
         )
+    if len(venue_symbols) < 2:
+        return []
     common = set.intersection(*venue_symbols)
 
     preferred_rank = {base: rank for rank, base in enumerate(PREFERRED_BASES)}
@@ -267,7 +272,7 @@ def main() -> int:
     try:
         symbols = common_linear_usdt_symbols(clients, limit=args.symbols)
         if not symbols:
-            raise RuntimeError("no common active linear USDT perpetual symbols found")
+            raise RuntimeError("fewer than two venues share active linear USDT perpetual symbols")
 
         while True:
             try:
