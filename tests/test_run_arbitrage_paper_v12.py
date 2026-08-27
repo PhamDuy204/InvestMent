@@ -1,0 +1,101 @@
+from __future__ import annotations
+
+from scripts.run_arbitrage_paper_v12 import (
+    common_linear_usdt_symbols,
+    load_state,
+    run_scan,
+    write_state,
+)
+
+
+class FakePublicClient:
+    def __init__(self, markets, books):
+        self._markets = markets
+        self._books = books
+        self.public_calls = []
+
+    def load_markets(self):
+        self.public_calls.append(("load_markets",))
+        return self._markets
+
+    def fetch_order_book(self, symbol, limit=None):
+        self.public_calls.append(("fetch_order_book", symbol, limit))
+        return self._books[symbol]
+
+    def create_order(self, *args, **kwargs):  # pragma: no cover - must never be called
+        raise AssertionError("private order path must never be called")
+
+
+def _market(symbol, *, swap=True, linear=True, active=True, quote="USDT", settle="USDT"):
+    return {
+        "symbol": symbol,
+        "swap": swap,
+        "linear": linear,
+        "active": active,
+        "quote": quote,
+        "settle": settle,
+    }
+
+
+def _book(bid, ask, qty=10.0):
+    return {"bids": [[bid, qty]], "asks": [[ask, qty]]}
+
+
+def test_common_symbols_keeps_only_active_linear_usdt_perpetuals():
+    btc = "BTC/USDT:USDT"
+    eth = "ETH/USDT:USDT"
+    clients = {
+        "binance": FakePublicClient(
+            {
+                btc: _market(btc),
+                eth: _market(eth),
+                "BTC/USDT": _market("BTC/USDT", swap=False),
+            },
+            {},
+        ),
+        "okx": FakePublicClient({btc: _market(btc), eth: _market(eth, active=False)}, {}),
+        "mexc": FakePublicClient({btc: _market(btc), eth: _market(eth)}, {}),
+    }
+
+    assert common_linear_usdt_symbols(clients, limit=20) == [btc]
+
+
+def test_run_scan_uses_public_books_and_returns_profitable_opportunity():
+    symbol = "BTC/USDT:USDT"
+    clients = {
+        "binance": FakePublicClient({}, {symbol: _book(99.9, 100.0)}),
+        "okx": FakePublicClient({}, {symbol: _book(102.0, 102.1)}),
+        "mexc": FakePublicClient({}, {symbol: _book(100.5, 100.6)}),
+    }
+
+    opportunities = run_scan(
+        clients,
+        [symbol],
+        equity=20.0,
+        target_fraction=0.25,
+        min_net_edge_bps=5.0,
+        safety_buffer_bps=1.0,
+        depth_limit=20,
+        fee_bps={"binance": 1.0, "okx": 1.0, "mexc": 1.0},
+    )
+
+    assert len(opportunities) == 1
+    assert opportunities[0].buy_venue == "binance"
+    assert opportunities[0].sell_venue == "okx"
+    for client in clients.values():
+        assert client.public_calls == [("fetch_order_book", symbol, 20)]
+
+
+def test_state_defaults_to_twenty_dollars_and_round_trips(tmp_path):
+    path = tmp_path / "state.json"
+
+    state = load_state(path)
+    assert state["initial_equity"] == 20.0
+    assert state["equity"] == 20.0
+    assert state["accepted_trade_count"] == 0
+
+    state["equity"] = 20.25
+    state["accepted_trade_count"] = 1
+    write_state(path, state)
+
+    assert load_state(path) == state
