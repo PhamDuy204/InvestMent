@@ -46,11 +46,11 @@ The default target notional is deliberately small relative to virtual equity. V1
 
 Artifacts live under `artifacts/arbitrage_v12/` by default:
 
-- `opportunities.jsonl`: every accepted simulated opportunity.
-- `state.json`: virtual equity, scan count, accepted opportunity count, cumulative estimated edge value, and the last opportunity.
+- `opportunities.jsonl`: every accepted simulated opportunity, including its per-event estimated edge value.
+- `state.json`: virtual equity, scan count, accepted opportunity count, best net edge seen, and the last opportunity.
 - `health.json`: last successful scan time and last error, if any.
 
-V1 deliberately does **not** increase virtual equity when an opening opportunity is observed. Repeatedly counting the same persistent spread as realized profit would overstate performance. The `estimated_edge_value_total` field is diagnostic opportunity value only. Realized paper PnL requires a later persistent open/close convergence lifecycle before equity is allowed to change.
+V1 deliberately does **not** increase virtual equity when an opening opportunity is observed and does not sum repeated opportunity values into a PnL-like state field. Repeatedly counting the same persistent spread as realized profit would overstate performance. Realized paper PnL requires a later persistent open/close convergence lifecycle before equity is allowed to change.
 
 ## Testing
 
