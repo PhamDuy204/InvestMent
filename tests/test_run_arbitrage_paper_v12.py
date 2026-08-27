@@ -109,10 +109,11 @@ def test_state_defaults_to_twenty_dollars_and_round_trips(tmp_path):
     state = load_state(path)
     assert state["initial_equity"] == 20.0
     assert state["equity"] == 20.0
-    assert state["accepted_trade_count"] == 0
+    assert state["accepted_opportunity_count"] == 0
+    assert state["best_net_edge_bps_seen"] is None
 
-    state["equity"] = 20.25
-    state["accepted_trade_count"] = 1
+    state["accepted_opportunity_count"] = 1
+    state["best_net_edge_bps_seen"] = 12.5
     write_state(path, state)
 
     assert load_state(path) == state
