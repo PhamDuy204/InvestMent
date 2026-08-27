@@ -26,6 +26,12 @@ class FakePublicClient:
         raise AssertionError("private order path must never be called")
 
 
+class UnavailablePublicClient(FakePublicClient):
+    def load_markets(self):
+        self.public_calls.append(("load_markets",))
+        raise RuntimeError("venue unavailable")
+
+
 def _market(symbol, *, swap=True, linear=True, active=True, quote="USDT", settle="USDT"):
     return {
         "symbol": symbol,
@@ -55,6 +61,17 @@ def test_common_symbols_keeps_only_active_linear_usdt_perpetuals():
         ),
         "okx": FakePublicClient({btc: _market(btc), eth: _market(eth, active=False)}, {}),
         "mexc": FakePublicClient({btc: _market(btc), eth: _market(eth)}, {}),
+    }
+
+    assert common_linear_usdt_symbols(clients, limit=20) == [btc]
+
+
+def test_common_symbols_survives_one_unavailable_venue():
+    btc = "BTC/USDT:USDT"
+    clients = {
+        "binance": UnavailablePublicClient({}, {}),
+        "okx": FakePublicClient({btc: _market(btc)}, {}),
+        "mexc": FakePublicClient({btc: _market(btc)}, {}),
     }
 
     assert common_linear_usdt_symbols(clients, limit=20) == [btc]
