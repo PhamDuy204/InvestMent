@@ -1,0 +1,29 @@
+name: V12 Arbitrage Smoke
+
+on:
+  push:
+    branches: [v12-cross-exchange-paper-arbitrage]
+
+jobs:
+  public-paper-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip
+      - run: pip install -e .
+      - name: Run credential-free public paper scan
+        run: |
+          python scripts/run_arbitrage_paper_v12.py \
+            --once \
+            --symbols 3 \
+            --depth 20 \
+            --artifacts-dir /tmp/arbitrage-v12-smoke
+      - name: Show state and health
+        if: always()
+        run: |
+          cat /tmp/arbitrage-v12-smoke/state.json || true
+          cat /tmp/arbitrage-v12-smoke/health.json || true
