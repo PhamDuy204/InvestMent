@@ -52,12 +52,12 @@ def _default_state(initial_equity: float = 20.0) -> dict[str, Any]:
     if initial_equity <= 0.0:
         raise ValueError("initial_equity must be positive")
     return {
-        "schema_version": "v12-arbitrage-paper-1",
+        "schema_version": "v12-arbitrage-paper-2",
         "initial_equity": float(initial_equity),
         "equity": float(initial_equity),
         "scan_count": 0,
-        "accepted_trade_count": 0,
-        "estimated_edge_value_total": 0.0,
+        "accepted_opportunity_count": 0,
+        "best_net_edge_bps_seen": None,
         "last_opportunity": None,
     }
 
@@ -68,7 +68,7 @@ def load_state(path: str | Path, initial_equity: float = 20.0) -> dict[str, Any]
         return _default_state(initial_equity)
     with path.open(encoding="utf-8") as handle:
         state = json.load(handle)
-    if state.get("schema_version") != "v12-arbitrage-paper-1":
+    if state.get("schema_version") != "v12-arbitrage-paper-2":
         raise ValueError("unsupported arbitrage paper state schema")
     if float(state.get("equity", 0.0)) <= 0.0:
         raise ValueError("paper equity must remain positive")
@@ -90,8 +90,7 @@ def _write_health(path: Path, *, status: str, error: str | None = None) -> None:
     write_state(
         path,
         {
-            "schema_version": "v12-arbitrage-paper-1",
-            "equity": 1.0,
+            "schema_version": "v12-arbitrage-health-1",
             "status": status,
             "updated_at_utc": _utc_now(),
             "error": error,
@@ -224,10 +223,12 @@ def _record_scan(
 
     best = max(opportunities, key=lambda item: item.net_edge_bps)
     estimated_value = best.target_notional * best.net_edge_bps / 10_000.0
-    state["accepted_trade_count"] = int(state.get("accepted_trade_count", 0)) + 1
-    state["estimated_edge_value_total"] = float(
-        state.get("estimated_edge_value_total", 0.0)
-    ) + estimated_value
+    state["accepted_opportunity_count"] = int(state.get("accepted_opportunity_count", 0)) + 1
+    previous_best = state.get("best_net_edge_bps_seen")
+    state["best_net_edge_bps_seen"] = max(
+        best.net_edge_bps,
+        float(previous_best) if previous_best is not None else best.net_edge_bps,
+    )
     state["last_opportunity"] = {**asdict(best), "observed_at_utc": _utc_now()}
 
     # ponytail: this is opportunity-value accounting, not realized PnL. Upgrade to a
