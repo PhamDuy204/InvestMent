@@ -44,6 +44,7 @@ def evaluate_pair(
     *,
     target_notional: float,
     safety_buffer_bps: float = 0.0,
+    allow_nonpositive: bool = False,
 ) -> ArbitrageOpportunity | None:
     """Return the executable paper edge for one ordered venue pair, or reject it."""
     if buy.name == sell.name:
@@ -78,7 +79,7 @@ def evaluate_pair(
     # Opening and closing both hedged legs means four taker executions.
     total_fee_bps = 2.0 * (buy.fee_bps + sell.fee_bps)
     net_edge_bps = gross_edge_bps - total_fee_bps - safety_buffer_bps
-    if net_edge_bps <= 0.0:
+    if net_edge_bps <= 0.0 and not allow_nonpositive:
         return None
 
     return ArbitrageOpportunity(
@@ -93,6 +94,32 @@ def evaluate_pair(
         safety_buffer_bps=float(safety_buffer_bps),
         net_edge_bps=float(net_edge_bps),
     )
+
+
+def best_observed_opportunity(
+    symbol: str,
+    venues: list[VenueBook],
+    *,
+    target_notional: float,
+    safety_buffer_bps: float = 0.0,
+) -> ArbitrageOpportunity | None:
+    """Return the best executable pair even when its net edge is non-positive."""
+    candidates = [
+        opportunity
+        for buy, sell in permutations(venues, 2)
+        if (
+            opportunity := evaluate_pair(
+                symbol,
+                buy,
+                sell,
+                target_notional=target_notional,
+                safety_buffer_bps=safety_buffer_bps,
+                allow_nonpositive=True,
+            )
+        )
+        is not None
+    ]
+    return max(candidates, key=lambda item: item.net_edge_bps, default=None)
 
 
 def best_opportunity(

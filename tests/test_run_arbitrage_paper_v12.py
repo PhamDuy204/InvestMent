@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 from scripts.run_arbitrage_paper_v12 import (
+    DEFAULT_FEE_BPS,
     common_linear_usdt_symbols,
+    linear_usdt_symbol_venues,
     load_state,
+    make_public_clients,
     run_scan,
     write_state,
 )
@@ -66,6 +69,21 @@ def test_common_symbols_keeps_only_active_linear_usdt_perpetuals():
     assert common_linear_usdt_symbols(clients, limit=20) == [btc]
 
 
+def test_symbol_venues_keeps_symbols_listed_on_any_two_available_venues():
+    btc = "BTC/USDT:USDT"
+    eth = "ETH/USDT:USDT"
+    clients = {
+        "binance": FakePublicClient({btc: _market(btc)}, {}),
+        "okx": FakePublicClient({btc: _market(btc), eth: _market(eth)}, {}),
+        "mexc": FakePublicClient({btc: _market(btc), eth: _market(eth)}, {}),
+    }
+
+    assert linear_usdt_symbol_venues(clients, min_venues=2) == {
+        btc: ("binance", "mexc", "okx"),
+        eth: ("mexc", "okx"),
+    }
+
+
 def test_common_symbols_survives_one_unavailable_venue():
     btc = "BTC/USDT:USDT"
     clients = {
@@ -117,3 +135,21 @@ def test_state_defaults_to_twenty_dollars_and_round_trips(tmp_path):
     write_state(path, state)
 
     assert load_state(path) == state
+
+
+def test_extended_public_clients_add_compatible_read_only_derivatives_venues():
+    base = make_public_clients()
+    extended = make_public_clients(include_extended=True)
+    try:
+        assert set(base) == {"binance", "okx", "mexc"}
+        assert set(extended) == {"binance", "okx", "mexc", "bybit", "bitget", "kucoin", "gate"}
+        assert "hyperliquid" not in extended
+        assert DEFAULT_FEE_BPS["bybit"] == 5.5
+        assert DEFAULT_FEE_BPS["bitget"] == 6.0
+        assert DEFAULT_FEE_BPS["kucoin"] == 6.0
+        assert DEFAULT_FEE_BPS["gate"] == 5.0
+    finally:
+        for client in [*base.values(), *extended.values()]:
+            close = getattr(client, "close", None)
+            if callable(close):
+                close()

@@ -2,7 +2,12 @@ from __future__ import annotations
 
 import pytest
 
-from crypto_research.arbitrage_v12 import VenueBook, best_opportunity, evaluate_pair
+from crypto_research.arbitrage_v12 import (
+    VenueBook,
+    best_observed_opportunity,
+    best_opportunity,
+    evaluate_pair,
+)
 
 
 def _book(*, bid: float, ask: float, bid_qty: float = 10.0, ask_qty: float = 10.0):
@@ -94,3 +99,29 @@ def test_crossed_or_invalid_book_is_rejected_not_promoted():
         )
         is None
     )
+
+
+def test_best_observed_opportunity_keeps_negative_net_edge_for_diagnostics():
+    venues = [
+        VenueBook("cheap", _book(bid=99.9, ask=100.0), fee_bps=5.0),
+        VenueBook("rich", _book(bid=100.05, ask=100.15), fee_bps=5.0),
+    ]
+
+    observed = best_observed_opportunity(
+        "BTC/USDT:USDT",
+        venues,
+        target_notional=20.0,
+        safety_buffer_bps=1.0,
+    )
+
+    assert observed is not None
+    assert observed.gross_edge_bps > 0.0
+    assert observed.total_fee_bps == pytest.approx(20.0)
+    assert observed.net_edge_bps < 0.0
+    assert best_opportunity(
+        "BTC/USDT:USDT",
+        venues,
+        target_notional=20.0,
+        min_net_edge_bps=0.0,
+        safety_buffer_bps=1.0,
+    ) is None

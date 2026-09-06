@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 import numpy as np
 import pandas as pd
@@ -173,6 +173,8 @@ class ExecutionResultV8:
     depth_consumed_levels: int
     latency_ms: int
     unmodeled_tail: bool
+    target_base_quantity: float | None = None
+    unfilled_base_quantity: float = 0.0
 
 
 class ExecutionSimulatorV8:
@@ -271,4 +273,50 @@ class ExecutionSimulatorV8:
             depth_consumed_levels=consumed,
             latency_ms=int(latency_ms),
             unmodeled_tail=remaining > _EPS,
+        )
+
+    def simulate_market_order_by_quantity(
+        self,
+        *,
+        target_base_quantity: float,
+        side: str,
+        book: dict[str, object],
+        decision_mid: float | None = None,
+        latency_ms: int = 0,
+    ) -> ExecutionResultV8:
+        """Walk the same book for an exact base quantity, reusing notional execution logic."""
+        side = side.lower()
+        if side not in {"buy", "sell"}:
+            raise ValueError("side must be buy or sell")
+        if target_base_quantity <= 0.0 or not np.isfinite(target_base_quantity):
+            raise ValueError("target_base_quantity must be finite and positive")
+
+        levels, _, _ = self._levels(book, side)
+        remaining_base = float(target_base_quantity)
+        target_notional = 0.0
+        for price, quantity in levels:
+            take_base = min(remaining_base, quantity)
+            target_notional += price * take_base
+            remaining_base -= take_base
+            if remaining_base <= _EPS:
+                remaining_base = 0.0
+                break
+
+        # ponytail: the last visible quote only converts an unavailable base tail to
+        # quote units for reporting; simulate_market_order still never fills beyond depth.
+        if remaining_base > _EPS:
+            target_notional += remaining_base * levels[-1][0]
+
+        result = self.simulate_market_order(
+            target_notional=target_notional,
+            side=side,
+            book=book,
+            decision_mid=decision_mid,
+            latency_ms=latency_ms,
+        )
+        return replace(
+            result,
+            target_base_quantity=float(target_base_quantity),
+            unfilled_base_quantity=float(max(0.0, remaining_base)),
+            unmodeled_tail=remaining_base > _EPS,
         )

@@ -181,3 +181,22 @@ def test_execution_simulator_separates_latency_from_arrival_execution_cost() -> 
     assert math.isclose(result.spread_cost_bps, (1.0 / 101.0) * 10_000.0)
     assert math.isclose(result.implementation_shortfall_bps, 200.0)
     assert math.isclose(result.total_cost_bps, 202.0)
+
+
+def test_execution_simulator_walks_book_by_base_quantity() -> None:
+    from crypto_research.execution_v8 import ExecutionSimulatorV8
+
+    simulator = ExecutionSimulatorV8(fee_bps=3.0)
+    book = {"bids": [[99.0, 3.0]], "asks": [[100.0, 1.0], [102.0, 1.0]]}
+
+    result = simulator.simulate_market_order_by_quantity(
+        target_base_quantity=1.5,
+        side="buy",
+        book=book,
+    )
+
+    assert math.isclose(result.filled_base_quantity, 1.5)
+    assert math.isclose(result.filled_notional, 151.0)
+    assert math.isclose(result.vwap, 151.0 / 1.5)
+    assert result.unfilled_base_quantity == 0.0
+    assert not result.unmodeled_tail

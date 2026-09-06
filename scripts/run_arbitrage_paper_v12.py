@@ -13,13 +13,21 @@ from typing import Any
 
 import ccxt
 
-from crypto_research.arbitrage_v12 import ArbitrageOpportunity, VenueBook, best_opportunity
+from crypto_research.arbitrage_v12 import (
+    ArbitrageOpportunity,
+    VenueBook,
+    best_opportunity,
+)
 
 DEFAULT_FEE_BPS = {
-    # Configurable conservative taker assumptions for paper scanning.
+    # Configurable non-VIP/API taker assumptions for paper scanning, checked 2026-08-27.
     "binance": 5.0,
     "okx": 5.0,
     "mexc": 8.0,
+    "bybit": 5.5,
+    "bitget": 6.0,
+    "kucoin": 6.0,
+    "gate": 5.0,
 }
 PREFERRED_BASES = (
     "BTC",
@@ -106,14 +114,24 @@ def _append_jsonl(path: Path, row: dict[str, Any]) -> None:
         os.fsync(handle.fileno())
 
 
-def make_public_clients() -> dict[str, Any]:
+def make_public_clients(*, include_extended: bool = False) -> dict[str, Any]:
     """Create unauthenticated public market-data clients only."""
     common = {"enableRateLimit": True}
-    return {
+    clients = {
         "binance": ccxt.binanceusdm(common.copy()),
         "okx": ccxt.okx({**common, "options": {"defaultType": "swap"}}),
         "mexc": ccxt.mexc({**common, "options": {"defaultType": "swap"}}),
     }
+    if include_extended:
+        clients.update(
+            {
+                "bybit": ccxt.bybit({**common, "options": {"defaultType": "swap"}}),
+                "bitget": ccxt.bitget({**common, "options": {"defaultType": "swap"}}),
+                "kucoin": ccxt.kucoinfutures(common.copy()),
+                "gate": ccxt.gate({**common, "options": {"defaultType": "swap"}}),
+            }
+        )
+    return clients
 
 
 def _eligible_linear_usdt_swap(market: dict[str, Any]) -> bool:
@@ -124,6 +142,33 @@ def _eligible_linear_usdt_swap(market: dict[str, Any]) -> bool:
         and market.get("settle") == "USDT"
         and market.get("active") is not False
     )
+
+
+def linear_usdt_symbol_venues(
+    clients: dict[str, Any],
+    *,
+    min_venues: int = 2,
+) -> dict[str, tuple[str, ...]]:
+    if min_venues <= 0:
+        raise ValueError("min_venues must be positive")
+
+    coverage: dict[str, set[str]] = {}
+    for name, client in clients.items():
+        try:
+            markets = client.load_markets()
+        except Exception:
+            continue
+        for market in markets.values():
+            if not _eligible_linear_usdt_swap(market):
+                continue
+            symbol = str(market["symbol"])
+            coverage.setdefault(symbol, set()).add(name)
+
+    return {
+        symbol: tuple(sorted(venues))
+        for symbol, venues in coverage.items()
+        if len(venues) >= min_venues
+    }
 
 
 def common_linear_usdt_symbols(clients: dict[str, Any], limit: int = 20) -> list[str]:
